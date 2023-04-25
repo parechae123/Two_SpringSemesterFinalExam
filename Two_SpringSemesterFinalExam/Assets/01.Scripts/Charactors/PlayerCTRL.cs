@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCTRL : MonoBehaviour
+public class PlayerCTRL : PlayerStat
 {
     private Rigidbody2D rb;
     private float playerMoveAxis;
     private SpriteRenderer sr;
     public LayerMask whatIsGround;
     private CapsuleCollider2D cc;
-    public byte jumpCount = 0;
-    [SerializeField] public PlayerStats pS;
 
     void Awake()
     {
@@ -19,9 +17,19 @@ public class PlayerCTRL : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         cc = GetComponent<CapsuleCollider2D>();
     }
+    private void Start()
+    {
+        SettingStats();
+        LoadPlrStats();
+    }
     private void Update()
     {
-        rb.velocity = new Vector2((playerMoveAxis*pS.moveSpeed)*Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2((playerMoveAxis*stat.moveSpeed)*Time.deltaTime, rb.velocity.y);
+    }
+
+    public void SaveUpdatedPlayerStat()
+    {
+        SavePlrStats();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -40,7 +48,7 @@ public class PlayerCTRL : MonoBehaviour
     {
         if (ctx.started&&jumpCount<2)
         {
-            rb.velocity+= Vector2.up * pS.jumpForce;
+            rb.velocity+= Vector2.up * stat.jumpForce;
             jumpCount++;
             Debug.Log("jumped");
             if(jumpCount == 1)
@@ -48,14 +56,8 @@ public class PlayerCTRL : MonoBehaviour
                 StartCoroutine(jumpSencer());
             }
         }
+    }
 
-    }
-    [System.Serializable] public struct PlayerStats
-    {
-        public float moveSpeed;
-        public float playerHP;
-        public float jumpForce;
-    }
     private IEnumerator jumpSencer()
     {
         yield return new WaitUntil(() => rb.velocity.y < 0.5f);

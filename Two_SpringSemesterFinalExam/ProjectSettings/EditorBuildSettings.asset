@@ -10,8 +10,11 @@ EditorBuildSettings:
     guid: 9221eefc642457e439339f427b57c642
   - enabled: 1
     path: Assets/00.Scenes/SaveMenu.unity
-    guid: f8bb2d618ef94454cab8c0acd45f243a
+    guid: 0a27aa9c2638e3d4883177d595304e5d
   - enabled: 1
     path: Assets/00.Scenes/Tutorial.unity
     guid: d84da1cb26022a546a303b570c13f59f
+  - enabled: 1
+    path: Assets/00.Scenes/TestScene.unity
+    guid: 164fe4fbaeb51984094f8a3861bd47cb
   m_configObjects: {}

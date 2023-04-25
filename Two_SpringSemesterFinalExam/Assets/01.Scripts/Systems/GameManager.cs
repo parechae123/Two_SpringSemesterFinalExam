@@ -9,7 +9,26 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     static GameManager GM;
+    public SavedStats playerStatSave;
+    public bool beenStatSaved = false;
+    public struct SavedStats
+    {
+        public float jumpForce;
+        public float moveSpeed;
+        public int hp;
+        public int atk;
+        public byte jumpCount;
+    }
+
     [SerializeField]public Loading DefaultLoad;
+    [System.Serializable]
+    public struct Loading
+    {
+        public AudioClip BGMList;
+        public AudioSource BGMSource;
+        public AudioSource SFXSource;
+    }
+
     public static GameManager GMinstance()
     {
         return GM;
@@ -40,15 +59,26 @@ public class GameManager : MonoBehaviour
             DefaultLoad.SFXSource.volume = VolumeValue;
         }
     }
-    [System.Serializable]
-    public struct Loading
-    {
-        public AudioClip BGMList;
-        public AudioSource BGMSource;
-        public AudioSource SFXSource;
-    }
+
+
     public void ChangeScene(string StageName)
     {
+        StartCoroutine(ChangeSceneDelay(StageName));
+    }
+
+
+    IEnumerator ChangeSceneDelay(string StageName)
+    {
+        if (GameObject.Find("Player"))
+        {
+            if(GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
+            {
+                PC.SaveUpdatedPlayerStat();
+                /*base.SavePlrStats();*/
+                beenStatSaved = true;
+            }
+        }
+        yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(StageName);
     }
 }
