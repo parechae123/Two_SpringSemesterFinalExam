@@ -24,7 +24,6 @@ public class StatSystem : MonoBehaviour
     }
     protected virtual void SavePlrStats()
     {
-        Debug.Log("세이브 완료");
         GameManager.GMinstance().playerStatSave.jumpForce = stat.jumpForce;
         GameManager.GMinstance().playerStatSave.moveSpeed = stat.moveSpeed;
         GameManager.GMinstance().playerStatSave.hp = stat.hp;
@@ -35,7 +34,6 @@ public class StatSystem : MonoBehaviour
     {
         if (GameManager.GMinstance().beenStatSaved)
         {
-            Debug.Log("로드 완료");
             stat.jumpForce = GameManager.GMinstance().playerStatSave.jumpForce;
             stat.moveSpeed = GameManager.GMinstance().playerStatSave.moveSpeed;
             stat.hp = GameManager.GMinstance().playerStatSave.hp;

@@ -53,7 +53,6 @@ public class PlayerCTRL : GeneralAnimations
         {
             rb.velocity+= Vector2.up * stat.jumpForce;
             jumpCount++;
-            Debug.Log("jumped");
             if(jumpCount == 1)
             {
                 StartCoroutine(jumpSencer());
