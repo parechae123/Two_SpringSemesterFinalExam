@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCTRL : PlayerStat
+public class PlayerCTRL : GeneralAnimations
 {
     private Rigidbody2D rb;
     private float playerMoveAxis;
     private SpriteRenderer sr;
     public LayerMask whatIsGround;
     private CapsuleCollider2D cc;
+    private byte jumpCount;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         cc = GetComponent<CapsuleCollider2D>();
+        anim = GetComponent<Animator>();
     }
     private void Start()
     {
-        SettingStats();
-        LoadPlrStats();
+        base.SettingStats();
+        base.LoadPlrStats();
+        jumpCount = 0;
     }
     private void Update()
     {
@@ -29,7 +32,7 @@ public class PlayerCTRL : PlayerStat
 
     public void SaveUpdatedPlayerStat()
     {
-        SavePlrStats();
+        base.SavePlrStats();
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
