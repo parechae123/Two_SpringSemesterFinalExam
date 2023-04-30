@@ -18,16 +18,23 @@ public class PlayerCTRL : GeneralAnimations
         sr = GetComponent<SpriteRenderer>();
         cc = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+        
     }
     private void Start()
     {
-        base.SettingStats();
+        base.SettingStats(100, 20, 10, 5);
         base.LoadPlrStats();
         jumpCount = 0;
+        StateUpdates(States.Idle);
     }
-    private void Update()
+
+    private void FixedUpdate()
     {
-        rb.velocity = new Vector2((playerMoveAxis*stat.moveSpeed)*Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2((playerMoveAxis*stat.moveSpeed), rb.velocity.y);
+        if (!Keyboard.current.anyKey.wasPressedThisFrame&& !isInAttackAnim())
+        {
+            StateUpdates(States.Idle);
+        }
     }
 
     public void SaveUpdatedPlayerStat()
@@ -38,14 +45,26 @@ public class PlayerCTRL : GeneralAnimations
     public void OnMove(InputAction.CallbackContext ctx)
     {
         playerMoveAxis = ctx.ReadValue<Vector2>().x;
-        if (playerMoveAxis < 0)
+        if (ctx.started)
         {
-            sr.flipX = true;
+            if (playerMoveAxis < 0)
+            {
+                sr.flipX = true;
+            }
+            if (playerMoveAxis > 0)
+            {
+                sr.flipX = false;
+            }
         }
-        if (playerMoveAxis > 0)
+        if (ctx.performed)
         {
-            sr.flipX = false;
+            StateUpdates(States.Run);
         }
+        if (ctx.canceled)
+        {
+            StateUpdates(States.Idle);
+        }
+
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
@@ -53,7 +72,8 @@ public class PlayerCTRL : GeneralAnimations
         {
             rb.velocity+= Vector2.up * stat.jumpForce;
             jumpCount++;
-            if(jumpCount == 1)
+            StateUpdates(States.Jump);
+            if (jumpCount == 1)
             {
                 StartCoroutine(jumpSencer());
             }

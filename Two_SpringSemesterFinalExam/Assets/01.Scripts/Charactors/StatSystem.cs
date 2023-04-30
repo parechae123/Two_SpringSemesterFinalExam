@@ -15,12 +15,12 @@ public class StatSystem : MonoBehaviour
         public int hp;
         public int atk;
     }
-    protected virtual void SettingStats() 
+    protected virtual void SettingStats(int hp, int atk, float ms, float jf) 
     {
-        stat.jumpForce = 5;
-        stat.moveSpeed = 300;
-        stat.hp = 100;
-        stat.atk = 10;
+        stat.jumpForce = jf;
+        stat.moveSpeed = ms;
+        stat.hp = hp;
+        stat.atk = atk;
     }
     protected virtual void SavePlrStats()
     {

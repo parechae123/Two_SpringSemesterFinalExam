@@ -6,9 +6,7 @@ public class Slime : CommonMonsterMoves
 {
     private void Awake()
     {
-        stat.moveSpeed = 3;
-        stat.hp = 35;
-        stat.atk = 20;
+        base.SettingStats(35, 20, 3, 0);
         anim = GetComponent<Animator>();
         base.rb = GetComponent<Rigidbody2D>();
         base.bc = GetComponent<BoxCollider2D>();
