@@ -31,7 +31,7 @@ public class PlayerCTRL : GeneralAnimations
     private void FixedUpdate()
     {
         rb.velocity = new Vector2((playerMoveAxis*stat.moveSpeed), rb.velocity.y);
-        if (!Keyboard.current.anyKey.wasPressedThisFrame&& !isInAttackAnim())
+        if (!Keyboard.current.anyKey.wasPressedThisFrame&& !isInAttackAnim()&&playerMoveAxis ==0)
         {
             StateUpdates(States.Idle);
         }
@@ -49,22 +49,21 @@ public class PlayerCTRL : GeneralAnimations
         {
             if (playerMoveAxis < 0)
             {
-                sr.flipX = true;
+                transform.rotation = new Quaternion(0, 0, 0, 1);
             }
             if (playerMoveAxis > 0)
             {
-                sr.flipX = false;
+                transform.rotation = new Quaternion(0, 1, 0, 0);
             }
-        }
-        if (ctx.performed)
-        {
-            StateUpdates(States.Run);
         }
         if (ctx.canceled)
         {
             StateUpdates(States.Idle);
         }
-
+        if (ctx.performed)
+        {
+            StateUpdates(States.Run);
+        }
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
