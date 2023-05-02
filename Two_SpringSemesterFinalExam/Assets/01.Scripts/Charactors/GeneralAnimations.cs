@@ -8,19 +8,20 @@ public enum States
 }
 public class GeneralAnimations : StatSystem
 {
-    [SerializeField]protected Animator anim;
-
+    protected Animator anim;
+    protected bool isAttacking = false;
     protected States CharactorState;
     
     // Start is called before the first frame update
     protected virtual void StateUpdates(States newState)
     {
         StopCoroutine(CharactorState.ToString());
+        isAttacking = false;
         anim.SetBool(CharactorState.ToString(), false);
         CharactorState = newState;
         StartCoroutine(CharactorState.ToString());
     }
-    protected bool isInAttackAnim()
+    protected bool isInAnim()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
@@ -31,7 +32,12 @@ public class GeneralAnimations : StatSystem
             return false;
         }
     }
-
+    public void takeDamage(int Damage)
+    {
+        Debug.Log(Damage+"만큼 감소");
+        base.stat.hp-= Damage;
+        
+    }
     IEnumerator Idle()
     {
         anim.SetBool(CharactorState.ToString(), true);
@@ -57,20 +63,20 @@ public class GeneralAnimations : StatSystem
             yield return null;
         }
     }
-    IEnumerator Attack()
+    protected IEnumerator Attack()
     {
         anim.SetBool(CharactorState.ToString(), true);
-        while (true)
+        isAttacking = true;
+        while (isInAnim())
         {
             yield return null;
         }
+        isAttacking = false;
+        StateUpdates(States.Idle);
     }
     IEnumerator Damaged()
     {
         anim.SetBool(CharactorState.ToString() , true);
-        while (true)
-        {
-            yield return null;
-        }
+        yield return null;
     }
 }
