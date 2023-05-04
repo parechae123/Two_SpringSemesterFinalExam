@@ -9,21 +9,19 @@ public enum States
 public class GeneralAnimations : StatSystem
 {
     protected Animator anim;
-    protected bool isAttacking = false;
-    protected States CharactorState;
+    [SerializeField]protected States CharactorState;
     
     // Start is called before the first frame update
     protected virtual void StateUpdates(States newState)
     {
         StopCoroutine(CharactorState.ToString());
-        isAttacking = false;
         anim.SetBool(CharactorState.ToString(), false);
         CharactorState = newState;
         StartCoroutine(CharactorState.ToString());
     }
-    protected bool isInAnim()
+    protected bool isInATKAnim()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f&&CharactorState == States.Attack)
         {
             return true;
         }
@@ -66,12 +64,10 @@ public class GeneralAnimations : StatSystem
     protected IEnumerator Attack()
     {
         anim.SetBool(CharactorState.ToString(), true);
-        isAttacking = true;
-        while (isInAnim())
+        while (isInATKAnim())
         {
             yield return null;
         }
-        isAttacking = false;
         StateUpdates(States.Idle);
     }
     IEnumerator Damaged()

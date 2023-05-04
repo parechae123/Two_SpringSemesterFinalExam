@@ -30,11 +30,11 @@ public class PlayerCTRL : GeneralAnimations
     private void FixedUpdate()
     {
         rb.velocity = new Vector2((playerMoveAxis*stat.moveSpeed), rb.velocity.y);
-        if (!Keyboard.current.anyKey.wasPressedThisFrame&& !isInAnim()&&playerMoveAxis ==0&&CharactorState != States.Attack)
+        if (!Keyboard.current.anyKey.wasPressedThisFrame&& !isInATKAnim()&&playerMoveAxis ==0)
         {
             StateUpdates(States.Idle);
         }
-        else if(playerMoveAxis != 0&& !isInAnim() && CharactorState != States.Attack)
+        else if(playerMoveAxis != 0&& !isInATKAnim())
         {
             StateUpdates(States.Run);
         }
@@ -104,7 +104,7 @@ public class PlayerCTRL : GeneralAnimations
     }
     private IEnumerator ArrowFire()
     {
-        if(!isAttacking)
+        if(!isInATKAnim())
         {
             StateUpdates(States.Attack);
             yield return new WaitForEndOfFrame();
@@ -118,7 +118,7 @@ public class PlayerCTRL : GeneralAnimations
             {
                 transform.rotation = new Quaternion(0, 1, 0, 0);
             }
-            while (isInAnim())
+            while (isInATKAnim())
             {
                 yield return null;
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
