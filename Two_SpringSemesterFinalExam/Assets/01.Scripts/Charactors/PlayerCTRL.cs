@@ -34,7 +34,7 @@ public class PlayerCTRL : GeneralAnimations
         {
             StateUpdates(States.Idle);
         }
-        else if(playerMoveAxis != 0&& !isInATKAnim())
+        if(playerMoveAxis != 0&& !isInATKAnim())
         {
             StateUpdates(States.Run);
         }

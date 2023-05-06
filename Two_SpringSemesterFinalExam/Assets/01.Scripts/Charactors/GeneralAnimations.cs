@@ -21,7 +21,7 @@ public class GeneralAnimations : StatSystem
     }
     protected bool isInATKAnim()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f&&CharactorState == States.Attack)
+        if (CharactorState == States.Attack&&anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f)
         {
             return true;
         }
@@ -63,12 +63,12 @@ public class GeneralAnimations : StatSystem
     }
     protected IEnumerator Attack()
     {
-        anim.SetBool(CharactorState.ToString(), true);
+        /*anim.SetBool(CharactorState.ToString(), true);*/
+        anim.Play("attack 0", 0);
         while (isInATKAnim())
         {
             yield return null;
         }
-        StateUpdates(States.Idle);
     }
     IEnumerator Damaged()
     {
