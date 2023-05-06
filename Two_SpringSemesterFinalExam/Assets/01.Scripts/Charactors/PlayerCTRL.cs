@@ -11,6 +11,8 @@ public class PlayerCTRL : GeneralAnimations
     private CapsuleCollider2D cc;
     private byte jumpCount;
     private Vector2 mousePos;
+    private GameObject anchor;
+    private float anchorLenght;
 
     void Awake()
     {
@@ -38,6 +40,10 @@ public class PlayerCTRL : GeneralAnimations
         {
             StateUpdates(States.Run);
         }
+        if (anchor != null && anchorLenght != 0)
+        {
+            anchor.GetComponent<Anchor>().anchorSize((anchorLenght* 33)*Time.deltaTime);
+        }
     }
 
     public void SaveUpdatedPlayerStat()
@@ -59,6 +65,10 @@ public class PlayerCTRL : GeneralAnimations
                 transform.rotation = new Quaternion(0, 1, 0, 0);
             }
         }
+    }
+    public void OnWireSize(InputAction.CallbackContext ctx)
+    {
+        anchorLenght = ctx.ReadValue<Vector2>().y;
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
@@ -86,6 +96,28 @@ public class PlayerCTRL : GeneralAnimations
     public void OnMousePosition(InputAction.CallbackContext ctx)
     {
         mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+    }
+    public void OnAnchorFire(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            float angle = Mathf.Atan2(transform.position.x - mousePos.x, transform.position.y - mousePos.y) * Mathf.Rad2Deg;
+            if (anchor != null)
+            {
+                Destroy(anchor.gameObject);
+            }
+            Debug.Log("¾ÞÄ¿¹ß»ç");
+            anchor = Instantiate(Resources.Load<GameObject>("Prefabs/Anchor"), transform.position + (Vector3.up * 1.3f), Quaternion.identity);
+            anchor.GetComponent<Anchor>().Player = gameObject;
+            anchor.transform.rotation = Quaternion.AngleAxis(-angle + 180, Vector3.forward);
+        }
+    }
+    public void OnBreakAnchor(InputAction.CallbackContext ctx)
+    {
+        if (anchor != null)
+        {
+            Destroy(anchor);
+        }
     }
 
 
@@ -130,6 +162,5 @@ public class PlayerCTRL : GeneralAnimations
                 }
             }
         }
-
     }
 }

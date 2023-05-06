@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "WireLength",
+                    "type": "Value",
+                    "id": "5daae7fb-896c-493d-9369-0c7d58d33efa",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "1c365e68-28dc-434e-86ef-a13324a73578",
@@ -45,6 +54,15 @@
                     "name": "WireFIre",
                     "type": "Button",
                     "id": "882b102b-5426-4cad-807d-f936e083c4dc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoveWire",
+                    "type": "Button",
+                    "id": "96609ff2-49df-4579-94ee-5b87935ea0ba",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -97,8 +115,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "cfa8a39e-9b20-4bfc-b9a1-a10061780a65",
+                    "name": "Left",
+                    "id": "786d7c9a-eacc-4923-983a-39ab5366e394",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -108,8 +126,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "d5029c19-4e8b-47bf-be3e-0feb16260c0c",
+                    "name": "Right",
+                    "id": "c7893858-aefb-41b7-a11f-a4a8acaa47c5",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -126,6 +144,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "8e29dbb5-8b38-4bd9-8bf6-eee96ae36f9a",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WireLength",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "7752ebc1-abf9-4274-9bca-aa270fb2c9b5",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WireLength",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a35317ac-075f-4ef2-804e-2327987c2990",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WireLength",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "706a3e16-0856-49ae-8301-acd3b062a150",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoveWire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
