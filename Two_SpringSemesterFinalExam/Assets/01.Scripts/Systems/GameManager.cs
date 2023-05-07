@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     static GameManager GM;
     public SavedStats playerStatSave;
     public bool beenStatSaved = false;
+    public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
     public struct SavedStats
     {
         public float jumpForce;

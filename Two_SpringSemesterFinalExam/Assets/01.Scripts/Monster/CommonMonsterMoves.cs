@@ -13,7 +13,7 @@ public class CommonMonsterMoves : GeneralAnimations
     private int monsterDir = 1;
     protected virtual void WallSensedMoves(float MonsterMoveSpeed)
     {
-        Hit = Physics2D.Raycast(transform.position, Vector2.right*monsterDir, bc.bounds.extents.x + 0.1f, whatIsGround);
+        Hit = Physics2D.Raycast(transform.position, Vector2.right*monsterDir, bc.bounds.extents.x + 0.7f, whatIsGround);
         Debug.DrawRay(transform.position, Vector2.right * monsterDir * (bc.bounds.extents.x + 0.1f));
         if (Hit)
         {

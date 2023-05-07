@@ -15,6 +15,7 @@ public class Arrow : MonoBehaviour
     }
     private void Start()
     {
+        rb.velocity = Vector2.zero;
         rb.velocity = transform.up * 20;
     }
     private void Update()
@@ -24,11 +25,20 @@ public class Arrow : MonoBehaviour
         {
             hit.collider.GetComponent<GeneralAnimations>().takeDamage(dmg);
             Debug.Log("몬스터 감지");
-            Destroy(this.gameObject);
+            rb.velocity = Vector2.zero;
+            GameManager.GMinstance().nonActivateArrows.Enqueue(this.gameObject);
+            gameObject.SetActive(false);
         }
         else if (Physics2D.Raycast(transform.position,Vector2.up,0.5f,whatIsGround))
         {
-            Destroy(this.gameObject);
+            rb.velocity = Vector2.zero;
+            GameManager.GMinstance().nonActivateArrows.Enqueue(this.gameObject);
+            gameObject.SetActive(false);
         }
+    }
+    private void OnEnable()
+    {
+        rb.velocity = Vector2.zero;
+        rb.velocity = transform.up * 20;
     }
 }

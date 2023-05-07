@@ -12,6 +12,7 @@ public class PlayerCTRL : GeneralAnimations
     private byte jumpCount;
     private Vector2 mousePos;
     private GameObject anchor;
+    private Anchor anchorCOMP;
     private float anchorLenght;
 
     void Awake()
@@ -23,6 +24,9 @@ public class PlayerCTRL : GeneralAnimations
     }
     private void Start()
     {
+        anchor = Instantiate(Resources.Load<GameObject>("Prefabs/Anchor"));
+        anchorCOMP = anchor.GetComponent<Anchor>();
+        anchorCOMP.Player = gameObject;
         base.SettingStats(100, 20, 6, 5);
         base.LoadPlrStats();
         jumpCount = 0;
@@ -40,9 +44,9 @@ public class PlayerCTRL : GeneralAnimations
         {
             StateUpdates(States.Run);
         }
-        if (anchor != null && anchorLenght != 0)
+        if (anchor.activeSelf && anchorLenght != 0)
         {
-            anchor.GetComponent<Anchor>().anchorSize((anchorLenght* 33)*Time.deltaTime);
+            anchorCOMP.anchorSize((anchorLenght* 33)*Time.deltaTime);
         }
     }
 
@@ -102,21 +106,21 @@ public class PlayerCTRL : GeneralAnimations
         if (ctx.started)
         {
             float angle = Mathf.Atan2(transform.position.x - mousePos.x, transform.position.y - mousePos.y) * Mathf.Rad2Deg;
-            if (anchor != null)
+            if (anchor.activeSelf)
             {
-                Destroy(anchor.gameObject);
+                anchor.SetActive(false);
             }
-            Debug.Log("앵커발사");
-            anchor = Instantiate(Resources.Load<GameObject>("Prefabs/Anchor"), transform.position + (Vector3.up * 1.3f), Quaternion.identity);
-            anchor.GetComponent<Anchor>().Player = gameObject;
+            anchor.SetActive(true);
+            anchor.transform.position = transform.position + (Vector3.up * 1.3f);
             anchor.transform.rotation = Quaternion.AngleAxis(-angle + 180, Vector3.forward);
+            anchorCOMP.Player = gameObject;
         }
     }
     public void OnBreakAnchor(InputAction.CallbackContext ctx)
     {
-        if (anchor != null)
+        if (anchor.activeSelf)
         {
-            Destroy(anchor);
+            anchor.SetActive(false);
         }
     }
 
@@ -141,7 +145,6 @@ public class PlayerCTRL : GeneralAnimations
             StateUpdates(States.Attack);
             yield return new WaitForEndOfFrame();
             float angle = Mathf.Atan2(transform.position.x - mousePos.x, transform.position.y - mousePos.y) * Mathf.Rad2Deg;
-            Debug.Log(angle);
             if (angle > 0)
             {
                 transform.rotation = new Quaternion(0, 0, 0, 1);
@@ -155,9 +158,21 @@ public class PlayerCTRL : GeneralAnimations
                 yield return null;
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
                 {
-                    GameObject arrow = Instantiate(Resources.Load<GameObject>("Prefabs/arrow"), transform.position + (Vector3.up * 1.3f), Quaternion.identity);
-                    arrow.transform.rotation = Quaternion.AngleAxis(-angle + 180, Vector3.forward);
-                    arrow.GetComponent<Arrow>().dmg = stat.atk;
+                    if(GameManager.GMinstance().nonActivateArrows.Count == 0)
+                    {
+                        GameObject arrow = Instantiate(Resources.Load<GameObject>("Prefabs/arrow"), transform.position + (Vector3.up * 1.3f), Quaternion.AngleAxis(-angle + 180, Vector3.forward));
+                        Debug.Log("화살 생성");
+                        arrow.GetComponent<Arrow>().dmg = stat.atk;
+                    }
+                    else
+                    {
+                        GameObject arrow = GameManager.GMinstance().nonActivateArrows.Dequeue();
+                        arrow.transform.position = transform.position + (Vector3.up * 1.3f);
+                        arrow.transform.rotation = Quaternion.AngleAxis(-angle + 180, Vector3.forward);
+                        arrow.SetActive(true);
+                        Debug.Log("남은 화살" + GameManager.GMinstance().nonActivateArrows.Count);
+                        arrow.GetComponent<Arrow>().dmg = stat.atk;
+                    }
                     break;
                 }
             }

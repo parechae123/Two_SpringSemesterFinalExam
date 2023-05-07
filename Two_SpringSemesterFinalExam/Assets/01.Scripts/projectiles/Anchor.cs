@@ -22,7 +22,7 @@ public class Anchor : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, monsterLayer);
         if (hit.collider|| Vector3.Distance(Player.transform.position,transform.position) > 13 )
         {
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
         if (Physics2D.Raycast(transform.position, Vector2.up, 0.5f, whatIsGround))
         {
@@ -32,10 +32,13 @@ public class Anchor : MonoBehaviour
                 LR.SetPosition(0, transform.position);
                 joint.connectedBody = Player.GetComponent<Rigidbody2D>();
             }
-            LR.SetPosition(1, Player.transform.position);
+            LR.SetPosition(1, Player.transform.position+Vector3.up);
         }
         else
         {
+            joint.connectedBody = null;
+            LR.SetPosition(0, transform.position);
+            LR.SetPosition(1, transform.position);
             rb.velocity = transform.up * 20;
         }
     }
