@@ -10,7 +10,7 @@ public class PlayerCTRL : GeneralAnimations
     public LayerMask whatIsGround;
     private CapsuleCollider2D cc;
     private byte jumpCount;
-    private Vector2 mousePos;
+    public Vector2 mousePos;
     private GameObject anchor;
     private Anchor anchorCOMP;
     private float anchorLenght;
@@ -167,7 +167,7 @@ public class PlayerCTRL : GeneralAnimations
                     else
                     {
                         GameObject arrow = GameManager.GMinstance().nonActivateArrows.Dequeue();
-                        arrow.transform.position = transform.position + (Vector3.up * 1.3f);
+                        arrow.transform.position = transform.position + (Vector3.up * 1.5f);
                         arrow.transform.rotation = Quaternion.AngleAxis(-angle + 180, Vector3.forward);
                         arrow.SetActive(true);
                         Debug.Log("남은 화살" + GameManager.GMinstance().nonActivateArrows.Count);

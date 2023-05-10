@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9859acdde78775147b841c79fe6eeb92, type: 3}
+  m_Name: QuestLists
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - index: 0
+      questName: "\uD29C\uD1A0\uB9AC\uC5BC1: \uC774\uB3D9\uC870\uC791"
+      questType: inputQuest
+      questText: "\uC548\uB155\uD558\uC138\uC694 \uC774\uB3D9\uD0A4\uC5D0 \uB300\uD574\uC11C
+        \uC124\uBA85\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4. a\uD0A4\uB97C \uB204\uB974\uBA74
+        \uC88C\uCE21\uC73C\uB85C,d\uD0A4\uB97C \uB204\uB974\uBA74 \uC6B0\uCE21\uC73C\uB85C
+        \uC774\uB3D9\uD569\uB2C8\uB2E4."
+      questGoalTotal: 1
+      questGoalCount: 1
+      isQuestDone: 0
+    - index: 1
+      questName: "\uD29C\uD1A0\uB9AC\uC5BC2: \uC810\uD504"
+      questType: inputQuest
+      questText: "\uC2A4\uD398\uC774\uC2A4\uBC14\uB97C \uB20C\uB7EC \uC810\uD504\uB97C
+        \uD574\uBCF4\uC138\uC694!"
+      questGoalTotal: 1
+      questGoalCount: 1
+      isQuestDone: 0
+    - index: 2
+      questName: "\uD29C\uD1A0\uB9AC\uC5BC3: \uACF5\uACA9"
+      questType: inputQuest
+      questText: "\uB9C8\uC6B0\uC2A4 \uC704\uCE58\uB85C \uC870\uC900\uD55C \uB4A4
+        \uC88C\uD074\uB9AD\uC744 \uD574\uBCF4\uC138\uC694!"
+      questGoalTotal: 1
+      questGoalCount: 1
+      isQuestDone: 0
+    - index: 3
+      questName: "\uD29C\uD1A0\uB9AC\uC5BC4: \uD53C\uACA9"
+      questType: inputQuest
+      questText: "\uBAAC\uC2A4\uD130\uC5D0\uAC8C \uAC00\uAE4C\uD788 \uB2E4\uAC00\uAC00\uBCF4\uC138\uC694!"
+      questGoalTotal: 1
+      questGoalCount: 1
+      isQuestDone: 0
+    - index: 4
+      questName: "\uD29C\uD1A0\uB9AC\uC5BC5: \uC640\uC774\uC5B4 \uC124\uCE58"
+      questType: inputQuest
+      questText: "\uB9C8\uC6B0\uC2A4 \uC704\uCE58\uB85C \uC870\uC900\uD55C \uB4A4
+        \uC6B0\uD074\uB9AD\uC744 \uD574\uBCF4\uC138\uC694!"
+      questGoalTotal: 1
+      questGoalCount: 1
+      isQuestDone: 0
+    - index: 5
+      questName: "\uD29C\uD1A0\uB9AC\uC5BC6: \uC640\uC774\uC5B4 \uC870\uC791"
+      questType: inputQuest
+      questText: "\uC640\uC774\uC5B4\uAC00 \uC124\uCE58\uB418\uC5C8\uB2E4\uBA74 w\uB97C
+        \uB20C\uB7EC \uBA40\uC5B4\uC9C0\uACE0 s\uB97C \uB20C\uB7EC \uC640\uC774\uC5B4\uC5D0
+        \uAC00\uAE4C\uC6CC\uC9C8 \uC218 \uC788\uC2B5\uB2C8\uB2E4!"
+      questGoalTotal: 1
+      questGoalCount: 1
+      isQuestDone: 0
+    - index: 6
+      questName: "\uD29C\uD1A0\uB9AC\uC5BC7: \uC640\uC774\uC5B4 \uD574\uC81C"
+      questType: inputQuest
+      questText: "\uC640\uC774\uC5B4\uB85C\uBD80\uD130 14m \uC774\uC0C1 \uBA40\uC5B4\uC9C0\uAC70\uB098
+        \uC88C\uCE21 \uD558\uB2E8\uC758 CTRL\uD0A4\uB97C \uB20C\uB7EC \uC640\uC774\uC5B4
+        \uC5F0\uACB0\uC744 \uB04A\uC744 \uC218 \uC788\uC2B5\uB2C8\uB2E4!"
+      questGoalTotal: 1
+      questGoalCount: 1
+      isQuestDone: 0

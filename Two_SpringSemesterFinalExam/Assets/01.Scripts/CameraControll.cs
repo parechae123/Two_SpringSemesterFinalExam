@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class CameraControll : MonoBehaviour
 {
-    [SerializeField]private GameObject player;
+    [SerializeField]private Transform playerTR;
+    [SerializeField]private PlayerCTRL player;
     [Range(0,100)]public float cameraSpeed;
+    private float mousePlayerXDis;
+    private float mousePlayerYDis;
     // Update is called once per frame
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position,new Vector3(player.transform.position.x, player.transform.position.y,transform.position.z)-(new Vector3(-1.3f,-1,0)*3),cameraSpeed);
+        mousePlayerXDis = Mathf.Clamp( player.mousePos.x- playerTR.position.x, -3, 3);
+        mousePlayerYDis = Mathf.Clamp(player.mousePos.y - playerTR.position.y, -1.4f, 1.4f);
+        transform.position = Vector3.Lerp(transform.position,new Vector3(playerTR.position.x+mousePlayerXDis, playerTR.position.y+mousePlayerYDis,transform.position.z),cameraSpeed);
+        
     }
 }
