@@ -13,7 +13,7 @@ public class CameraControll : MonoBehaviour
     private void FixedUpdate()
     {
         mousePlayerXDis = Mathf.Clamp( player.mousePos.x- playerTR.position.x, -3, 3);
-        mousePlayerYDis = Mathf.Clamp(player.mousePos.y - playerTR.position.y, -1.4f, 1.4f);
+        mousePlayerYDis = Mathf.Clamp(player.mousePos.y - playerTR.position.y, -1.4f, 3f);
         transform.position = Vector3.Lerp(transform.position,new Vector3(playerTR.position.x+mousePlayerXDis, playerTR.position.y+mousePlayerYDis,transform.position.z),cameraSpeed);
         
     }

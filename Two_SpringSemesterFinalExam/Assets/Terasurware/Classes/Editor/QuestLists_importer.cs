@@ -10,7 +10,7 @@ using NPOI.SS.UserModel;
 public class QuestLists_importer : AssetPostprocessor {
 	private static readonly string filePath = "Assets/09.DataBaseXMLs/QuestLists.xls";
 	private static readonly string exportPath = "Assets/09.DataBaseXMLs/QuestLists.asset";
-	private static readonly string[] sheetNames = { "Sheet1", };
+	private static readonly string[] sheetNames = { "MainQuests","AdventurerGuild", };
 	
 	static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
 	{
@@ -18,9 +18,9 @@ public class QuestLists_importer : AssetPostprocessor {
 			if (!filePath.Equals (asset))
 				continue;
 				
-			StageOneQuests data = (StageOneQuests)AssetDatabase.LoadAssetAtPath (exportPath, typeof(StageOneQuests));
+			Entity_MainQuests data = (Entity_MainQuests)AssetDatabase.LoadAssetAtPath (exportPath, typeof(Entity_MainQuests));
 			if (data == null) {
-				data = ScriptableObject.CreateInstance<StageOneQuests> ();
+				data = ScriptableObject.CreateInstance<Entity_MainQuests> ();
 				AssetDatabase.CreateAsset ((ScriptableObject)data, exportPath);
 				data.hideFlags = HideFlags.NotEditable;
 			}
@@ -41,14 +41,14 @@ public class QuestLists_importer : AssetPostprocessor {
 						continue;
 					}
 
-					StageOneQuests.Sheet s = new StageOneQuests.Sheet ();
+					Entity_MainQuests.Sheet s = new Entity_MainQuests.Sheet ();
 					s.name = sheetName;
 				
 					for (int i=1; i<= sheet.LastRowNum; i++) {
 						IRow row = sheet.GetRow (i);
 						ICell cell = null;
 						
-						StageOneQuests.Param p = new StageOneQuests.Param ();
+						Entity_MainQuests.Param p = new Entity_MainQuests.Param ();
 						
 					cell = row.GetCell(0); p.index = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(1); p.questName = (cell == null ? "" : cell.StringCellValue);
@@ -57,6 +57,11 @@ public class QuestLists_importer : AssetPostprocessor {
 					cell = row.GetCell(4); p.questGoalTotal = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(5); p.questGoalCount = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(6); p.isQuestDone = (cell == null ? false : cell.BooleanCellValue);
+					cell = row.GetCell(7); p.rewardItemIndex = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(8); p.rewardItemAcount = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(9); p.isRewardExist = (cell == null ? false : cell.BooleanCellValue);
+					cell = row.GetCell(10); p.exeReward = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(11); p.huntTarget = (cell == null ? "" : cell.StringCellValue);
 						s.list.Add (p);
 					}
 					data.sheets.Add(s);
