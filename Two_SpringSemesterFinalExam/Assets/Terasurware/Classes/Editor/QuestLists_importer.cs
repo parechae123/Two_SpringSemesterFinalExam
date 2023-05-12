@@ -50,9 +50,7 @@ public class QuestLists_importer : AssetPostprocessor {
 						
 						Entity_MainQuests.Param p = new Entity_MainQuests.Param ();
 						
-					cell = row.GetCell(0); p.index = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(1); p.questName = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(2); p.questType = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(3); p.questText = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(4); p.questGoalTotal = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(5); p.questGoalCount = (int)(cell == null ? 0 : cell.NumericCellValue);

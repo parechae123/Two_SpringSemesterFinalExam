@@ -2,6 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum questType
+{
+    inputQuest, diaLogQuest, arriveToPoint, huntingQuest
+}
 public class Entity_MainQuests : ScriptableObject
 {	
 	public List<Sheet> sheets = new List<Sheet> ();
@@ -16,10 +20,8 @@ public class Entity_MainQuests : ScriptableObject
 	[System.SerializableAttribute]
 	public class Param
 	{
-		
-		public int index;
 		public string questName;
-		public string questType;
+		public questType QuestType;
 		public string questText;
 		public int questGoalTotal;
 		public int questGoalCount;

@@ -1251,6 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beenStatSaved: 0
+  QuestInfo: {fileID: 11400000, guid: 705366dfb187c7445a7613c6a14b1063, type: 2}
   DefaultLoad:
     BGMList: {fileID: 0}
     BGMSource: {fileID: 486952192}

@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     static GameManager GM;
     public SavedStats playerStatSave;
     public bool beenStatSaved = false;
     public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
+    public Entity_MainQuests QuestInfo;
+    public Entity_MainQuests.Param nowAcceptedQuest;
+
     public struct SavedStats
     {
         public float jumpForce;
