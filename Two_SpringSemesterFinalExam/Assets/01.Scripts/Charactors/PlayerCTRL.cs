@@ -20,7 +20,6 @@ public class PlayerCTRL : GeneralAnimations
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
-        
     }
     private void Start()
     {

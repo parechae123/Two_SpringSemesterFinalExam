@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region º¯¼ö¹­À½
     static GameManager GM;
     public SavedStats playerStatSave;
     public bool beenStatSaved = false;
     public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
     public Entity_MainQuests QuestInfo;
-    public Entity_MainQuests.Param nowAcceptedQuest;
-
+    public Entity_MainQuests.Param nowAcceptedMainQuest;
+    public Entity_MainQuests.Param nowAcceptedSubQuest;
+    #endregion
+    #region ÀúÀå
     public struct SavedStats
     {
         public float jumpForce;
@@ -31,7 +34,8 @@ public class GameManager : MonoBehaviour
         public AudioSource BGMSource;
         public AudioSource SFXSource;
     }
-
+    #endregion
+    #region ½Ì±ÛÅæ ¼¼ÆÃ
     public static GameManager GMinstance()
     {
         return GM;
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion
+    #region »ç¿îµå ¼¼ÆÃ
     public void SoundVolume(float VolumeValue,bool isThisBGMSlider)
     {
         if (isThisBGMSlider)
@@ -62,14 +68,25 @@ public class GameManager : MonoBehaviour
             DefaultLoad.SFXSource.volume = VolumeValue;
         }
     }
-
-
+    #endregion
+    #region Äù½ºÆ® 
+    public void GetQuestInfo(int questIndex, bool isMainQuest)
+    {
+        if (isMainQuest)
+        {
+            nowAcceptedMainQuest = QuestInfo.sheets[0].list[questIndex];
+        }
+        else if (!isMainQuest)
+        {
+            nowAcceptedSubQuest = QuestInfo.sheets[1].list[questIndex];
+        }
+    }
+    #endregion
+    #region ¾ÀÀüÈ¯
     public void ChangeScene(string StageName)
     {
         StartCoroutine(ChangeSceneDelay(StageName));
     }
-
-
     IEnumerator ChangeSceneDelay(string StageName)
     {
         if (GameObject.Find("Player"))
@@ -84,4 +101,5 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(StageName);
     }
+    #endregion
 }
