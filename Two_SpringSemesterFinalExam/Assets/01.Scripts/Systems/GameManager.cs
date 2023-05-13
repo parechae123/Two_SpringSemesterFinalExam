@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Net.Http;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     public Entity_MainQuests QuestInfo;
     public Entity_MainQuests.Param nowAcceptedMainQuest;
     public Entity_MainQuests.Param nowAcceptedSubQuest;
+    public Queue<GameObject> UIQueue = new Queue<GameObject>();//추후 UI 켠 순서대로 끄게해주기
+    public GameObject QuestUI;
+    public EXPComps EXP;
     #endregion
     #region 저장
     public struct SavedStats
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        GameManager.GMinstance().QuestInfo.sheets[0].list[0].isQuestDone = false;
     }
     #endregion
     #region 사운드 세팅
@@ -80,6 +85,7 @@ public class GameManager : MonoBehaviour
         {
             nowAcceptedSubQuest = QuestInfo.sheets[1].list[questIndex];
         }
+        QuestUI.SetActive(true);
     }
     #endregion
     #region 씬전환
@@ -100,6 +106,13 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(StageName);
+    }
+    #endregion
+    #region
+    public struct EXPComps
+    {
+        public byte nowLevel;
+        public float nowExp;
     }
     #endregion
 }
