@@ -24,7 +24,6 @@ public class Arrow : MonoBehaviour
         if (hit.collider)
         {
             hit.collider.GetComponent<GeneralAnimations>().takeDamage(dmg);
-            Debug.Log("몬스터 감지");
             rb.velocity = Vector2.zero;
             GameManager.GMinstance().nonActivateArrows.Enqueue(this.gameObject);
             gameObject.SetActive(false);

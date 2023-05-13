@@ -23,7 +23,7 @@ MonoBehaviour:
         \uC774\uB3D9\uD569\uB2C8\uB2E4."
       questGoalTotal: 1
       questGoalCount: 0
-      isQuestDone: 1
+      isQuestDone: 0
       rewardItemIndex: 0
       rewardItemAcount: 0
       isRewardExist: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
       isRewardExist: 0
       exeReward: 20
       huntTarget: Null
-    - questName: "\uD29C\uD1A0\uB9AC\uC5BC4: \uD53C\uACA9"
+    - questName: "\uD29C\uD1A0\uB9AC\uC5BC4: \uC218\uC0C9"
       QuestType: 0
       questText: "\uBAAC\uC2A4\uD130\uC5D0\uAC8C \uAC00\uAE4C\uD788 \uB2E4\uAC00\uAC00\uBCF4\uC138\uC694!"
       questGoalTotal: 1

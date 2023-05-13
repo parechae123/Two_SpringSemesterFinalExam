@@ -87,6 +87,22 @@ public class GameManager : MonoBehaviour
         }
         QuestUI.SetActive(true);
     }
+    public bool isQuestSuccese()
+    {
+        if (nowAcceptedMainQuest.isQuestDone)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public struct EXPComps
+    {
+        public byte nowLevel;
+        public float nowExp;
+    }
     #endregion
     #region æ¿¿¸»Ø
     public void ChangeScene(string StageName)
@@ -109,10 +125,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region
-    public struct EXPComps
-    {
-        public byte nowLevel;
-        public float nowExp;
-    }
+
     #endregion
 }

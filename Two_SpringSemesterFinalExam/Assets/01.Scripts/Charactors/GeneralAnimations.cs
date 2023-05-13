@@ -18,6 +18,7 @@ public class GeneralAnimations : StatSystem
         anim.SetBool(CharactorState.ToString(), false);
         CharactorState = newState;
         StartCoroutine(CharactorState.ToString());
+
     }
     protected bool isInATKAnim()
     {
@@ -34,7 +35,6 @@ public class GeneralAnimations : StatSystem
     {
         Debug.Log(Damage+"만큼 감소");
         base.stat.hp-= Damage;
-        
     }
     IEnumerator Idle()
     {
@@ -43,7 +43,6 @@ public class GeneralAnimations : StatSystem
         {
             yield return null;
         }
-
     }
     IEnumerator Run()
     {

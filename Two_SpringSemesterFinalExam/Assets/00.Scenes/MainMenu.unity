@@ -1252,6 +1252,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beenStatSaved: 0
   QuestInfo: {fileID: 11400000, guid: 705366dfb187c7445a7613c6a14b1063, type: 2}
+  nowAcceptedMainQuest:
+    questName: 
+    QuestType: 0
+    questText: 
+    questGoalTotal: 0
+    questGoalCount: 0
+    isQuestDone: 0
+    rewardItemIndex: 0
+    rewardItemAcount: 0
+    isRewardExist: 0
+    exeReward: 0
+    huntTarget: 
+  nowAcceptedSubQuest:
+    questName: 
+    QuestType: 0
+    questText: 
+    questGoalTotal: 0
+    questGoalCount: 0
+    isQuestDone: 0
+    rewardItemIndex: 0
+    rewardItemAcount: 0
+    isRewardExist: 0
+    exeReward: 0
+    huntTarget: 
+  QuestUI: {fileID: 0}
   DefaultLoad:
     BGMList: {fileID: 0}
     BGMSource: {fileID: 486952192}
@@ -1810,6 +1835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: SaveMenu
+  asdf: 
 --- !u!1 &1854492949
 GameObject:
   m_ObjectHideFlags: 0

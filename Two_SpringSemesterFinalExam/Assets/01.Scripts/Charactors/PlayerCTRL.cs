@@ -59,6 +59,10 @@ public class PlayerCTRL : GeneralAnimations
         playerMoveAxis = ctx.ReadValue<Vector2>().x;
         if (ctx.started)
         {
+            if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼1: 이동조작")
+            {
+                GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+            }
             if (playerMoveAxis < 0)
             {
                 transform.rotation = new Quaternion(0, 0, 0, 1);
@@ -72,11 +76,19 @@ public class PlayerCTRL : GeneralAnimations
     public void OnWireSize(InputAction.CallbackContext ctx)
     {
         anchorLenght = ctx.ReadValue<Vector2>().y;
+        if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼6: 와이어 조작")
+        {
+            GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+        }
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
         if (ctx.started&&jumpCount<2)
         {
+            if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼2: 점프")
+            {
+                GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+            }
             rb.velocity+= Vector2.up * stat.jumpForce;
             jumpCount++;
             if(CharactorState != States.Attack)
@@ -93,6 +105,10 @@ public class PlayerCTRL : GeneralAnimations
     {
         if (ctx.started)
         {
+            if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼3: 공격")
+            {
+                GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+            }
             StartCoroutine(ArrowFire());
         }
     }
@@ -104,6 +120,10 @@ public class PlayerCTRL : GeneralAnimations
     {
         if (ctx.started)
         {
+            if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼5: 와이어 설치")
+            {
+                GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+            }
             float angle = Mathf.Atan2(transform.position.x - mousePos.x, transform.position.y - mousePos.y) * Mathf.Rad2Deg;
             if (anchor.activeSelf)
             {
@@ -119,6 +139,10 @@ public class PlayerCTRL : GeneralAnimations
     {
         if (anchor.activeSelf)
         {
+            if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼7: 와이어 해제")
+            {
+                GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+            }
             anchor.SetActive(false);
         }
     }
