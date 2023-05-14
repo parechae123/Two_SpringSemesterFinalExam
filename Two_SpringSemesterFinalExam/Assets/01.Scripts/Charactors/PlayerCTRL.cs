@@ -14,7 +14,7 @@ public class PlayerCTRL : GeneralAnimations
     private GameObject anchor;
     private Anchor anchorCOMP;
     private float anchorLenght;
-
+    #region 씬세팅
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +31,8 @@ public class PlayerCTRL : GeneralAnimations
         jumpCount = 0;
         StateUpdates(States.Idle);
     }
-
+    #endregion
+    #region 업데이트
     private void FixedUpdate()
     {
         rb.velocity = new Vector2((playerMoveAxis*stat.moveSpeed), rb.velocity.y);
@@ -48,12 +49,14 @@ public class PlayerCTRL : GeneralAnimations
             anchorCOMP.anchorSize((anchorLenght* 33)*Time.deltaTime);
         }
     }
-
+    #endregion
+    #region 스텟저장
     public void SaveUpdatedPlayerStat()
     {
         base.SavePlrStats();
     }
-
+    #endregion
+    #region 조작법
     public void OnMove(InputAction.CallbackContext ctx)
     {
         playerMoveAxis = ctx.ReadValue<Vector2>().x;
@@ -146,8 +149,8 @@ public class PlayerCTRL : GeneralAnimations
             anchor.SetActive(false);
         }
     }
-
-
+    #endregion
+    #region 코루틴
     private IEnumerator jumpSencer()
     {
         yield return new WaitUntil(() => rb.velocity.y < 0.5f);
@@ -201,4 +204,5 @@ public class PlayerCTRL : GeneralAnimations
             }
         }
     }
+    #endregion
 }

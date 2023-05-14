@@ -38,6 +38,7 @@ public class StatSystem : MonoBehaviour
             stat.moveSpeed = GameManager.GMinstance().playerStatSave.moveSpeed;
             stat.hp = GameManager.GMinstance().playerStatSave.hp;
             stat.atk = GameManager.GMinstance().playerStatSave.atk;
+            GameManager.GMinstance().beenStatSaved = false;
         }
     }
 }

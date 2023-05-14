@@ -15,7 +15,7 @@ public class QuestTextUpdate : MonoBehaviour
     private void OnEnable()
     {
         QuestText.text = GameManager.GMinstance().nowAcceptedMainQuest.questName +"\n"+ GameManager.GMinstance().nowAcceptedMainQuest.questText;
-        GameManager.GMinstance().UIQueue.Enqueue(this.gameObject);
+        GameManager.GMinstance().UIStatck.Push(this.gameObject);
         Time.timeScale = 0;
     }
     private void OnDisable()

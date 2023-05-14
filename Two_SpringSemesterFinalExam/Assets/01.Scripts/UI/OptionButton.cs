@@ -10,10 +10,15 @@ public class OptionButton : MonoBehaviour
         if(SldrPanel.activeSelf == false)
         {
             SldrPanel.SetActive(true);
+            GameManager.GMinstance().UIStatck.Push(SldrPanel);
         }
         else
         {
             SldrPanel.SetActive(false);
+            if (GameManager.GMinstance().UIStatck.Count > 0)
+            {
+                GameManager.GMinstance().UIStatck.Pop();
+            }
         }
     }
 }

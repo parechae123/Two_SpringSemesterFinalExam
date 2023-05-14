@@ -6,9 +6,17 @@ using UnityEngine;
 public class TutorialMonster : Slime
 {
     public Transform playerTR;
+    private void Awake()
+    {
+        base.SettingStats(35, 20, 3, 0);
+        anim = GetComponent<Animator>();
+        base.rb = GetComponent<Rigidbody2D>();
+        base.bc = GetComponent<BoxCollider2D>();
+    }
     private void Update()
     {
-        if (Vector3.Distance(playerTR.position, transform.position) < 10)
+        base.WallSensedMoves(stat.moveSpeed);
+        if (Vector3.Distance(playerTR.position, transform.position) < 12)
         {
             if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼4: 수색")
             {

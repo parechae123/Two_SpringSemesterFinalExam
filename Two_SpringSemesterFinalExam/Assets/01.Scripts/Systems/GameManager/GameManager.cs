@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Net.Http;
 
+
 public class GameManager : MonoBehaviour
 {
     #region 변수묶음
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Entity_MainQuests QuestInfo;
     public Entity_MainQuests.Param nowAcceptedMainQuest;
     public Entity_MainQuests.Param nowAcceptedSubQuest;
-    public Queue<GameObject> UIQueue = new Queue<GameObject>();//추후 UI 켠 순서대로 끄게해주기
+    public Stack<GameObject> UIStatck = new Stack<GameObject>();//추후 UI 켠 순서대로 끄게해주기
     public GameObject QuestUI;
     public EXPComps EXP;
     #endregion
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         public int hp;
         public int atk;
         public byte jumpCount;
+        public byte StatPoint;
     }
 
     [SerializeField]public Loading DefaultLoad;
@@ -87,17 +89,6 @@ public class GameManager : MonoBehaviour
         }
         QuestUI.SetActive(true);
     }
-    public bool isQuestSuccese()
-    {
-        if (nowAcceptedMainQuest.isQuestDone)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
     public struct EXPComps
     {
         public byte nowLevel;
@@ -116,15 +107,29 @@ public class GameManager : MonoBehaviour
             if(GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
             {
                 PC.SaveUpdatedPlayerStat();
-                /*base.SavePlrStats();*/
                 beenStatSaved = true;
             }
         }
+        UIStatck.Clear();
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(StageName);
     }
     #endregion
-    #region
-
+    #region 겸험치 처리
+    public Slider ExpBar;
+    public TMPro.TextMeshProUGUI LevelText;
+    public void SetEXPBar(Slider expBar,TMPro.TextMeshProUGUI levelUI)
+    {
+        ExpBar = expBar;
+        LevelText = levelUI;
+        GetEXP(0);
+    }
+    public void GetEXP(float expAmount)
+    {
+        EXP.nowExp+= expAmount;
+        ExpBar.value = EXP.nowExp;
+        LevelText.text = "LV : " + EXP.nowLevel.ToString();
+        //레벨테이블 구현필요
+    }
     #endregion
 }
