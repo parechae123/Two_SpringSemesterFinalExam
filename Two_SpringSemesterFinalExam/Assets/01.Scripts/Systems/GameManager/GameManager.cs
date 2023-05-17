@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
             if (nowAcceptedMainQuest.isQuestDone)
             {
                 CompBTN.interactable = true;
+                QuestUI.SetActive(true);
             }
             else
             {
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
             if (nowAcceptedSubQuest.isQuestDone)
             {
                 CompBTN.interactable = true;
+                QuestUI.SetActive(true);
             }
             else
             {
@@ -149,7 +151,7 @@ public class GameManager : MonoBehaviour
     {
         ExpBar = expBar;
         LevelText = levelUI;
-        GetEXP(10);
+        GetEXP(0);
     }
     public void GetEXP(float expAmount)
     {

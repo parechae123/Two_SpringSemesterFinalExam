@@ -21,6 +21,7 @@ public class TutorialMonster : Slime
             if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼4: 수색")
             {
                 GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+                GameManager.GMinstance().isQuestDone(true);
             }
         }
         if(base.stat.hp <= 0)

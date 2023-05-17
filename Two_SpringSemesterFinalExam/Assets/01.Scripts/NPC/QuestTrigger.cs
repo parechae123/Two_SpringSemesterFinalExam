@@ -12,7 +12,12 @@ public class QuestTrigger : MonoBehaviour
         {
             if (isThisMainQuestTrigger)
             {
-                if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "" || GameManager.GMinstance().QuestInfo.sheets[0].list[Mathf.Clamp(questIndex - 1,0,1000)].isQuestDone)
+                if (!GameManager.GMinstance().QuestInfo.sheets[0].list[0].isQuestDone)
+                {
+                    GameManager.GMinstance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
+                    gameObject.SetActive(false);
+                }
+                else if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "" && GameManager.GMinstance().QuestInfo.sheets[0].list[Mathf.Clamp(questIndex - 1,0,100)].isQuestDone)
                 {
                     GameManager.GMinstance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
                     gameObject.SetActive(false);
