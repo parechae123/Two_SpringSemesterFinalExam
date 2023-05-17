@@ -9,6 +9,7 @@ public class QuestTextUpdate : MonoBehaviour
     private void Awake()
     {
         GameManager.GMinstance().QuestUI = this.gameObject;
+        GameManager.GMinstance().UIStatck.Push(this.gameObject);
         gameObject.SetActive(false);
     }
     // Start is called before the first frame update

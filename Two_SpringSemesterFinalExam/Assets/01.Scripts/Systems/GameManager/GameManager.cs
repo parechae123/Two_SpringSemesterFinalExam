@@ -88,6 +88,32 @@ public class GameManager : MonoBehaviour
             nowAcceptedSubQuest = QuestInfo.sheets[1].list[questIndex];
         }
         QuestUI.SetActive(true);
+        isQuestDone(isMainQuest);
+    }
+    public void isQuestDone(bool isMainQuest)
+    {
+        if (isMainQuest&&QuestUI.GetComponent<QuestTextUpdate>().QuestText.text.Contains(nowAcceptedMainQuest.questName))
+        {
+            if (nowAcceptedMainQuest.isQuestDone)
+            {
+                CompBTN.interactable = true;
+            }
+            else
+            {
+                CompBTN.interactable = false;
+            }
+        }
+        else if(!isMainQuest&& QuestUI.GetComponent<QuestTextUpdate>().QuestText.text.Contains(nowAcceptedSubQuest.questName))
+        {
+            if (nowAcceptedSubQuest.isQuestDone)
+            {
+                CompBTN.interactable = true;
+            }
+            else
+            {
+                CompBTN.interactable = false;
+            }
+        }
     }
     public struct EXPComps
     {
@@ -116,13 +142,14 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region °âÇèÄ¡ Ã³¸®
+    public Button CompBTN;
     public Slider ExpBar;
     public TMPro.TextMeshProUGUI LevelText;
     public void SetEXPBar(Slider expBar,TMPro.TextMeshProUGUI levelUI)
     {
         ExpBar = expBar;
         LevelText = levelUI;
-        GetEXP(0);
+        GetEXP(10);
     }
     public void GetEXP(float expAmount)
     {
