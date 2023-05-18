@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
     }
     public struct EXPComps
     {
-        public byte nowLevel;
+        public int nowLevel;
         public float nowExp;
     }
     #endregion
@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
     public Button CompBTN;
     public Slider ExpBar;
     public TMPro.TextMeshProUGUI LevelText;
+    public LevelTable LT;
     public void SetEXPBar(Slider expBar,TMPro.TextMeshProUGUI levelUI)
     {
         ExpBar = expBar;
@@ -156,8 +157,26 @@ public class GameManager : MonoBehaviour
     public void GetEXP(float expAmount)
     {
         EXP.nowExp+= expAmount;
-        ExpBar.value = EXP.nowExp;
-        LevelText.text = "LV : " + EXP.nowLevel.ToString();
+        ExpBar.value += expAmount;
+        if (ExpBar.value >= ExpBar.maxValue)
+        {
+            int PrevEXP = 0;
+            foreach (var LV in LT.sheets[0].list)
+            {
+                if (LV.EXP > GameManager.GMinstance().EXP.nowExp)
+                {
+                    if (PrevEXP != 0)
+                    {
+                        LevelText.text = "LV : " + LV.Level.ToString();
+                        EXP.nowLevel = LV.Level;
+                        ExpBar.maxValue = LV.EXP - PrevEXP;
+                        ExpBar.value = EXP.nowExp - PrevEXP;
+                    }
+                    break;
+                }
+                PrevEXP = LV.EXP;
+            }
+        }
         //레벨테이블 구현필요
     }
     #endregion

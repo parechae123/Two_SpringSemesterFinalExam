@@ -9,7 +9,7 @@ public class EXPRepeater : MonoBehaviour
 {
     private Slider expBar;
     private TextMeshProUGUI levelUI;
-
+    public LevelTable LT;
     private void Awake()
     {
         expBar = GetComponent<Slider>();

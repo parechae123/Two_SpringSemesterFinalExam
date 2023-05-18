@@ -1369,6 +1369,10 @@ MonoBehaviour:
     BGMList: {fileID: 0}
     BGMSource: {fileID: 486952192}
     SFXSource: {fileID: 1742144591}
+  CompBTN: {fileID: 0}
+  ExpBar: {fileID: 0}
+  LevelText: {fileID: 0}
+  LT: {fileID: 11400000, guid: bb459d9b3b9fe4f49bb8bde1d44df004, type: 2}
 --- !u!4 &1559656068
 Transform:
   m_ObjectHideFlags: 0
