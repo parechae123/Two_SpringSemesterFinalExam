@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Net.Http;
+using System.CodeDom.Compiler;
 
 
 public class GameManager : MonoBehaviour
@@ -48,6 +49,39 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void PlrStatusChange(string btnName)
+    {
+        if (playerStatSave.StatPoint > 0)
+        {
+            switch (btnName)
+            {
+                case "jumpForce":
+                    playerStatSave.jumpForce += 1;
+                    break;
+                case "moveSpeed":
+                    playerStatSave.moveSpeed += 1;
+                    break;
+                case "hp":
+                    playerStatSave.hp += 1;
+                    break;
+                case "atk":
+                    playerStatSave.atk += 1;
+                    break;
+            }
+            playerStatSave.StatPoint -= 1;
+            UIManager.Instance().StatusTextUpdate(btnName);
+            if (GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
+            {
+                beenStatSaved = true;
+                PC.LoadPlrStats();
+            }
+            if (UIManager.Instance().nowAcceptedMainQuest.questName == "Æ©Åä¸®¾ó9: ½ºÅÝÆ÷ÀÎÆ®")
+            {
+                UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
+            }
+
+        }
+    }
     #endregion
     #region ¾ÀÀüÈ¯
     public void ChangeScene(string StageName)
@@ -60,7 +94,7 @@ public class GameManager : MonoBehaviour
         {
             if(GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
             {
-                PC.SaveUpdatedPlayerStat();
+                PC.SavePlrStats();
                 beenStatSaved = true;
             }
         }
@@ -68,9 +102,5 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(StageName);
     }
-    #endregion
-    #region °âÇèÄ¡ Ã³¸®
-
-
     #endregion
 }

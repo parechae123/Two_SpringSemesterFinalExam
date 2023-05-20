@@ -27,6 +27,7 @@ public class PlayerCTRL : GeneralAnimations
         anchorCOMP = anchor.GetComponent<Anchor>();
         anchorCOMP.Player = gameObject;
         base.SettingStats(100, 20, 6, 5);
+        base.SavePlrStats();
         base.LoadPlrStats();
         jumpCount = 0;
         StateUpdates(States.Idle);
@@ -48,12 +49,6 @@ public class PlayerCTRL : GeneralAnimations
         {
             anchorCOMP.anchorSize((anchorLenght* 33)*Time.deltaTime);
         }
-    }
-    #endregion
-    #region 스텟저장
-    public void SaveUpdatedPlayerStat()
-    {
-        base.SavePlrStats();
     }
     #endregion
     #region 조작법

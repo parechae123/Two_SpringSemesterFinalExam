@@ -22,7 +22,7 @@ public class StatSystem : MonoBehaviour
         stat.hp = hp;
         stat.atk = atk;
     }
-    protected virtual void SavePlrStats()
+    public virtual void SavePlrStats()
     {
         GameManager.GMinstance().playerStatSave.jumpForce = stat.jumpForce;
         GameManager.GMinstance().playerStatSave.moveSpeed = stat.moveSpeed;
@@ -30,7 +30,7 @@ public class StatSystem : MonoBehaviour
         GameManager.GMinstance().playerStatSave.atk = stat.atk;
         GameManager.GMinstance().playerStatSave.jumpCount = 0;
     }
-    protected virtual void LoadPlrStats()
+    public virtual void LoadPlrStats()
     {
         if (GameManager.GMinstance().beenStatSaved)
         {

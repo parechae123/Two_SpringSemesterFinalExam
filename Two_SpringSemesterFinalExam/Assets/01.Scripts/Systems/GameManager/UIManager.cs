@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public EXPComps EXP;
     public LevelTable LT;
     private static UIManager instance;
+    public StatusWindow SW;
 
     public static UIManager Instance()
     {
@@ -37,6 +38,25 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    public void StatusTextUpdate(string WhatIsThisStatus)
+    {
+        switch (WhatIsThisStatus)
+        {
+            case "jumpForce":
+                SW.nowStatus[0].text = GameManager.GMinstance().playerStatSave.jumpForce.ToString();
+                break;
+            case "moveSpeed":
+                SW.nowStatus[1].text = GameManager.GMinstance().playerStatSave.moveSpeed.ToString();
+                break;
+            case "hp":
+                SW.nowStatus[2].text = GameManager.GMinstance().playerStatSave.hp.ToString();
+                break;
+            case "atk":
+                SW.nowStatus[3].text = GameManager.GMinstance().playerStatSave.atk.ToString();
+                break;
+        }
+        SW.statusPoint.text = GameManager.GMinstance().playerStatSave.StatPoint.ToString();
+    }
     public void GetQuestInfo(int questIndex, bool isMainQuest)
     {
         if (isMainQuest)
@@ -48,7 +68,7 @@ public class UIManager : MonoBehaviour
             nowAcceptedSubQuest = QuestInfo.sheets[1].list[questIndex];
         }
         QuestUI.SetActive(true);
-        isQuestDone(isMainQuest);
+        isQuestDone(false);
     }
     public void isQuestDone(bool isMainQuest)
     {
@@ -57,7 +77,6 @@ public class UIManager : MonoBehaviour
             if (nowAcceptedMainQuest.isQuestDone)
             {
                 CompBTN.interactable = true;
-                QuestUI.SetActive(true);
             }
             else
             {
@@ -69,7 +88,6 @@ public class UIManager : MonoBehaviour
             if (nowAcceptedSubQuest.isQuestDone)
             {
                 CompBTN.interactable = true;
-                QuestUI.SetActive(true);
             }
             else
             {
@@ -101,6 +119,7 @@ public class UIManager : MonoBehaviour
                         ExpBar.maxValue = LV.EXP - PrevEXP;
                         ExpBar.value = EXP.nowExp - PrevEXP;
                     }
+                    GameManager.GMinstance().playerStatSave.StatPoint += 5;
                     break;
                 }
                 PrevEXP = LV.EXP;
