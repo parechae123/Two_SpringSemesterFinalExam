@@ -8,9 +8,9 @@ public class GMinput : MonoBehaviour
     {
         if (ctx.started)
         {
-            if(GameManager.GMinstance().UIStatck.Count > 0)
+            if(UIManager.Instance().UIStatck.Count > 0)
             {
-                GameManager.GMinstance().UIStatck.Pop().SetActive(false);
+                UIManager.Instance().UIStatck.Pop().SetActive(false);
             }
         }
     }

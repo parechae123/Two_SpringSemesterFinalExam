@@ -14,6 +14,6 @@ public class EXPRepeater : MonoBehaviour
     {
         expBar = GetComponent<Slider>();
         levelUI = GameObject.Find("LVText").GetComponent<TextMeshProUGUI>();
-        GameManager.GMinstance().SetEXPBar(expBar, levelUI);
+        UIManager.Instance().SetEXPBar(expBar, levelUI);
     }
 }

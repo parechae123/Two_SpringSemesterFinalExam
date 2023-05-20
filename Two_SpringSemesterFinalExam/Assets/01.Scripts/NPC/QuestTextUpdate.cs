@@ -8,22 +8,22 @@ public class QuestTextUpdate : MonoBehaviour
     public TextMeshProUGUI QuestText;
     private void Awake()
     {
-        GameManager.GMinstance().QuestUI = this.gameObject;
-        GameManager.GMinstance().UIStatck.Push(this.gameObject);
+        UIManager.Instance().QuestUI = this.gameObject;
+        UIManager.Instance().UIStatck.Push(this.gameObject);
         gameObject.SetActive(false);
     }
     // Start is called before the first frame update
     private void OnEnable()
     {
-        if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "")
+        if (UIManager.Instance().nowAcceptedMainQuest.questName == "")
         {
             QuestText.text = "";
         }
         else
         {
-            QuestText.text = GameManager.GMinstance().nowAcceptedMainQuest.questName + "\n" + GameManager.GMinstance().nowAcceptedMainQuest.questText;
+            QuestText.text = UIManager.Instance().nowAcceptedMainQuest.questName + "\n" + UIManager.Instance().nowAcceptedMainQuest.questText;
         }
-        GameManager.GMinstance().UIStatck.Push(this.gameObject);
+        UIManager.Instance().UIStatck.Push(this.gameObject);
         Time.timeScale = 0;
     }
     private void OnDisable()

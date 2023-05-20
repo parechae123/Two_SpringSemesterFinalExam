@@ -1,3 +1,4 @@
+using Michsky.UI.Shift;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,14 @@ public class OptionButton : MonoBehaviour
         if(SldrPanel.activeSelf == false)
         {
             SldrPanel.SetActive(true);
-            GameManager.GMinstance().UIStatck.Push(SldrPanel);
+            UIManager.Instance().UIStatck.Push(SldrPanel);
         }
         else
         {
             SldrPanel.SetActive(false);
-            if (GameManager.GMinstance().UIStatck.Count > 0)
+            if (UIManager.Instance().UIStatck.Count > 0)
             {
-                GameManager.GMinstance().UIStatck.Pop();
+                UIManager.Instance().UIStatck.Pop();
             }
         }
     }

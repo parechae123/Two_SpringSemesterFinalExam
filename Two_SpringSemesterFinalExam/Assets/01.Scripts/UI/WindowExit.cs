@@ -8,9 +8,9 @@ public class WindowExit : MonoBehaviour
     public void OnClickWindowExit()
     {
         Target.SetActive(false);
-        if (GameManager.GMinstance().UIStatck.Pop() == Target)
+        if (UIManager.Instance().UIStatck.Pop() == Target)
         {
-            GameManager.GMinstance().UIStatck.Pop();
+            UIManager.Instance().UIStatck.Pop();
         }
     }
 

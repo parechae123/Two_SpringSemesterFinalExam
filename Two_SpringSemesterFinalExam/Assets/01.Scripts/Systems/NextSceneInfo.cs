@@ -11,10 +11,10 @@ public class NextSceneInfo : MonoBehaviour
     {
         if (transform.name == "NewGame")        //뉴게임시 퀘스트 완료목록 초기화
         {
-            foreach (var SheetNum in GameManager.GMinstance().QuestInfo.sheets)
+            foreach (var SheetNum in UIManager.Instance().QuestInfo.sheets)
             {
                 int i = 0;
-                foreach (var ListNum in GameManager.GMinstance().QuestInfo.sheets[i].list)
+                foreach (var ListNum in UIManager.Instance().QuestInfo.sheets[i].list)
                 {
                     ListNum.isQuestDone = false;
                 }

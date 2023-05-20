@@ -14,12 +14,6 @@ public class GameManager : MonoBehaviour
     public SavedStats playerStatSave;
     public bool beenStatSaved = false;
     public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
-    public Entity_MainQuests QuestInfo;
-    public Entity_MainQuests.Param nowAcceptedMainQuest;
-    public Entity_MainQuests.Param nowAcceptedSubQuest;
-    public Stack<GameObject> UIStatck = new Stack<GameObject>();//추후 UI 켠 순서대로 끄게해주기
-    public GameObject QuestUI;
-    public EXPComps EXP;
     #endregion
     #region 저장
     public struct SavedStats
@@ -32,14 +26,7 @@ public class GameManager : MonoBehaviour
         public byte StatPoint;
     }
 
-    [SerializeField]public Loading DefaultLoad;
-    [System.Serializable]
-    public struct Loading
-    {
-        public AudioClip BGMList;
-        public AudioSource BGMSource;
-        public AudioSource SFXSource;
-    }
+
     #endregion
     #region 싱글톤 세팅
     public static GameManager GMinstance()
@@ -60,67 +47,6 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        GameManager.GMinstance().QuestInfo.sheets[0].list[0].isQuestDone = false;
-    }
-    #endregion
-    #region 사운드 세팅
-    public void SoundVolume(float VolumeValue,bool isThisBGMSlider)
-    {
-        if (isThisBGMSlider)
-        {
-            DefaultLoad.BGMSource.volume = VolumeValue;
-        }
-        else
-        {
-            DefaultLoad.SFXSource.volume = VolumeValue;
-        }
-    }
-    #endregion
-    #region 퀘스트 
-    public void GetQuestInfo(int questIndex, bool isMainQuest)
-    {
-        if (isMainQuest)
-        {
-            nowAcceptedMainQuest = QuestInfo.sheets[0].list[questIndex];
-        }
-        else if (!isMainQuest)
-        {
-            nowAcceptedSubQuest = QuestInfo.sheets[1].list[questIndex];
-        }
-        QuestUI.SetActive(true);
-        isQuestDone(isMainQuest);
-    }
-    public void isQuestDone(bool isMainQuest)
-    {
-        if (isMainQuest&&QuestUI.GetComponent<QuestTextUpdate>().QuestText.text.Contains(nowAcceptedMainQuest.questName))
-        {
-            if (nowAcceptedMainQuest.isQuestDone)
-            {
-                CompBTN.interactable = true;
-                QuestUI.SetActive(true);
-            }
-            else
-            {
-                CompBTN.interactable = false;
-            }
-        }
-        else if(!isMainQuest&& QuestUI.GetComponent<QuestTextUpdate>().QuestText.text.Contains(nowAcceptedSubQuest.questName))
-        {
-            if (nowAcceptedSubQuest.isQuestDone)
-            {
-                CompBTN.interactable = true;
-                QuestUI.SetActive(true);
-            }
-            else
-            {
-                CompBTN.interactable = false;
-            }
-        }
-    }
-    public struct EXPComps
-    {
-        public int nowLevel;
-        public float nowExp;
     }
     #endregion
     #region 씬전환
@@ -138,46 +64,13 @@ public class GameManager : MonoBehaviour
                 beenStatSaved = true;
             }
         }
-        UIStatck.Clear();
+        UIManager.Instance().UIStatck.Clear();
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(StageName);
     }
     #endregion
     #region 겸험치 처리
-    public Button CompBTN;
-    public Slider ExpBar;
-    public TMPro.TextMeshProUGUI LevelText;
-    public LevelTable LT;
-    public void SetEXPBar(Slider expBar,TMPro.TextMeshProUGUI levelUI)
-    {
-        ExpBar = expBar;
-        LevelText = levelUI;
-        GetEXP(0);
-    }
-    public void GetEXP(float expAmount)
-    {
-        EXP.nowExp+= expAmount;
-        ExpBar.value += expAmount;
-        if (ExpBar.value >= ExpBar.maxValue)
-        {
-            int PrevEXP = 0;
-            foreach (var LV in LT.sheets[0].list)
-            {
-                if (LV.EXP > GameManager.GMinstance().EXP.nowExp)
-                {
-                    if (PrevEXP != 0)
-                    {
-                        LevelText.text = "LV : " + LV.Level.ToString();
-                        EXP.nowLevel = LV.Level;
-                        ExpBar.maxValue = LV.EXP - PrevEXP;
-                        ExpBar.value = EXP.nowExp - PrevEXP;
-                    }
-                    break;
-                }
-                PrevEXP = LV.EXP;
-            }
-        }
-        //레벨테이블 구현필요
-    }
+
+
     #endregion
 }

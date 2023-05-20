@@ -36,9 +36,9 @@ public class Statbuttons : MonoBehaviour
                     }
                     break;
             }
-            if(GameManager.GMinstance().nowAcceptedMainQuest.questName == "Æ©Åä¸®¾ó9: ½ºÅÝÆ÷ÀÎÆ®")
+            if(UIManager.Instance().nowAcceptedMainQuest.questName == "Æ©Åä¸®¾ó9: ½ºÅÝÆ÷ÀÎÆ®")
             {
-                GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
+                UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
             }
             GameManager.GMinstance().playerStatSave.StatPoint -= 1;
         }

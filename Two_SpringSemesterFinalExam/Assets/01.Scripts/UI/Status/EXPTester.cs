@@ -7,6 +7,6 @@ public class EXPTester : MonoBehaviour
     // Start is called before the first frame update
     public void OnEXPTester()
     {
-        GameManager.GMinstance().GetEXP( 10);
+        UIManager.Instance().GetEXP( 10);
     }
 }

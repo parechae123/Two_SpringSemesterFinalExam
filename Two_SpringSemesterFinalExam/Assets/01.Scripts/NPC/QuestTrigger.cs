@@ -12,20 +12,20 @@ public class QuestTrigger : MonoBehaviour
         {
             if (isThisMainQuestTrigger)
             {
-                if (!GameManager.GMinstance().QuestInfo.sheets[0].list[0].isQuestDone)
+                if (!UIManager.Instance().QuestInfo.sheets[0].list[0].isQuestDone)
                 {
-                    GameManager.GMinstance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
+                    UIManager.Instance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
                     gameObject.SetActive(false);
                 }
-                else if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "" && GameManager.GMinstance().QuestInfo.sheets[0].list[Mathf.Clamp(questIndex - 1,0,100)].isQuestDone)
+                else if (UIManager.Instance().nowAcceptedMainQuest.questName == "" && UIManager.Instance().QuestInfo.sheets[0].list[Mathf.Clamp(questIndex - 1,0,100)].isQuestDone)
                 {
-                    GameManager.GMinstance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
+                    UIManager.Instance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
                     gameObject.SetActive(false);
                 }
             }
             else
             {
-                GameManager.GMinstance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
+                UIManager.Instance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
                 gameObject.SetActive(false);
             }
         }

@@ -18,6 +18,6 @@ public class SoundVolumeSlider : MonoBehaviour
     public void OnSliderChanged()
     {
         float SliderValue = Slider.value;
-        GameManager.GMinstance().SoundVolume(SliderValue, isThisBGMSlider);
+        SoundManager.Instance().SoundVolume(SliderValue, isThisBGMSlider);
     }
 }

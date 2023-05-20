@@ -16,12 +16,12 @@ public class TutorialMonster : Slime
     private void Update()
     {
         base.WallSensedMoves(stat.moveSpeed);
-        if (Vector3.Distance(playerTR.position, transform.position) < 12)
+        if (Vector3.Distance(playerTR.position, transform.position) < 4)
         {
-            if (GameManager.GMinstance().nowAcceptedMainQuest.questName == "튜토리얼4: 수색")
+            if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼4: 수색")
             {
-                GameManager.GMinstance().nowAcceptedMainQuest.isQuestDone = true;
-                GameManager.GMinstance().isQuestDone(true);
+                UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
+                UIManager.Instance().isQuestDone(true);
             }
         }
         if(base.stat.hp <= 0)
