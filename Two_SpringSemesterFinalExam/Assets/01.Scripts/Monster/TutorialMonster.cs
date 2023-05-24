@@ -13,10 +13,9 @@ public class TutorialMonster : Slime
         base.rb = GetComponent<Rigidbody2D>();
         base.bc = GetComponent<BoxCollider2D>();
     }
-    private void Update()
+    protected override void MobFuncType()
     {
-        base.WallSensedMoves(stat.moveSpeed);
-        if (Vector3.Distance(playerTR.position, transform.position) < 4)
+        if (Vector3.Distance(playerTR.position, transform.position) < 7)
         {
             if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼4: 수색")
             {
@@ -24,7 +23,7 @@ public class TutorialMonster : Slime
                 UIManager.Instance().isQuestDone(true);
             }
         }
-        if(base.stat.hp <= 0)
+        if (base.stat.hp <= 0)
         {
             GetComponent<TutorialMonster>().enabled = false;
         }

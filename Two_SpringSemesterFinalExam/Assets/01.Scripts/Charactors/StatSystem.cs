@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class StatSystem : MonoBehaviour
 {
+    protected Rigidbody2D rb;
     [SerializeField] public BaseStats stat;
     [System.Serializable]
     public struct BaseStats

@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
                 beenStatSaved = true;
                 PC.LoadPlrStats();
             }
-            if (UIManager.Instance().nowAcceptedMainQuest.questName == "Æ©Åä¸®¾ó9: ½ºÅÝÆ÷ÀÎÆ®")
+            if (UIManager.Instance().nowAcceptedMainQuest.questName == "Æ©Åä¸®¾ó8: ½ºÅÝÆ÷ÀÎÆ®")
             {
                 UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
             }

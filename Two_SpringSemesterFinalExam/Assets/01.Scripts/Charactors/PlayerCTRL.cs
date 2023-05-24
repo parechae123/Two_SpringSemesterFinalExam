@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerCTRL : GeneralAnimations
 {
-    private Rigidbody2D rb;
     private float playerMoveAxis;
     public LayerMask whatIsGround;
     private CapsuleCollider2D cc;

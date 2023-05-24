@@ -31,9 +31,24 @@ public class GeneralAnimations : StatSystem
             return false;
         }
     }
-    public void takeDamage(int Damage)
+    public void takeDamage(int Damage,Vector3 pos)
     {
         Debug.Log(Damage+"만큼 감소");
+        Vector3 DamageDirection = transform.position - pos;
+        if(DamageDirection.x < 0)
+        {
+            rb.velocity = Vector2.left*10;
+        }
+        else if (DamageDirection.x > 0)
+        {
+            rb.velocity = Vector2.right * 10;
+        }
+        else if (DamageDirection.x == 0)
+        {
+            rb.velocity = Vector2.up * 10;
+        }
+        //여기 수정해야됨 넉백 이상함
+
         base.stat.hp-= Damage;
     }
     IEnumerator Idle()

@@ -11,8 +11,4 @@ public class Slime : CommonMonsterMoves
         base.rb = GetComponent<Rigidbody2D>();
         base.bc = GetComponent<BoxCollider2D>();
     }
-    void Update()
-    {
-        base.WallSensedMoves(stat.moveSpeed);
-    }
 }

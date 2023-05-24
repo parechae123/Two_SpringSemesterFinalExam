@@ -16,12 +16,12 @@ public class CompleteBTN : MonoBehaviour
         if (UIManager.Instance().nowAcceptedMainQuest.isQuestDone)
         {
             UIManager.Instance().GetEXP(UIManager.Instance().nowAcceptedMainQuest.exeReward);
-            UIManager.Instance().nowAcceptedMainQuest = UIManager.Instance().QuestInfo.sheets[0].list[15];
+            UIManager.Instance().nowAcceptedMainQuest = UIManager.Instance().QuestInfo.sheets[0].list[14];
         }
         else if (UIManager.Instance().nowAcceptedSubQuest.isQuestDone)
         {
             UIManager.Instance().GetEXP(UIManager.Instance().nowAcceptedSubQuest.exeReward);
-            UIManager.Instance().nowAcceptedMainQuest = UIManager.Instance().QuestInfo.sheets[0].list[15];
+            UIManager.Instance().nowAcceptedMainQuest = UIManager.Instance().QuestInfo.sheets[0].list[5];
         }
         UIManager.Instance().QuestUI.SetActive(false);
     }

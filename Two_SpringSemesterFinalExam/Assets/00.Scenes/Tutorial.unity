@@ -6954,7 +6954,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1622796819
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7062,10 +7062,9 @@ MonoBehaviour:
     atk: 0
   CharactorState: 0
   bc: {fileID: 0}
-  rb: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   sr: {fileID: 0}
   playerTR: {fileID: 4000010891377541}
 --- !u!4 &1623975066 stripped
