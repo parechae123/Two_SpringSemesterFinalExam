@@ -35,39 +35,45 @@ public class PlayerCTRL : GeneralAnimations
     #region 업데이트
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2((playerMoveAxis*stat.moveSpeed), rb.velocity.y);
-        if (!Keyboard.current.anyKey.wasPressedThisFrame&& !isInATKAnim()&&playerMoveAxis ==0)
+        if(CharactorState != States.Damaged)
         {
-            StateUpdates(States.Idle);
-        }
-        if(playerMoveAxis != 0&& !isInATKAnim())
-        {
-            StateUpdates(States.Run);
-        }
-        if (anchor.activeSelf && anchorLenght != 0)
-        {
-            anchorCOMP.anchorSize((anchorLenght* 33)*Time.deltaTime);
+            rb.velocity = new Vector2((playerMoveAxis * stat.moveSpeed), rb.velocity.y);
+            if (!Keyboard.current.anyKey.wasPressedThisFrame && !isInATKAnim() && playerMoveAxis == 0)
+            {
+                StateUpdates(States.Idle);
+            }
+            if (playerMoveAxis != 0 && !isInATKAnim())
+            {
+                StateUpdates(States.Run);
+            }
+            if (anchor.activeSelf && anchorLenght != 0)
+            {
+                anchorCOMP.anchorSize((anchorLenght * 33) * Time.deltaTime);
+            }
         }
     }
     #endregion
     #region 조작법
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        playerMoveAxis = ctx.ReadValue<Vector2>().x;
-        if (ctx.started)
+        if (CharactorState != States.Damaged)
         {
-            if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼1: 이동조작")
+            playerMoveAxis = ctx.ReadValue<Vector2>().x;
+            if (ctx.started)
             {
-                UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
-                UIManager.Instance().isQuestDone(true);
-            }
-            if (playerMoveAxis < 0)
-            {
-                transform.rotation = new Quaternion(0, 0, 0, 1);
-            }
-            if (playerMoveAxis > 0)
-            {
-                transform.rotation = new Quaternion(0, 1, 0, 0);
+                if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼1: 이동조작")
+                {
+                    UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
+                    UIManager.Instance().isQuestDone(true);
+                }
+                if (playerMoveAxis < 0)
+                {
+                    transform.rotation = new Quaternion(0, 0, 0, 1);
+                }
+                if (playerMoveAxis > 0)
+                {
+                    transform.rotation = new Quaternion(0, 1, 0, 0);
+                }
             }
         }
     }

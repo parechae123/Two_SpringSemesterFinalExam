@@ -10,6 +10,8 @@ public class GeneralAnimations : StatSystem
 {
     protected Animator anim;
     [SerializeField]protected States CharactorState;
+    Vector3 knockBackValue;
+    int damagedValue;
     
     // Start is called before the first frame update
     protected virtual void StateUpdates(States newState)
@@ -31,25 +33,11 @@ public class GeneralAnimations : StatSystem
             return false;
         }
     }
-    public void takeDamage(int Damage,Vector3 pos)
+    public void takeDamage(int Damage,Vector3 pos)//넉백
     {
-        Debug.Log(Damage+"만큼 감소");
-        Vector3 DamageDirection = transform.position - pos;
-        if(DamageDirection.x < 0)
-        {
-            rb.velocity = Vector2.left*10;
-        }
-        else if (DamageDirection.x > 0)
-        {
-            rb.velocity = Vector2.right * 10;
-        }
-        else if (DamageDirection.x == 0)
-        {
-            rb.velocity = Vector2.up * 10;
-        }
-        //여기 수정해야됨 넉백 이상함
-
-        base.stat.hp-= Damage;
+        damagedValue = Damage;
+        knockBackValue = pos;
+        StateUpdates(States.Damaged);
     }
     IEnumerator Idle()
     {
@@ -87,6 +75,13 @@ public class GeneralAnimations : StatSystem
     IEnumerator Damaged()
     {
         anim.SetBool(CharactorState.ToString() , true);
-        yield return null;
+        Debug.Log(damagedValue + "만큼 감소");
+        Vector3 DamageDirection = transform.position - knockBackValue;
+        base.stat.hp -= damagedValue;
+        Debug.Log(DamageDirection);
+        rb.velocity = Vector2.zero;
+        rb.velocity = new Vector2(DamageDirection.x * 6, Mathf.Abs(DamageDirection.y * 3));
+        yield return new WaitForSeconds(0.2f);
+        //여기 수정해야됨 넉백 이상함
     }
 }

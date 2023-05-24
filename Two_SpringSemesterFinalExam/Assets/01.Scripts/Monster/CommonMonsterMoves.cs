@@ -19,7 +19,7 @@ public class CommonMonsterMoves : GeneralAnimations
     public void Update()
     {
         Hit = Physics2D.Raycast(transform.position, Vector2.right*monsterDir, bc.bounds.extents.x + 0.7f, whatIsGround);
-        plrHit = Physics2D.BoxCast(transform.position, bc.bounds.extents + Vector3.right+Vector3.up, 0, Vector2.up,0,128);
+        plrHit = Physics2D.BoxCast(transform.position, bc.bounds.extents + (Vector3.right+Vector3.up)*2, 0, Vector2.up,0,128);
         atkDelay += Time.deltaTime;
         if (plrHit&&atkDelay > 2)
         {
