@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum States
 {
-    Idle, Run, Jump, Attack, Damaged,
+    Idle, Run, Jump, Attack, Damaged,Die
 }
 public class GeneralAnimations : StatSystem
 {
@@ -16,11 +16,13 @@ public class GeneralAnimations : StatSystem
     // Start is called before the first frame update
     protected virtual void StateUpdates(States newState)
     {
-        StopCoroutine(CharactorState.ToString());
-        anim.SetBool(CharactorState.ToString(), false);
-        CharactorState = newState;
-        StartCoroutine(CharactorState.ToString());
-
+        if(CharactorState != States.Die)
+        {
+            StopCoroutine(CharactorState.ToString());
+            anim.SetBool(CharactorState.ToString(), false);
+            CharactorState = newState;
+            StartCoroutine(CharactorState.ToString());
+        }
     }
     protected bool isInATKAnim()
     {
@@ -74,7 +76,12 @@ public class GeneralAnimations : StatSystem
     }
     IEnumerator Damaged()
     {
-        anim.SetBool(CharactorState.ToString() , true);
+        if(stat.hp <= 0)
+        {
+            StopCoroutine(Damaged());
+            StartCoroutine(DIe());
+        }
+        anim.Play(CharactorState.ToString() , 0);
         Debug.Log(damagedValue + "만큼 감소");
         Vector3 DamageDirection = transform.position - knockBackValue;
         base.stat.hp -= damagedValue;
@@ -82,7 +89,22 @@ public class GeneralAnimations : StatSystem
         rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(DamageDirection.x * 6, Mathf.Abs(DamageDirection.y * 3));
         yield return new WaitForSeconds(0.2f);
+        anim.Play("walk", 0);
         StateUpdates(States.Run);
         //여기 수정해야됨 넉백 이상함
+    }
+    IEnumerator DIe()
+    {
+        anim.Play("Die", 0);
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime != 1)
+        {
+            yield return null;
+            rb.velocity = Vector2.zero;
+        }
+        this.gameObject.SetActive(false);
+        while (true)
+        {
+            yield return null;
+        }
     }
 }
