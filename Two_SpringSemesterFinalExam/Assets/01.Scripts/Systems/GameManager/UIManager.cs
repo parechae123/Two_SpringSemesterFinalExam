@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
     }
     public void isQuestDone(bool isMainQuest)
     {
-        if (isMainQuest && QuestUI.GetComponent<QuestTextUpdate>().QuestText.text.Contains(nowAcceptedMainQuest.questName))
+        if (isMainQuest && QuestUI.GetComponent<QuestTextUpdate>().targetText.text.Contains(nowAcceptedMainQuest.questName))
         {
             if (nowAcceptedMainQuest.isQuestDone)
             {
@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
                 CompBTN.interactable = false;
             }
         }
-        else if (!isMainQuest && QuestUI.GetComponent<QuestTextUpdate>().QuestText.text.Contains(nowAcceptedSubQuest.questName))
+        else if (!isMainQuest && QuestUI.GetComponent<QuestTextUpdate>().targetText.text.Contains(nowAcceptedSubQuest.questName))
         {
             if (nowAcceptedSubQuest.isQuestDone)
             {

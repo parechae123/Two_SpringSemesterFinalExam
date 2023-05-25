@@ -4003,7 +4003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6beb66c03838e419533bd838bea8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestText: {fileID: 2143865536}
+  targetText: {fileID: 2143865536}
 --- !u!4 &758007076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1228214259453996030, guid: c3c68271c72c44c43aca3f1d639e6929, type: 3}

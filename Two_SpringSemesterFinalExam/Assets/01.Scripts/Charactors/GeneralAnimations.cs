@@ -82,6 +82,7 @@ public class GeneralAnimations : StatSystem
         rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(DamageDirection.x * 6, Mathf.Abs(DamageDirection.y * 3));
         yield return new WaitForSeconds(0.2f);
+        StateUpdates(States.Run);
         //여기 수정해야됨 넉백 이상함
     }
 }

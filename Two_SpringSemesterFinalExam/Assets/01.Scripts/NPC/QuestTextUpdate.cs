@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class QuestTextUpdate : MonoBehaviour
+public class QuestTextUpdate : DiaLogSystemParent
 {
-    public TextMeshProUGUI QuestText;
     private void Awake()
     {
         UIManager.Instance().QuestUI = this.gameObject;
@@ -15,14 +14,7 @@ public class QuestTextUpdate : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
-        if (UIManager.Instance().nowAcceptedMainQuest.questName == "")
-        {
-            QuestText.text = "";
-        }
-        else
-        {
-            QuestText.text = UIManager.Instance().nowAcceptedMainQuest.questName + "\n" + UIManager.Instance().nowAcceptedMainQuest.questText;
-        }
+        StartCoroutine(TextTypingAct(UIManager.Instance().nowAcceptedMainQuest.questText.Length, UIManager.Instance().nowAcceptedMainQuest.questName, UIManager.Instance().nowAcceptedMainQuest.questText));
         UIManager.Instance().UIStatck.Push(this.gameObject);
         Time.timeScale = 0;
     }
