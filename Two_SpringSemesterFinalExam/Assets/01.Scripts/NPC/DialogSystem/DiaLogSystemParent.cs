@@ -18,7 +18,7 @@ public class DiaLogSystemParent : MonoBehaviour
         {
             for (int i = 0; i <= TextL; i++)
             {
-                yield return new WaitForSecondsRealtime(0.05f);
+                yield return new WaitForSecondsRealtime(Random.Range(0.03f,0.07f));
                 targetText.text = Name + "\n" + Dialog.Substring(0, i);
             }
         }

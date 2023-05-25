@@ -78,8 +78,7 @@ public class GeneralAnimations : StatSystem
     {
         if(stat.hp <= 0)
         {
-            StopCoroutine(Damaged());
-            StartCoroutine(DIe());
+            StateUpdates(States.Die);
         }
         anim.Play(CharactorState.ToString() , 0);
         Debug.Log(damagedValue + "만큼 감소");
@@ -96,12 +95,14 @@ public class GeneralAnimations : StatSystem
     IEnumerator DIe()
     {
         anim.Play("Die", 0);
-        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime != 1)
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.8f)
         {
             yield return null;
+            Debug.Log("animationtime before 099");
             rb.velocity = Vector2.zero;
         }
-        this.gameObject.SetActive(false);
+        Debug.Log("왜안되");
+        gameObject.SetActive(false);
         while (true)
         {
             yield return null;

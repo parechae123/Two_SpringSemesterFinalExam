@@ -8,7 +8,6 @@ public class PlayerCTRL : GeneralAnimations
     private float playerMoveAxis;
     public LayerMask whatIsGround;
     private CapsuleCollider2D cc;
-    private byte jumpCount;
     public Vector2 mousePos;
     private GameObject anchor;
     private Anchor anchorCOMP;
@@ -28,7 +27,7 @@ public class PlayerCTRL : GeneralAnimations
         base.SettingStats(100, 20, 6, 5);
         base.SavePlrStats();
         base.LoadPlrStats();
-        jumpCount = 0;
+        stat.jumpCount = 0;
         StateUpdates(States.Idle);
     }
     #endregion
@@ -76,10 +75,14 @@ public class PlayerCTRL : GeneralAnimations
                 }
             }
         }
-        else if (CharactorState == States.Die)
+        else
+        {
+            playerMoveAxis = 0;
+        }
+/*        else if (CharactorState == States.Die)
         {
             StateUpdates(States.Die);
-        }
+        }*/
     }
     public void OnWireSize(InputAction.CallbackContext ctx)
     {
@@ -92,7 +95,7 @@ public class PlayerCTRL : GeneralAnimations
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (ctx.started&&jumpCount<2)
+        if (ctx.started&&stat.jumpCount<2)
         {
             if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼2: 점프")
             {
@@ -101,12 +104,12 @@ public class PlayerCTRL : GeneralAnimations
             }
 
             rb.velocity+= Vector2.up * stat.jumpForce;
-            jumpCount++;
+            stat.jumpCount++;
             if(CharactorState != States.Attack)
             {
                 StateUpdates(States.Jump);
             }
-            if (jumpCount == 1)
+            if (stat.jumpCount == 1)
             {
                 StartCoroutine(jumpSencer());
             }
@@ -114,14 +117,17 @@ public class PlayerCTRL : GeneralAnimations
     }
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (CharactorState != States.Damaged && CharactorState != States.Die)
         {
-            if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼3: 공격")
+            if (ctx.started)
             {
-                UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
-                UIManager.Instance().isQuestDone(true);
+                if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼3: 공격")
+                {
+                    UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
+                    UIManager.Instance().isQuestDone(true);
+                }
+                StartCoroutine(ArrowFire());
             }
-            StartCoroutine(ArrowFire());
         }
     }
     public void OnMousePosition(InputAction.CallbackContext ctx)
@@ -165,59 +171,62 @@ public class PlayerCTRL : GeneralAnimations
     private IEnumerator jumpSencer()
     {
         yield return new WaitUntil(() => rb.velocity.y < 0.5f);
-        while (jumpCount > 0)
+        while (stat.jumpCount > 0)
         {
             yield return new WaitForEndOfFrame();
             if (Physics2D.Raycast(transform.position, Vector2.down, cc.bounds.extents.y+0.01f, whatIsGround))
             {
                 Debug.DrawRay(transform.position, Vector3.down * cc.bounds.extents.y, Color.red);
-                jumpCount = 0;
+                if (CharactorState!=States.Die)
+                {
+                    stat.jumpCount = 0;
+                }
+                else
+                {
+                    StopCoroutine(jumpSencer());
+                }
             }
         }
     }
     private IEnumerator ArrowFire()
     {
-        if (CharactorState != States.Damaged || CharactorState != States.Die)
+        if (!isInATKAnim())
         {
-            if (!isInATKAnim())
+            StateUpdates(States.Attack);
+            yield return new WaitForEndOfFrame();
+            float angle = Mathf.Atan2(transform.position.x - mousePos.x, transform.position.y - mousePos.y) * Mathf.Rad2Deg;
+            if (angle > 0)
             {
-                StateUpdates(States.Attack);
-                yield return new WaitForEndOfFrame();
-                float angle = Mathf.Atan2(transform.position.x - mousePos.x, transform.position.y - mousePos.y) * Mathf.Rad2Deg;
-                if (angle > 0)
+                transform.rotation = new Quaternion(0, 0, 0, 1);
+            }
+            else
+            {
+                transform.rotation = new Quaternion(0, 1, 0, 0);
+            }
+            while (isInATKAnim())
+            {
+                yield return null;
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
                 {
-                    transform.rotation = new Quaternion(0, 0, 0, 1);
-                }
-                else
-                {
-                    transform.rotation = new Quaternion(0, 1, 0, 0);
-                }
-                while (isInATKAnim())
-                {
-                    yield return null;
-                    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f)
+                    if (GameManager.GMinstance().nonActivateArrows.Count == 0)
                     {
-                        if (GameManager.GMinstance().nonActivateArrows.Count == 0)
-                        {
-                            GameObject arrow = Instantiate(Resources.Load<GameObject>("Prefabs/arrow"), transform.position + (Vector3.up * 1.3f), Quaternion.AngleAxis(-angle + 180, Vector3.forward));
-                            Debug.Log("화살 생성");
-                            arrow.GetComponent<Arrow>().dmg = stat.atk;
-                        }
-                        else
-                        {
-                            GameObject arrow = GameManager.GMinstance().nonActivateArrows.Dequeue();
-                            arrow.transform.position = transform.position + (Vector3.up * 1.5f);
-                            arrow.transform.rotation = Quaternion.AngleAxis(-angle + 180, Vector3.forward);
-                            arrow.SetActive(true);
-                            Debug.Log("남은 화살" + GameManager.GMinstance().nonActivateArrows.Count);
-                            arrow.GetComponent<Arrow>().dmg = stat.atk;
-                        }
-                        break;
+                        GameObject arrow = Instantiate(Resources.Load<GameObject>("Prefabs/arrow"), transform.position + (Vector3.up * 1.3f), Quaternion.AngleAxis(-angle + 180, Vector3.forward));
+                        Debug.Log("화살 생성");
+                        arrow.GetComponent<Arrow>().dmg = stat.atk;
                     }
+                    else
+                    {
+                        GameObject arrow = GameManager.GMinstance().nonActivateArrows.Dequeue();
+                        arrow.transform.position = transform.position + (Vector3.up * 1.5f);
+                        arrow.transform.rotation = Quaternion.AngleAxis(-angle + 180, Vector3.forward);
+                        arrow.SetActive(true);
+                        Debug.Log("남은 화살" + GameManager.GMinstance().nonActivateArrows.Count);
+                        arrow.GetComponent<Arrow>().dmg = stat.atk;
+                    }
+                    break;
                 }
             }
         }
-
     }
     #endregion
 }

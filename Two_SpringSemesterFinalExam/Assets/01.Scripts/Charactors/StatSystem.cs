@@ -15,6 +15,7 @@ public class StatSystem : MonoBehaviour
         public float moveSpeed;
         public int hp;
         public int atk;
+        public byte jumpCount;
     }
     protected virtual void SettingStats(int hp, int atk, float ms, float jf) 
     {

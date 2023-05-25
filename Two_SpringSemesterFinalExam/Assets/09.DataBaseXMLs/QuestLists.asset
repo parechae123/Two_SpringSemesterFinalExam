@@ -23,7 +23,7 @@ MonoBehaviour:
         \uC774\uB3D9\uD569\uB2C8\uB2E4."
       questGoalTotal: 1
       questGoalCount: 0
-      isQuestDone: 1
+      isQuestDone: 0
       rewardItemIndex: 0
       rewardItemAcount: 0
       isRewardExist: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
         \uD574\uBCF4\uC138\uC694!"
       questGoalTotal: 1
       questGoalCount: 0
-      isQuestDone: 1
+      isQuestDone: 0
       rewardItemIndex: 0
       rewardItemAcount: 0
       isRewardExist: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
         \uC88C\uD074\uB9AD\uC744 \uD574\uBCF4\uC138\uC694!"
       questGoalTotal: 1
       questGoalCount: 0
-      isQuestDone: 1
+      isQuestDone: 0
       rewardItemIndex: 0
       rewardItemAcount: 0
       isRewardExist: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
       questText: "\uBAAC\uC2A4\uD130\uC5D0\uAC8C \uAC00\uAE4C\uD788 \uB2E4\uAC00\uAC00\uBCF4\uC138\uC694!"
       questGoalTotal: 1
       questGoalCount: 0
-      isQuestDone: 1
+      isQuestDone: 0
       rewardItemIndex: 0
       rewardItemAcount: 0
       isRewardExist: 0
