@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommonMonsterMoves : GeneralAnimations
+public class CommonMonsterMoves : MonsterAnimations
 {
     [SerializeField]protected BoxCollider2D bc;
     [SerializeField] protected LayerMask whatIsGround;
@@ -23,7 +23,7 @@ public class CommonMonsterMoves : GeneralAnimations
         atkDelay += Time.deltaTime;
         if (plrHit&&atkDelay > 2)
         {
-            plrHit.collider.GetComponent<GeneralAnimations>().takeDamage(stat.atk, transform.position);
+            plrHit.collider.GetComponent<PlayerAnimations>().takeDamage(stat.atk, transform.position);
             atkDelay = 0;
             Debug.Log("¾Æ¾ß");
         }

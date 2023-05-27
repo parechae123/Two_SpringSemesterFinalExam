@@ -17,26 +17,25 @@ public class NewGeneralAnimations : StatSystem
         if (CharactorState != States.Die)
         {
             FSMRemake(newState);
-            FSMRemake(CharactorState);
-            anim.SetBool(CharactorState.ToString(), false);
-            CharactorState = newState;
-            StartCoroutine(CharactorState.ToString());
         }
     }
     private bool isAlreadyFuncRun;
     protected void FSMRemake(States newState)//
     {
-        isAlreadyFuncRun = true;
+        UnityEngine.Debug.Log("aa");
         if (isAlreadyFuncRun)
         {
             return;
         }
+        isAlreadyFuncRun= true;
+        anim.SetBool(CharactorState.ToString(), false);
+        CharactorState = newState;
         anim.SetBool(CharactorState.ToString(), true);
-        while (CharactorState == newState)
-        {
-            
-        }
         isAlreadyFuncRun = false;
+    }
+    void ivkDelay()
+    {
+
     }
     protected bool isInATKAnim()
     {
@@ -54,30 +53,6 @@ public class NewGeneralAnimations : StatSystem
         damagedValue = Damage;
         knockBackValue = pos;
         StateUpdates(States.Damaged);
-    }
-    IEnumerator Idle()
-    {
-        anim.SetBool(CharactorState.ToString(), true);
-        while (true)
-        {
-            yield return null;
-        }
-    }
-    IEnumerator Run()
-    {
-        anim.SetBool(CharactorState.ToString(), true);
-        while (true)
-        {
-            yield return null;
-        }
-    }
-    IEnumerator Jump()
-    {
-        anim.SetBool(CharactorState.ToString(), true);
-        while (true)
-        {
-            yield return null;
-        }
     }
     protected IEnumerator Attack()
     {

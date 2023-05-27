@@ -23,7 +23,7 @@ public class Arrow : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 0.5f, monsterLayer);
         if (hit.collider)
         {
-            hit.collider.GetComponent<GeneralAnimations>().takeDamage(dmg,transform.position);
+            hit.collider.GetComponent<MonsterAnimations>().takeDamage(dmg,transform.position);
             rb.velocity = Vector2.zero;
             GameManager.GMinstance().nonActivateArrows.Enqueue(this.gameObject);
             gameObject.SetActive(false);

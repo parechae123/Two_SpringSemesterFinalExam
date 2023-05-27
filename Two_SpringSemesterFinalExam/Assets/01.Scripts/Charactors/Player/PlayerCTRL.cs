@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerCTRL : GeneralAnimations
+public class PlayerCTRL : PlayerAnimations
 {
     private float playerMoveAxis;
     public LayerMask whatIsGround;

@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum States
+public abstract class MonsterStates
 {
-    Idle, Run, Jump, Attack, Damaged,Die
+    public abstract void Enter();//아래에서 구현하는 스크립트에서 시작할때 enter로 들어와서
+    public abstract void Update();//진행중에 유지되는 함수 각 스테이트별로 클래스를 나눠서 구현해야할듯함
+    public abstract void Exit();//Exit로 나감 아래에서 
 }
-public class GeneralAnimations : StatSystem
+public class MonsterAnimations : StatSystem
 {
     protected Animator anim;
     [SerializeField]protected States CharactorState;
@@ -76,14 +78,23 @@ public class GeneralAnimations : StatSystem
     }
     IEnumerator Damaged()
     {
-        if(stat.hp <= 0)
+        base.stat.hp -= damagedValue;
+        if (stat.hp <= 0)
         {
             StateUpdates(States.Die);
+            anim.Play("Die", 0);
+            yield return null;
+            while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.8f)
+            {
+                yield return null;
+                Debug.Log("animationtime before 099");
+                rb.velocity = Vector2.zero;
+            }
+            gameObject.SetActive(false);
         }
         anim.Play(CharactorState.ToString() , 0);
         Debug.Log(damagedValue + "만큼 감소");
         Vector3 DamageDirection = transform.position - knockBackValue;
-        base.stat.hp -= damagedValue;
         Debug.Log(DamageDirection);
         rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(DamageDirection.x * 6, Mathf.Abs(DamageDirection.y * 3));
@@ -91,21 +102,5 @@ public class GeneralAnimations : StatSystem
         anim.Play("walk", 0);
         StateUpdates(States.Run);
         //여기 수정해야됨 넉백 이상함
-    }
-    IEnumerator DIe()
-    {
-        anim.Play("Die", 0);
-        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.8f)
-        {
-            yield return null;
-            Debug.Log("animationtime before 099");
-            rb.velocity = Vector2.zero;
-        }
-        Debug.Log("왜안되");
-        gameObject.SetActive(false);
-        while (true)
-        {
-            yield return null;
-        }
     }
 }

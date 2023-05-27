@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1351313882406579668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1351313882406579658}
+  - component: {fileID: 1351313882406579659}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1351313882406579658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351313882406579668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.897844, y: 8.256519, z: -0.08479028}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1351313882406579659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351313882406579668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a816884758d676e49b0d48db0b311285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestUI: {fileID: 0}
+  QuestInfo: {fileID: 11400000, guid: 705366dfb187c7445a7613c6a14b1063, type: 2}
+  nowAcceptedMainQuest:
+    questName: 
+    QuestType: 0
+    questText: 
+    questGoalTotal: 0
+    questGoalCount: 0
+    isQuestDone: 0
+    rewardItemIndex: 0
+    rewardItemAcount: 0
+    isRewardExist: 0
+    exeReward: 0
+    huntTarget: 
+  nowAcceptedSubQuest:
+    questName: 
+    QuestType: 0
+    questText: 
+    questGoalTotal: 0
+    questGoalCount: 0
+    isQuestDone: 0
+    rewardItemIndex: 0
+    rewardItemAcount: 0
+    isRewardExist: 0
+    exeReward: 0
+    huntTarget: 
+  CompBTN: {fileID: 0}
+  ExpBar: {fileID: 0}
+  LevelText: {fileID: 0}
+  LT: {fileID: 11400000, guid: bb459d9b3b9fe4f49bb8bde1d44df004, type: 2}
+  SW: {fileID: 0}
