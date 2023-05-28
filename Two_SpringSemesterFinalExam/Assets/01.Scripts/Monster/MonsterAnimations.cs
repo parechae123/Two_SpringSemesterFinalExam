@@ -1,34 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class MonsterStates
-{
-    public abstract void Enter();//아래에서 구현하는 스크립트에서 시작할때 enter로 들어와서
-    public abstract void Update();//진행중에 유지되는 함수 각 스테이트별로 클래스를 나눠서 구현해야할듯함
-    public abstract void Exit();//Exit로 나감 아래에서 
-}
 public class MonsterAnimations : StatSystem
 {
-    protected Animator anim;
-    [SerializeField]protected States CharactorState;
     Vector3 knockBackValue;
     int damagedValue;
-    
+    protected StateMachine stateMachine;
+    protected Dictionary<string, MonsterStates> stateLists = new Dictionary<string, MonsterStates>();
     // Start is called before the first frame update
-    protected virtual void StateUpdates(States newState)
+    void Start()
     {
-        if(CharactorState != States.Die)
+        stateMachine = new StateMachine();
+        StateSetter();
+    }
+    void StateSetter()
+    {
+        stateLists.Add("Die", new MonsterDie());
+        stateLists["Die"].anim = GetComponent<Animator>();
+        stateLists.Add("Damaged", new MonsterDamaged());
+        stateLists["Damaged"].anim = GetComponent<Animator>();
+        stateLists.Add("Run", new MonsterRun());
+        stateLists["Run"].anim = GetComponent<Animator>();
+        stateMachine.ChangeState(stateLists["MonsterRun"]);
+    }
+    void Update()
+    {
+        stateMachine.StateUpdate();
+        if (rb.velocity.x!= 0)
         {
-            StopCoroutine(CharactorState.ToString());
-            anim.SetBool(CharactorState.ToString(), false);
-            CharactorState = newState;
-            StartCoroutine(CharactorState.ToString());
+            stateMachine.ChangeState(stateLists["run"]);
+        }
+        else if (rb.velocity.x == 0)
+        {
+            stateMachine.ChangeState(stateLists["Damaged"]);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            stateMachine.ChangeState(stateLists["Die"]);
         }
     }
-    protected bool isInATKAnim()
+    public bool isDamagedMonster()
     {
-        if (CharactorState == States.Attack&&anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f)
+        if (stateMachine.CharactorNowState == stateLists["Damaged"])
         {
             return true;
         }
@@ -41,66 +56,6 @@ public class MonsterAnimations : StatSystem
     {
         damagedValue = Damage;
         knockBackValue = pos;
-        StateUpdates(States.Damaged);
-    }
-    IEnumerator Idle()
-    {
-        anim.SetBool(CharactorState.ToString(), true);
-        while (true)
-        {
-            yield return null;
-        }
-    }
-    IEnumerator Run()
-    {
-        anim.SetBool(CharactorState.ToString(), true);
-        while (true)
-        {
-            yield return null;
-        }
-    }
-    IEnumerator Jump()
-    {
-        anim.SetBool(CharactorState.ToString(), true);
-        while (true)
-        {
-            yield return null;
-        }
-    }
-    protected IEnumerator Attack()
-    {
-        /*anim.SetBool(CharactorState.ToString(), true);*/
-        anim.Play("attack 0", 0);
-        while (isInATKAnim())
-        {
-            yield return null;
-        }
-    }
-    IEnumerator Damaged()
-    {
-        base.stat.hp -= damagedValue;
-        if (stat.hp <= 0)
-        {
-            StateUpdates(States.Die);
-            anim.Play("Die", 0);
-            yield return null;
-            while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.8f)
-            {
-                yield return null;
-                Debug.Log("animationtime before 099");
-                rb.velocity = Vector2.zero;
-            }
-            gameObject.SetActive(false);
-        }
-        anim.Play(CharactorState.ToString() , 0);
-        Debug.Log(damagedValue + "만큼 감소");
-        Vector3 DamageDirection = transform.position - knockBackValue;
-        Debug.Log(DamageDirection);
-        rb.velocity = Vector2.zero;
-        rb.velocity = new Vector2(DamageDirection.x * 6, Mathf.Abs(DamageDirection.y * 3));
-        yield return new WaitForSeconds(0.2f);
-        anim.Play("walk", 0);
-        StateUpdates(States.Run);
-        //여기 수정해야됨 넉백 이상함
+        
     }
 }

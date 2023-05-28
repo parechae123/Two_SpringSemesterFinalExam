@@ -9,7 +9,6 @@ public class TutorialMonster : Slime
     private void Awake()
     {
         base.SettingStats(35, 20, 3, 0);
-        anim = GetComponent<Animator>();
         base.rb = GetComponent<Rigidbody2D>();
         base.bc = GetComponent<BoxCollider2D>();
     }
