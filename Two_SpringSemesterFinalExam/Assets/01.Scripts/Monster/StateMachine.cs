@@ -15,13 +15,17 @@ public class StateMachine
 
         CharactorNextState = newState;
     }
-    public void StateUpdate()
+    public void StateUpdate(MonsterAnimations MA)
     {
         if (CharactorNextState != null)
         {
             CharactorNowState = CharactorNextState;
             CharactorNowState.Enter();
             CharactorNextState = null;
+        }
+        else if(CharactorNowState != null)
+        {
+            CharactorNowState.StateLive(MA);
         }
     }
 }

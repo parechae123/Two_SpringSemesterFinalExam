@@ -15,6 +15,8 @@ public class CommonMonsterMoves : MonsterAnimations
     private void Start()
     {
         whatIsGround =  LayerMask.GetMask("Ground");
+        stateMachine.ChangeState(stateLists["Run"]);
+        
     }
     public void Update()
     {
@@ -32,6 +34,22 @@ public class CommonMonsterMoves : MonsterAnimations
             rb.velocity = Vector2.zero;
             monsterDir = monsterDir * -1;
         }
+        stateMachine.StateUpdate(this);
+        if (!isDamagedMonster())
+        {
+            if (rb.velocity.x != 0)
+            {
+                if (rb.velocity.x > 0)
+                {
+                    sr.flipX = false;
+                }
+                else if (rb.velocity.x < 0)
+                {
+                    sr.flipX = true;
+                }
+            }
+        }
+
         rb.velocity = new Vector2(monsterDir * stat.moveSpeed,rb.velocity.y);
         MobFuncType();
     }

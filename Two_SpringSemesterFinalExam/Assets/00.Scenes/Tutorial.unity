@@ -7167,7 +7167,6 @@ MonoBehaviour:
     hp: 0
     atk: 0
     jumpCount: 0
-  CharactorState: 0
   bc: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -14625,11 +14624,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3369235363765388878, guid: 277ba930c9e3bcb4faf9fd49a22881a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.88
+      value: 35.5
       objectReference: {fileID: 0}
     - target: {fileID: 3369235363765388878, guid: 277ba930c9e3bcb4faf9fd49a22881a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.77
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3369235363765388878, guid: 277ba930c9e3bcb4faf9fd49a22881a7, type: 3}
       propertyPath: m_LocalPosition.z

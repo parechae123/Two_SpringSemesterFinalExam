@@ -11,6 +11,8 @@ public class TutorialMonster : Slime
         base.SettingStats(35, 20, 3, 0);
         base.rb = GetComponent<Rigidbody2D>();
         base.bc = GetComponent<BoxCollider2D>();
+        base.sr = GetComponent<SpriteRenderer>();
+        StateSetter();
     }
     protected override void MobFuncType()
     {
