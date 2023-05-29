@@ -7165,6 +7165,7 @@ MonoBehaviour:
     jumpForce: 0
     moveSpeed: 0
     hp: 0
+    maxHp: 0
     atk: 0
     jumpCount: 0
   bc: {fileID: 0}
@@ -8818,6 +8819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1959115789}
   - component: {fileID: 1959115790}
+  - component: {fileID: 1959115791}
   m_Layer: 5
   m_Name: HPBar
   m_TagString: Untagged
@@ -8899,6 +8901,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1959115791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959115788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67d0af945a6c6e48811c5b280a63e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1971013545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14624,11 +14638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3369235363765388878, guid: 277ba930c9e3bcb4faf9fd49a22881a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.5
+      value: -18.3
       objectReference: {fileID: 0}
     - target: {fileID: 3369235363765388878, guid: 277ba930c9e3bcb4faf9fd49a22881a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 3369235363765388878, guid: 277ba930c9e3bcb4faf9fd49a22881a7, type: 3}
       propertyPath: m_LocalPosition.z

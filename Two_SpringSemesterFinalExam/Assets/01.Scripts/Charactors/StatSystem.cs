@@ -14,14 +14,16 @@ public class StatSystem : MonoBehaviour
         public float jumpForce;
         public float moveSpeed;
         public int hp;
+        public int maxHp;
         public int atk;
         public byte jumpCount;
     }
-    protected virtual void SettingStats(int hp, int atk, float ms, float jf) 
+    protected virtual void SettingStats(int hp, int atk, float ms,int maxHP, float jf) 
     {
         stat.jumpForce = jf;
         stat.moveSpeed = ms;
         stat.hp = hp;
+        stat.maxHp = maxHP;
         stat.atk = atk;
     }
     public virtual void SavePlrStats()
@@ -29,6 +31,7 @@ public class StatSystem : MonoBehaviour
         GameManager.GMinstance().playerStatSave.jumpForce = stat.jumpForce;
         GameManager.GMinstance().playerStatSave.moveSpeed = stat.moveSpeed;
         GameManager.GMinstance().playerStatSave.hp = stat.hp;
+        GameManager.GMinstance().playerStatSave.maxHp = stat.maxHp;
         GameManager.GMinstance().playerStatSave.atk = stat.atk;
         GameManager.GMinstance().playerStatSave.jumpCount = 0;
     }
@@ -39,6 +42,7 @@ public class StatSystem : MonoBehaviour
             stat.jumpForce = GameManager.GMinstance().playerStatSave.jumpForce;
             stat.moveSpeed = GameManager.GMinstance().playerStatSave.moveSpeed;
             stat.hp = GameManager.GMinstance().playerStatSave.hp;
+            stat.maxHp = GameManager.GMinstance().playerStatSave.maxHp;
             stat.atk = GameManager.GMinstance().playerStatSave.atk;
             GameManager.GMinstance().beenStatSaved = false;
         }

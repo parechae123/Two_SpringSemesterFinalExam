@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         public float jumpForce;
         public float moveSpeed;
         public int hp;
+        public int maxHp;
         public int atk;
         public byte jumpCount;
         public byte StatPoint;
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour
                     playerStatSave.moveSpeed += 1;
                     break;
                 case "hp":
-                    playerStatSave.hp += 1;
+                    playerStatSave.maxHp += 1;
                     break;
                 case "atk":
                     playerStatSave.atk += 1;
@@ -79,7 +80,7 @@ public class GameManager : MonoBehaviour
             {
                 UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
             }
-
+            UIManager.Instance().HPValueChanged();
         }
     }
     #endregion

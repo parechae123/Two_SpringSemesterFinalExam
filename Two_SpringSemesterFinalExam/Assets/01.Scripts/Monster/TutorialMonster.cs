@@ -8,7 +8,7 @@ public class TutorialMonster : Slime
     public Transform playerTR;
     private void Awake()
     {
-        base.SettingStats(35, 20, 3, 0);
+        base.SettingStats(35, 20, 3,35, 0);
         base.rb = GetComponent<Rigidbody2D>();
         base.bc = GetComponent<BoxCollider2D>();
         base.sr = GetComponent<SpriteRenderer>();
@@ -26,7 +26,7 @@ public class TutorialMonster : Slime
         }
         if (base.stat.hp <= 0)
         {
-            GetComponent<TutorialMonster>().enabled = false;
+            /*GetComponent<TutorialMonster>().enabled = false;*/
         }
     }
 }

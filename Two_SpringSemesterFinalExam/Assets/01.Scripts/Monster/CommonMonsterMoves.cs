@@ -37,6 +37,7 @@ public class CommonMonsterMoves : MonsterAnimations
         stateMachine.StateUpdate(this);
         if (!isDamagedMonster())
         {
+            rb.velocity = new Vector2(monsterDir * stat.moveSpeed, rb.velocity.y);
             if (rb.velocity.x != 0)
             {
                 if (rb.velocity.x > 0)
@@ -49,8 +50,6 @@ public class CommonMonsterMoves : MonsterAnimations
                 }
             }
         }
-
-        rb.velocity = new Vector2(monsterDir * stat.moveSpeed,rb.velocity.y);
         MobFuncType();
     }
     protected virtual void MobFuncType()

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class MonsterStates
 {
@@ -79,10 +81,13 @@ public class MonsterDie : MonsterStates
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {
-
+        if (animTimer())
+        {
+            MonsterAnimation.gameObject.SetActive(false);
+        }
     }
     public override void Exit()
     {
-
+        
     }
 }

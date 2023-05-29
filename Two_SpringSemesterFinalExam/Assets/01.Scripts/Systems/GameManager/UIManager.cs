@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public Entity_MainQuests.Param nowAcceptedSubQuest;
     public Button CompBTN;
     public Slider ExpBar;
+    public Slider HPBar;
     public TMPro.TextMeshProUGUI LevelText;
     public EXPComps EXP;
     public LevelTable LT;
@@ -131,5 +132,10 @@ public class UIManager : MonoBehaviour
     {
         public int nowLevel;
         public float nowExp;
+    }
+    public void HPValueChanged()
+    {
+        HPBar.maxValue = GameManager.GMinstance().playerStatSave.maxHp;
+        HPBar.value = GameManager.GMinstance().playerStatSave.hp;
     }
 }

@@ -24,7 +24,7 @@ public class NewPlayerCTRL : NewGeneralAnimations
         anchor = Instantiate(Resources.Load<GameObject>("Prefabs/Anchor"));
         anchorCOMP = anchor.GetComponent<Anchor>();
         anchorCOMP.Player = gameObject;
-        base.SettingStats(100, 20, 6, 5);
+        base.SettingStats(100, 20, 6,100, 5);
         base.SavePlrStats();
         base.LoadPlrStats();
         stat.jumpCount = 0;
