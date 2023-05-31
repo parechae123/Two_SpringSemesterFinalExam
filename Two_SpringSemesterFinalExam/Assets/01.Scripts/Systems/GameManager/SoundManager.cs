@@ -46,4 +46,12 @@ public class SoundManager : MonoBehaviour
         public AudioSource BGMSource;
         public AudioSource SFXSource;
     }
+    public void SFXInput(string soundName)
+    {
+        DefaultLoad.SFXSource.clip = Resources.Load<AudioClip>("SFX/"+soundName);
+    }
+    public void BGMInput(string soundName)
+    {
+        DefaultLoad.BGMSource.clip = Resources.Load<AudioClip>("BGM/"+soundName);
+    }
 }

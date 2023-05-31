@@ -61,6 +61,7 @@ public class PlayerCTRL : PlayerAnimations
             playerMoveAxis = ctx.ReadValue<Vector2>().x;
             if (ctx.started)
             {
+                SoundManager.Instance().SFXInput("Run");
                 if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼1: 이동조작")
                 {
                     UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
@@ -98,6 +99,7 @@ public class PlayerCTRL : PlayerAnimations
     {
         if (ctx.started&&stat.jumpCount<2)
         {
+            SoundManager.Instance().SFXInput("JunpSound");
             if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼2: 점프")
             {
                 UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
@@ -181,6 +183,7 @@ public class PlayerCTRL : PlayerAnimations
                 if (CharactorState!=States.Die)
                 {
                     stat.jumpCount = 0;
+                    SoundManager.Instance().SFXInput("LandingSound");
                 }
                 else
                 {
@@ -224,6 +227,7 @@ public class PlayerCTRL : PlayerAnimations
                         Debug.Log("남은 화살" + GameManager.GMinstance().nonActivateArrows.Count);
                         arrow.GetComponent<Arrow>().dmg = stat.atk;
                     }
+                    SoundManager.Instance().SFXInput("ArrowFire");
                     break;
                 }
             }
