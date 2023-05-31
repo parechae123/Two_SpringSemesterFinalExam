@@ -16,7 +16,7 @@ public class PlayerAnimations : StatSystem
     // Start is called before the first frame update
     protected virtual void StateUpdates(States newState)
     {
-        if (CharactorState != States.Die)
+        if (CharactorState != States.Die && CharactorState != newState)
         {
             StopCoroutine(CharactorState.ToString());
             anim.SetBool(CharactorState.ToString(), false);
@@ -54,7 +54,8 @@ public class PlayerAnimations : StatSystem
         anim.SetBool(CharactorState.ToString(), true);
         while (true)
         {
-            yield return null;
+            SoundManager.Instance().SFXInput("Run");
+            yield return new WaitForSeconds (SoundManager.Instance().DefaultLoad.SFXSource.clip.length-0.2f);
         }
     }
     IEnumerator Jump()

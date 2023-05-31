@@ -61,7 +61,6 @@ public class PlayerCTRL : PlayerAnimations
             playerMoveAxis = ctx.ReadValue<Vector2>().x;
             if (ctx.started)
             {
-                SoundManager.Instance().SFXInput("Run");
                 if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼1: 이동조작")
                 {
                     UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
@@ -196,8 +195,10 @@ public class PlayerCTRL : PlayerAnimations
     {
         if (!isInATKAnim())
         {
+            
             StateUpdates(States.Attack);
             yield return new WaitForEndOfFrame();
+            SoundManager.Instance().SFXInput("BowPull");
             float angle = Mathf.Atan2(transform.position.x - mousePos.x, transform.position.y - mousePos.y) * Mathf.Rad2Deg;
             if (angle > 0)
             {
