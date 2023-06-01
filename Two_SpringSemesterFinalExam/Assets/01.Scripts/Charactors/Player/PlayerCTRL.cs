@@ -146,7 +146,10 @@ public class PlayerCTRL : PlayerAnimations
     }
     public void OnMousePosition(InputAction.CallbackContext ctx)
     {
-        mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+        if(Camera.main != null)
+        {
+            mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+        }
     }
     public void OnAnchorFire(InputAction.CallbackContext ctx)
     {

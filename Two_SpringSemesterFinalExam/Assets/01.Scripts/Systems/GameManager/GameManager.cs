@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
 {
     #region º¯¼ö¹­À½
     static GameManager GM;
-    public SavedStats playerStatSave;
-    public bool beenStatSaved = false;
+    [SerializeField]public SavedStats playerStatSave;
     public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
     #endregion
     #region ÀúÀå
+    [System.Serializable]
     public struct SavedStats
     {
         public float jumpForce;
@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
             UIManager.Instance().StatusTextUpdate(btnName);
             if (GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
             {
-                beenStatSaved = true;
                 PC.LoadPlrStats();
             }
             if (UIManager.Instance().nowAcceptedMainQuest.questName == "Æ©Åä¸®¾ó8: ½ºÅÝÆ÷ÀÎÆ®")
@@ -85,18 +84,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region ¾ÀÀüÈ¯
-    public void ChangeScene(string StageName, bool isNextSceneMenu)
+    public void ChangeScene(string StageName, bool isNextSceneMenu,Vector3 newPos)
     {
-        StartCoroutine(ChangeSceneDelay(StageName,isNextSceneMenu));
+        StartCoroutine(ChangeSceneDelay(StageName,isNextSceneMenu,newPos));
     }
-    IEnumerator ChangeSceneDelay(string StageName,bool isNextSceneMenu)
+    IEnumerator ChangeSceneDelay(string StageName,bool isNextSceneMenu,Vector3 newPos)
     {
         if (GameObject.Find("Player"))
         {
             if(GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
             {
                 PC.SavePlrStats();
-                beenStatSaved = true;
             }
         }
         UIManager.Instance().UIStatck.Clear();
@@ -105,6 +103,8 @@ public class GameManager : MonoBehaviour
         if (isNextSceneMenu)
         {
             SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
+            nonActivateArrows.Clear();
+            GameObject.Find("Player").transform.position = newPos;
         }
     }
     #endregion

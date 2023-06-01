@@ -37,14 +37,10 @@ public class StatSystem : MonoBehaviour
     }
     public virtual void LoadPlrStats()
     {
-        if (GameManager.GMinstance().beenStatSaved)
-        {
-            stat.jumpForce = GameManager.GMinstance().playerStatSave.jumpForce;
-            stat.moveSpeed = GameManager.GMinstance().playerStatSave.moveSpeed;
-            stat.hp = GameManager.GMinstance().playerStatSave.hp;
-            stat.maxHp = GameManager.GMinstance().playerStatSave.maxHp;
-            stat.atk = GameManager.GMinstance().playerStatSave.atk;
-            GameManager.GMinstance().beenStatSaved = false;
-        }
+        stat.jumpForce = GameManager.GMinstance().playerStatSave.jumpForce;
+        stat.moveSpeed = GameManager.GMinstance().playerStatSave.moveSpeed;
+        stat.hp = GameManager.GMinstance().playerStatSave.hp;
+        stat.maxHp = GameManager.GMinstance().playerStatSave.maxHp;
+        stat.atk = GameManager.GMinstance().playerStatSave.atk;
     }
 }

@@ -100,6 +100,8 @@ public class UIManager : MonoBehaviour
     {
         ExpBar = expBar;
         LevelText = levelUI;
+        ExpBar.value = EXP.nowExp;
+        LevelText.text = EXP.nowLevel.ToString();
         GetEXP(0);
     }
     public void GetEXP(float expAmount)

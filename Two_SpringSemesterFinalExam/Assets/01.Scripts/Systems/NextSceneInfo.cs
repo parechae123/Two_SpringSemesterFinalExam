@@ -21,6 +21,6 @@ public class NextSceneInfo : MonoBehaviour
                 i++;
             }
         }
-        GameManager.GMinstance().ChangeScene(SceneName,false);
+        GameManager.GMinstance().ChangeScene(SceneName,false,Vector3.zero);
     }
 }
