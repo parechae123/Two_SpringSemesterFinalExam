@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class BGMChanger : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private string BGMname;
     void Start()
     {
-        SoundManager.Instance().BGMInput("TutorialStage");
+        SoundManager.Instance().BGMInput(BGMname);
     }
 }

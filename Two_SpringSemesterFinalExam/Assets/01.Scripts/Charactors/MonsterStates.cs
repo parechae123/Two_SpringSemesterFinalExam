@@ -46,7 +46,6 @@ public class MonsterRun : MonsterStates
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {
-
     }
     public override void Exit()
     {
@@ -58,7 +57,7 @@ public class MonsterDamaged : MonsterStates
     public override void Enter()
     {
         anim.Play("Damaged");
-        Debug.Log("데미지드");
+        SoundManager.Instance().SFXInput("MonsterDamaged");
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {
@@ -78,6 +77,7 @@ public class MonsterDie : MonsterStates
     public override void Enter()
     {
         anim.Play("Die");
+        SoundManager.Instance().SFXInput("MonsterDeath");
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {

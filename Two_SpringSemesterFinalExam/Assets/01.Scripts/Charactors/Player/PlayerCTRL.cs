@@ -25,7 +25,10 @@ public class PlayerCTRL : PlayerAnimations
         anchorCOMP = anchor.GetComponent<Anchor>();
         anchorCOMP.Player = gameObject;
         base.SettingStats(100, 20, 6,100, 5);
-        base.SavePlrStats();
+        if (GameManager.GMinstance().playerStatSave.hp == 0)
+        {
+            base.SavePlrStats();
+        }
         base.LoadPlrStats();
         UIManager.Instance().HPValueChanged();
         stat.jumpCount = 0;
@@ -48,7 +51,7 @@ public class PlayerCTRL : PlayerAnimations
             }
             if (anchor.activeSelf && anchorLenght != 0)
             {
-                anchorCOMP.anchorSize((anchorLenght * 33) * Time.deltaTime);
+                anchorCOMP.anchorSize((anchorLenght * 33) * Time.fixedDeltaTime);
             }
         }
     }
@@ -93,6 +96,15 @@ public class PlayerCTRL : PlayerAnimations
             UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
             UIManager.Instance().isQuestDone(true);
         }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1, 256);
+        if (hit)
+        {
+            Debug.Log("포탈감지");
+            if (hit.collider.gameObject.TryGetComponent<Portal>(out Portal TargetPortal))
+            {
+                TargetPortal.PortalActivate();
+            }
+        }
     }
     public void OnJump(InputAction.CallbackContext ctx)
     {
@@ -119,7 +131,7 @@ public class PlayerCTRL : PlayerAnimations
     }
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        if (CharactorState != States.Damaged && CharactorState != States.Die)
+        if (CharactorState != States.Damaged && CharactorState != States.Die&&Time.timeScale != 0)
         {
             if (ctx.started)
             {
@@ -138,7 +150,7 @@ public class PlayerCTRL : PlayerAnimations
     }
     public void OnAnchorFire(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (ctx.started && Time.timeScale != 0)
         {
             if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼5: 와이어 설치")
             {

@@ -11,12 +11,12 @@ public class SoundManager : MonoBehaviour
     {
         return instance;
     }
-    void Start()
+    private void Awake()
     {
-        DefaultLoad.BGMSource = GetComponents<AudioSource>()[0];
-        DefaultLoad.SFXSource = GetComponents<AudioSource>()[1];
-        if(instance == null)
+        if (instance == null)
         {
+            DefaultLoad.BGMSource = GetComponents<AudioSource>()[0];
+            DefaultLoad.SFXSource = GetComponents<AudioSource>()[1];
             instance = this;
             DontDestroyOnLoad(this);
         }

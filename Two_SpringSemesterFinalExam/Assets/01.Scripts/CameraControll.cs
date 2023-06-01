@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CameraControll : MonoBehaviour
 {
     [SerializeField]private Transform playerTR;
     [SerializeField]private PlayerCTRL player;
     [Range(0,100)]public float cameraSpeed;
+    public SpriteRenderer BackGround;
     private float mousePlayerXDis;
     private float mousePlayerYDis;
+    
+    private void Awake()
+    {
+        Debug.Log(SceneManager.GetActiveScene().name);
+        BackGround.sprite = Resources.Load<Sprite>("BGSprite/"+SceneManager.GetActiveScene().name);
+    }
     // Update is called once per frame
     private void FixedUpdate()
     {

@@ -85,11 +85,11 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region æ¿¿¸»Ø
-    public void ChangeScene(string StageName)
+    public void ChangeScene(string StageName, bool isNextSceneMenu)
     {
-        StartCoroutine(ChangeSceneDelay(StageName));
+        StartCoroutine(ChangeSceneDelay(StageName,isNextSceneMenu));
     }
-    IEnumerator ChangeSceneDelay(string StageName)
+    IEnumerator ChangeSceneDelay(string StageName,bool isNextSceneMenu)
     {
         if (GameObject.Find("Player"))
         {
@@ -102,6 +102,10 @@ public class GameManager : MonoBehaviour
         UIManager.Instance().UIStatck.Clear();
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(StageName);
+        if (isNextSceneMenu)
+        {
+            SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
+        }
     }
     #endregion
 }

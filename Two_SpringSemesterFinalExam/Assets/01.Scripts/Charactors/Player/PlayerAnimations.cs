@@ -93,7 +93,7 @@ public class PlayerAnimations : StatSystem
             }
             gameObject.SetActive(false);
         }
-        
+        SoundManager.Instance().SFXInput("PlayerDamaged");
         anim.Play(CharactorState.ToString(), 0);
         Debug.Log(damagedValue + "만큼 감소");
         Vector3 DamageDirection = transform.position - knockBackValue;

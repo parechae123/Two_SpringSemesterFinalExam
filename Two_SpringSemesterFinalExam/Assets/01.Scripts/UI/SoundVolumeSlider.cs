@@ -5,19 +5,25 @@ using UnityEngine.UI;
 
 public class SoundVolumeSlider : MonoBehaviour
 {
-    private Slider Slider;
+    private Slider VSlider;
     public bool isThisBGMSlider = false;
     private void Awake()
     {
+        VSlider = GetComponent<Slider>();
         if(this.transform.name == "BGMSlider")
         {
             isThisBGMSlider=true;
+            VSlider.value = SoundManager.Instance().DefaultLoad.BGMSource.volume;
         }
-        Slider = GetComponent<Slider>();
+        else if(transform.name == "SFXSlider")
+        {
+            VSlider.value = SoundManager.Instance().DefaultLoad.SFXSource.volume;
+        }
+        VSlider = GetComponent<Slider>();
     }
     public void OnSliderChanged()
     {
-        float SliderValue = Slider.value;
-        SoundManager.Instance().SoundVolume(SliderValue, isThisBGMSlider);
+        float SValue = VSlider.value;
+        SoundManager.Instance().SoundVolume(SValue, isThisBGMSlider);
     }
 }
