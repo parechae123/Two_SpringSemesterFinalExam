@@ -6,7 +6,8 @@ using UnityEngine;
 public class NextSceneInfo : MonoBehaviour
 {
     public string SceneName;
-    public int[] asdf;
+    public bool isNextStageisInGame;
+    public Vector3 NextSceneStartPoint;
     public void NextScene()
     {
         if (transform.name == "NewGame")        //뉴게임시 퀘스트 완료목록 초기화
@@ -21,6 +22,6 @@ public class NextSceneInfo : MonoBehaviour
                 i++;
             }
         }
-        GameManager.GMinstance().ChangeScene(SceneName,false,Vector3.zero);
+        GameManager.GMinstance().ChangeScene(SceneName, isNextStageisInGame, NextSceneStartPoint);
     }
 }

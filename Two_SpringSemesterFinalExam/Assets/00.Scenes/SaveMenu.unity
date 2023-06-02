@@ -177,6 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: InGame
+  isNextStageisInGame: 0
+  NextSceneStartPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &28024420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,6 +978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: InGame
+  isNextStageisInGame: 0
+  NextSceneStartPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &972203674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,6 +1128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: InGame
+  isNextStageisInGame: 0
+  NextSceneStartPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &1093138289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1325,37 +1331,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd1200538d318c4da1e36158a1dd92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beenStatSaved: 0
-  QuestInfo: {fileID: 0}
-  nowAcceptedMainQuest:
-    questName: 
-    QuestType: 0
-    questText: 
-    questGoalTotal: 0
-    questGoalCount: 0
-    isQuestDone: 0
-    rewardItemIndex: 0
-    rewardItemAcount: 0
-    isRewardExist: 0
-    exeReward: 0
-    huntTarget: 
-  nowAcceptedSubQuest:
-    questName: 
-    QuestType: 0
-    questText: 
-    questGoalTotal: 0
-    questGoalCount: 0
-    isQuestDone: 0
-    rewardItemIndex: 0
-    rewardItemAcount: 0
-    isRewardExist: 0
-    exeReward: 0
-    huntTarget: 
-  QuestUI: {fileID: 0}
-  DefaultLoad:
-    BGMList: {fileID: 0}
-    BGMSource: {fileID: 486952192}
-    SFXSource: {fileID: 1742144591}
+  playerStatSave:
+    jumpForce: 0
+    moveSpeed: 0
+    hp: 0
+    maxHp: 0
+    atk: 0
+    jumpCount: 0
+    StatPoint: 0
 --- !u!4 &1559656068
 Transform:
   m_ObjectHideFlags: 0
@@ -1650,6 +1633,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Tutorial
+  isNextStageisInGame: 1
+  NextSceneStartPoint: {x: -20, y: 5.8, z: 6}
 --- !u!114 &1778514424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,6 +2080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: InGame
+  isNextStageisInGame: 0
+  NextSceneStartPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &2028798316
 MonoBehaviour:
   m_ObjectHideFlags: 0

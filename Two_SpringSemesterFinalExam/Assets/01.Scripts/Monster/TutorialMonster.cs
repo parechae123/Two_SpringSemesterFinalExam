@@ -13,6 +13,11 @@ public class TutorialMonster : Slime
         base.bc = GetComponent<BoxCollider2D>();
         base.sr = GetComponent<SpriteRenderer>();
         StateSetter();
+        base.MoveSetting();
+    }
+    private void Start()
+    {
+        playerTR = GameObject.Find("Player").transform;
     }
     protected override void MobFuncType()
     {

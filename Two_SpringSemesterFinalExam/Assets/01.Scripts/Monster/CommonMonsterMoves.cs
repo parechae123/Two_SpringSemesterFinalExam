@@ -12,11 +12,10 @@ public class CommonMonsterMoves : MonsterAnimations
     private RaycastHit2D Hit;
     private RaycastHit2D plrHit;
     private int monsterDir = 1;
-    private void Start()
+    protected void MoveSetting()
     {
         whatIsGround =  LayerMask.GetMask("Ground");
         stateMachine.ChangeState(stateLists["Run"]);
-        
     }
     public void Update()
     {

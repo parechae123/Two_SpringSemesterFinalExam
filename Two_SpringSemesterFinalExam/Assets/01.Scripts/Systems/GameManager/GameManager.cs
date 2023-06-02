@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 {
     #region º¯¼ö¹­À½
     static GameManager GM;
-    [SerializeField]public SavedStats playerStatSave;
+    [SerializeField] public SavedStats playerStatSave;
     public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
     #endregion
     #region ÀúÀå
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if(GM != this)
+            if (GM != this)
             {
                 Destroy(this.gameObject);
             }
@@ -84,28 +84,38 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region ¾ÀÀüÈ¯
-    public void ChangeScene(string StageName, bool isNextSceneMenu,Vector3 newPos)
+    public void ChangeScene(string StageName, bool isNextSceneMenu, Vector3 newPos)
     {
-        StartCoroutine(ChangeSceneDelay(StageName,isNextSceneMenu,newPos));
+        StartCoroutine(ChangeSceneDelay(StageName, isNextSceneMenu, newPos));
     }
-    IEnumerator ChangeSceneDelay(string StageName,bool isNextSceneMenu,Vector3 newPos)
+    IEnumerator ChangeSceneDelay(string StageName, bool isNextSceneMenu, Vector3 newPos)
     {
         if (GameObject.Find("Player"))
         {
-            if(GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
+            if (GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
             {
                 PC.SavePlrStats();
             }
         }
         UIManager.Instance().UIStatck.Clear();
-        yield return new WaitForSeconds(0.7f);
-        SceneManager.LoadScene(StageName);
         if (isNextSceneMenu)
         {
-            SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("LoadingScene");
+            AsyncOperation isNextSceneReady = SceneManager.LoadSceneAsync(StageName);
+            SceneManager.LoadSceneAsync("PlayerScene", LoadSceneMode.Additive);
+            while (isNextSceneReady.progress < 1)
+            {
+                yield return null;
+                Debug.Log(isNextSceneReady.progress);
+            }
             nonActivateArrows.Clear();
             GameObject.Find("Player").transform.position = newPos;
         }
+        else
+        {
+            SceneManager.LoadScene(StageName);
+        }
+
     }
     #endregion
 }
