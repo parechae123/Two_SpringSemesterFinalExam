@@ -9,7 +9,7 @@ public class PlayerCTRL : PlayerAnimations
     public LayerMask whatIsGround;
     private CapsuleCollider2D cc;
     public Vector2 mousePos;
-    private GameObject anchor;
+    public GameObject anchor;
     private Anchor anchorCOMP;
     private float anchorLenght;
     #region ¾À¼¼ÆÃ
@@ -21,7 +21,10 @@ public class PlayerCTRL : PlayerAnimations
     }
     private void Start()
     {
-        anchor = Instantiate(Resources.Load<GameObject>("Prefabs/Anchor"));
+        if(anchor == null)
+        {
+            anchor = Instantiate(Resources.Load<GameObject>("Prefabs/Anchor"));
+        }
         anchorCOMP = anchor.GetComponent<Anchor>();
         anchorCOMP.Player = gameObject;
         base.SettingStats(100, 20, 6,100, 5);

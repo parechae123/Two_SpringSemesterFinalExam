@@ -6,9 +6,14 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] string StageName;
     [SerializeField] Vector3 nextStagePosition;
+    private bool isPortalActivated = false;
     public void PortalActivate()
     {
-        GameManager.GMinstance().ChangeScene(StageName,true, nextStagePosition);
+        if (!isPortalActivated)
+        {
+            isPortalActivated = true;
+            GameManager.GMinstance().ChangeScene(StageName, true, nextStagePosition);
+        }
     }
     public void PlayerNearPortal()
     {

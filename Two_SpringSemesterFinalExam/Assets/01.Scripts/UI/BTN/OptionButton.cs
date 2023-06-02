@@ -11,9 +11,10 @@ public class OptionButton : MonoBehaviour
         if (SldrPanel == null)
         {
             SldrPanel = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoundSliders"), GameObject.Find("Canvas").transform);
+            UIManager.Instance().UIStatck.Push(SldrPanel);
             SldrPanel.SetActive(true);
         }
-        if(SldrPanel.activeSelf)
+        else if(SldrPanel.activeSelf)
         {
             SldrPanel.SetActive(false);
             if (UIManager.Instance().UIStatck.Count > 0)

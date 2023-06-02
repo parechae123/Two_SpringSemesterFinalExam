@@ -12,11 +12,10 @@ public class CameraControll : MonoBehaviour
     public SpriteRenderer BackGround;
     private float mousePlayerXDis;
     private float mousePlayerYDis;
-    
-    private void Awake()
+
+    public void ChangeBGsprite(string SceneName)
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
-        BackGround.sprite = Resources.Load<Sprite>("BGSprite/"+SceneManager.GetActiveScene().name);
+        BackGround.sprite = Resources.Load<Sprite>("BGSprite/"+SceneName);
     }
     // Update is called once per frame
     private void FixedUpdate()

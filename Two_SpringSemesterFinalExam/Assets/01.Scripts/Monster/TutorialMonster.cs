@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class TutorialMonster : Slime
@@ -28,10 +29,6 @@ public class TutorialMonster : Slime
                 UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
                 UIManager.Instance().isQuestDone(true);
             }
-        }
-        if (base.stat.hp <= 0)
-        {
-            /*GetComponent<TutorialMonster>().enabled = false;*/
         }
     }
 }

@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator ChangeSceneDelay(string StageName, bool isNextSceneMenu, Vector3 newPos)
     {
+        yield return null;
         if (GameObject.Find("Player"))
         {
             if (GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
@@ -101,15 +102,8 @@ public class GameManager : MonoBehaviour
         if (isNextSceneMenu)
         {
             SceneManager.LoadScene("LoadingScene");
-            AsyncOperation isNextSceneReady = SceneManager.LoadSceneAsync(StageName);
-            SceneManager.LoadSceneAsync("PlayerScene", LoadSceneMode.Additive);
-            while (isNextSceneReady.progress < 1)
-            {
-                yield return null;
-                Debug.Log(isNextSceneReady.progress);
-            }
-            nonActivateArrows.Clear();
-            GameObject.Find("Player").transform.position = newPos;
+            yield return null;
+            GameObject.Find("LoadingSceneManager").GetComponent<LoadSceneSetting>().SceneGate(StageName,newPos);
         }
         else
         {
