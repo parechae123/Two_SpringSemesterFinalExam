@@ -69,7 +69,9 @@ public class GameManager : MonoBehaviour
                     playerStatSave.atk += 1;
                     break;
             }
+            Debug.Log("Ω∫≈›©ê¿Ω");
             playerStatSave.StatPoint -= 1;
+            Debug.Log(playerStatSave.StatPoint);
             UIManager.Instance().StatusTextUpdate(btnName);
             if (GameObject.Find("Player").TryGetComponent<PlayerCTRL>(out PlayerCTRL PC))
             {
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
             if (UIManager.Instance().nowAcceptedMainQuest.questName == "∆©≈‰∏ÆæÛ8: Ω∫≈›∆˜¿Œ∆Æ")
             {
                 UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
+                UIManager.Instance().isQuestDone(true);
             }
             UIManager.Instance().HPValueChanged();
         }

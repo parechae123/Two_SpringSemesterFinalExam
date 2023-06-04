@@ -42,6 +42,10 @@ public class LoadSceneSetting : MonoBehaviour
         isNextSceneReady.allowSceneActivation = true;
         yield return null;
         GameObject.Find("Player").transform.position = newPos;
+        if(GameManager.GMinstance().playerStatSave.StatPoint >= 5)
+        {
+            GameManager.GMinstance().playerStatSave.StatPoint -= 5;
+        }
         Destroy(Camera.main.gameObject);
         Camera.main.gameObject.GetComponent<CameraControll>().ChangeBGsprite(StageName);
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("LoadingScene"));

@@ -17,6 +17,7 @@ public class StatSystem : MonoBehaviour
         public int maxHp;
         public int atk;
         public byte jumpCount;
+        public float exp;
     }
     protected virtual void SettingStats(int hp, int atk, float ms,int maxHP, float jf) 
     {
@@ -25,6 +26,15 @@ public class StatSystem : MonoBehaviour
         stat.hp = hp;
         stat.maxHp = maxHP;
         stat.atk = atk;
+    }
+    protected virtual void MonsterSettingStats(int hp, int atk, float ms, int maxHP, float jf,float exp)
+    {
+        stat.jumpForce = jf;
+        stat.moveSpeed = ms;
+        stat.hp = hp;
+        stat.maxHp = maxHP;
+        stat.atk = atk;
+        stat.exp = exp;
     }
     public virtual void SavePlrStats()
     {

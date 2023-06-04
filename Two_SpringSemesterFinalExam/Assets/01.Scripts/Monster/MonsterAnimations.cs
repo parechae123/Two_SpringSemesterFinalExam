@@ -43,6 +43,7 @@ public class MonsterAnimations : StatSystem
         else
         {
             stateMachine.ChangeState(stateLists["Die"]);
+            UIManager.Instance().GetEXP(stat.exp);
         }
     }
 }

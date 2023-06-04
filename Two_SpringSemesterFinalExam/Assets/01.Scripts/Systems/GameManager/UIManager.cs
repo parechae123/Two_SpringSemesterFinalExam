@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
                 SW.nowStatus[1].text = GameManager.GMinstance().playerStatSave.moveSpeed.ToString();
                 break;
             case "hp":
-                SW.nowStatus[2].text = GameManager.GMinstance().playerStatSave.hp.ToString();
+                SW.nowStatus[2].text = GameManager.GMinstance().playerStatSave.maxHp.ToString();
                 break;
             case "atk":
                 SW.nowStatus[3].text = GameManager.GMinstance().playerStatSave.atk.ToString();

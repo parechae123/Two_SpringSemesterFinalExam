@@ -246,6 +246,14 @@ public class PlayerCTRL : PlayerAnimations
                         Debug.Log("남은 화살" + GameManager.GMinstance().nonActivateArrows.Count);
                         arrow.GetComponent<Arrow>().dmg = stat.atk;
                     }
+                    if (playerMoveAxis < 0)
+                    {
+                        transform.rotation = new Quaternion(0, 0, 0, 1);
+                    }
+                    else
+                    {
+                        transform.rotation = new Quaternion(0, 1, 0, 0);
+                    }
                     SoundManager.Instance().SFXInput("ArrowFire");
                     break;
                 }

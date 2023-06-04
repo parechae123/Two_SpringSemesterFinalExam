@@ -9,7 +9,7 @@ public class TutorialMonster : Slime
     public Transform playerTR;
     private void Awake()
     {
-        base.SettingStats(35, 20, 3,35, 0);
+        base.MonsterSettingStats(35, 20, 3,35, 0,30);
         base.rb = GetComponent<Rigidbody2D>();
         base.bc = GetComponent<BoxCollider2D>();
         base.sr = GetComponent<SpriteRenderer>();

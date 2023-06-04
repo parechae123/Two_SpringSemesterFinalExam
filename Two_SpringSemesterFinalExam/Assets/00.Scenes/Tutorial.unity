@@ -3831,6 +3831,7 @@ MonoBehaviour:
     maxHp: 0
     atk: 0
     jumpCount: 0
+    exp: 0
   bc: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
@@ -9774,6 +9775,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1381072504730012341, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8110b250c410ade45b898fef906697ef, type: 2}
     - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
       propertyPath: m_RootOrder
       value: 19
