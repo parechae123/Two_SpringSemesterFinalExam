@@ -91,3 +91,22 @@ public class MonsterDie : MonsterStates
         
     }
 }
+public class MobFindPlayer : MonsterStates
+{
+    public override void Enter()
+    {
+        anim.Play("Growling");
+        SoundManager.Instance().SFXInput("Growling");
+    }
+    public override void StateLive(MonsterAnimations MonsterAnimation)
+    {
+        if (animTimer())
+        {
+            
+        }
+    }
+    public override void Exit()
+    {
+
+    }
+}
