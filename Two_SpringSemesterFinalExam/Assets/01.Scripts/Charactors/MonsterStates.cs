@@ -83,6 +83,7 @@ public class MonsterDie : MonsterStates
     {
         if (animTimer())
         {
+            Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             MonsterAnimation.gameObject.SetActive(false);
         }
     }
@@ -102,7 +103,8 @@ public class MobFindPlayer : MonsterStates
     {
         if (animTimer())
         {
-            
+            Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime+"몬스터 마주함");
+            MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Run"]);
         }
     }
     public override void Exit()

@@ -34,7 +34,7 @@ public class CommonMonsterMoves : MonsterAnimations
             monsterDir = monsterDir * -1;
         }
         stateMachine.StateUpdate(this);
-        if (!isDamagedMonster())
+        if (stateMachine.CharactorNowState.animTimer())
         {
             rb.velocity = new Vector2(monsterDir * stat.moveSpeed, rb.velocity.y);
             if (rb.velocity.x != 0)

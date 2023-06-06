@@ -32,6 +32,17 @@ public class MonsterAnimations : StatSystem
             return false;
         }
     }
+    public bool isHowling()
+    {
+        if (stateMachine.CharactorNowState == stateLists["Growling"])
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public void takeDamage(int Damage,Vector3 pos)//³Ë¹é
     {
         stat.hp -= Damage;

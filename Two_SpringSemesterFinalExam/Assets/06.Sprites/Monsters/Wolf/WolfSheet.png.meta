@@ -458,8 +458,8 @@ TextureImporter:
         serializedVersion: 2
         x: 217
         y: 16
-        width: 160
-        height: 125
+        width: 202
+        height: 199
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -475,69 +475,6 @@ TextureImporter:
       weights: []
     - serializedVersion: 2
       name: 117299_17
-      rect:
-        serializedVersion: 2
-        x: 308
-        y: 95
-        width: 81
-        height: 91
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 945acf0a52722b844b2981c918138d0c
-      internalID: -2096542827
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 117299_18
-      rect:
-        serializedVersion: 2
-        x: 351
-        y: 28
-        width: 62
-        height: 187
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a0a3cad8a6e56646a4d33fc839ddbaf
-      internalID: 1856963958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 117299_19
-      rect:
-        serializedVersion: 2
-        x: 380
-        y: 41
-        width: 39
-        height: 92
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a308d6f3c8236384582b15bff671a16a
-      internalID: -583731352
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 117299_20
       rect:
         serializedVersion: 2
         x: 439
@@ -576,11 +513,10 @@ TextureImporter:
       117299_14: -1544504624
       117299_15: 369927505
       117299_16: -1669410325
-      117299_17: -2096542827
+      117299_17: -1245518872
       117299_18: 1856963958
       117299_19: -583731352
       117299_2: 657276205
-      117299_20: -1245518872
       117299_3: -1150416910
       117299_4: -1425702746
       117299_5: -389701764

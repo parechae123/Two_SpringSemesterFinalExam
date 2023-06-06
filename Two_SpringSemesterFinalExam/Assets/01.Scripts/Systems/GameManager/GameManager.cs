@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
             }
         }
         UIManager.Instance().UIStatck.Clear();
+        nonActivateArrows.Clear();
         if (isNextSceneMenu)
         {
             SceneManager.LoadScene("LoadingScene");
