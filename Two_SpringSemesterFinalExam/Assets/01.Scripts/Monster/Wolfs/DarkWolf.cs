@@ -10,7 +10,7 @@ public class DarkWolf : CommonMonsterMoves
     {
         MonsterSettingStats(50, 35, 5, 50, 10, 40);
         base.rb = GetComponent<Rigidbody2D>();
-        base.bc = GetComponent<BoxCollider2D>();
+        monsterCol = GetComponent<BoxCollider2D>();
         base.sr = GetComponent<SpriteRenderer>();
         StateSetter();
         base.MoveSetting();

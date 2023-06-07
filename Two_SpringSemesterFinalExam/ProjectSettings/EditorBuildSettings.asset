@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/00.Scenes/Tutorial.unity
     guid: d84da1cb26022a546a303b570c13f59f
   - enabled: 1
-    path: Assets/00.Scenes/StageOneLeftSide.unity
+    path: Assets/00.Scenes/WestFronterra.unity
     guid: 3a2809a178229cf45aedc3abb998bd78
+  - enabled: 1
+    path: Assets/00.Scenes/Fronterra.unity
+    guid: e40ae19801dda28408a46fce30373dec
   - enabled: 1
     path: Assets/00.Scenes/PlayerScene.unity
     guid: 0c7c95ed9e263354c91fcedcd3cbcfac

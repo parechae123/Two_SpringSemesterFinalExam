@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public abstract class MonsterStates
 {
     public Animator anim;
+    public string monsterType;
     public bool animTimer()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
@@ -57,7 +58,7 @@ public class MonsterDamaged : MonsterStates
     public override void Enter()
     {
         anim.Play("Damaged");
-        SoundManager.Instance().SFXInput("MonsterDamaged");
+        SoundManager.Instance().SFXInput("Damaged"+"_"+monsterType);
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {
@@ -77,7 +78,7 @@ public class MonsterDie : MonsterStates
     public override void Enter()
     {
         anim.Play("Die");
-        SoundManager.Instance().SFXInput("MonsterDeath");
+        SoundManager.Instance().SFXInput("Die"+"_"+monsterType);
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {
@@ -85,6 +86,12 @@ public class MonsterDie : MonsterStates
         {
             Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             MonsterAnimation.gameObject.SetActive(false);
+        }
+        else
+        {
+            MonsterAnimation.monsterCol.enabled = false;
+            MonsterAnimation.rb.bodyType = RigidbodyType2D.Kinematic;
+            MonsterAnimation.rb.velocity = Vector3.zero;
         }
     }
     public override void Exit()
@@ -97,7 +104,7 @@ public class MobFindPlayer : MonsterStates
     public override void Enter()
     {
         anim.Play("Growling");
-        SoundManager.Instance().SFXInput("Growling");
+        SoundManager.Instance().SFXInput("Growling" +"_"+monsterType);
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {

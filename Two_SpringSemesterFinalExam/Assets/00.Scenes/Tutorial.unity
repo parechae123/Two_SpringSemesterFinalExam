@@ -3824,6 +3824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99afa63db2206348993aa9498440a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   stat:
     jumpForce: 0
     moveSpeed: 0
@@ -3832,7 +3833,7 @@ MonoBehaviour:
     atk: 0
     jumpCount: 0
     exp: 0
-  bc: {fileID: 0}
+  monsterCol: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 0
@@ -9779,6 +9780,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 8110b250c410ade45b898fef906697ef, type: 2}
+    - target: {fileID: 6847316718315375498, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: StageName
+      value: WestFronterra
+      objectReference: {fileID: 0}
     - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
       propertyPath: m_RootOrder
       value: 19

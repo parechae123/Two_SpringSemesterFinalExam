@@ -9,6 +9,7 @@ public class MonsterAnimations : StatSystem
     int damagedValue;
     public StateMachine stateMachine;
     public Dictionary<string, MonsterStates> stateLists = new Dictionary<string, MonsterStates>();
+    public Collider2D monsterCol;
     // Start is called before the first frame update
     public void StateSetter()
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CommonMonsterMoves : MonsterAnimations
 {
-    [SerializeField]protected BoxCollider2D bc;
     [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected SpriteRenderer sr;
     private float atkDelay;
@@ -16,13 +15,14 @@ public class CommonMonsterMoves : MonsterAnimations
     {
         whatIsGround =  LayerMask.GetMask("Ground");
         stateMachine.ChangeState(stateLists["Run"]);
+        stateLists["Die"].monsterType = this.GetType().ToString();
     }
     public void Update()
     {
-        Hit = Physics2D.Raycast(transform.position, Vector2.right*monsterDir, bc.bounds.extents.x + 1.5f, whatIsGround);
-        plrHit = Physics2D.BoxCast(transform.position, bc.bounds.extents + (Vector3.right+Vector3.up)*2, 0, Vector2.up,0,128);
+        Hit = Physics2D.Raycast(transform.position, Vector2.right*monsterDir, monsterCol.bounds.extents.x + 1.5f, whatIsGround);
+        plrHit = Physics2D.BoxCast(transform.position, monsterCol.bounds.extents *2.2f, 0, Vector2.up,0,128);
         atkDelay += Time.deltaTime;
-        if (plrHit&&atkDelay > 2)
+        if (plrHit && atkDelay > 2 && stateMachine.CharactorNowState != stateLists["Die"])
         {
             plrHit.collider.GetComponent<PlayerAnimations>().takeDamage(stat.atk, transform.position);
             atkDelay = 0;
