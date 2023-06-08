@@ -49,6 +49,19 @@ public class InventoryController : MonoBehaviour
             }
         }
     }
+    public void UseItem(items whatItem, int whatItemAmount)
+    {
+        foreach (var item in slots)
+        {
+            if (item.itemInfo.ItemIndex == whatItem.ItemIndex && item.itemAmount - whatItemAmount >=0)
+            {
+                Debug.Log("아이템 이름 같음");
+                item.itemAmount -= whatItemAmount;
+                item.itemInfoUpdate();
+                break;
+            }
+        }
+    }
     private void OnEnable()
     {
         UIManager.Instance().UIStatck.Push(this.gameObject);

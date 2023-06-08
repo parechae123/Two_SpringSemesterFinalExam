@@ -16,6 +16,12 @@ public class InventorySlot : MonoBehaviour
         amountText.text = itemAmount.ToString();
         flavorText.text = itemInfo.flavorText;
         itemIcon.sprite = Resources.Load<Sprite>(itemInfo.iconPath);
+        if(itemAmount <= 0)
+        {
+            amountText.text = "";
+            itemIcon.sprite = Resources.Load<Sprite>(itemInfo.iconPath);
+        }
         //씬 넘어갈때 인벤토리 컴포넌트들이 다 초기화됨 다른 저장방법 강구
+        //이거 모노비헤이비어 상속 안받고 JSON으로 옮겨주면 될듯?
     }
 }
