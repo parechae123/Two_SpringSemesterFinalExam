@@ -22,7 +22,7 @@ public class TutorialMonster : Slime
     }
     protected override void MobFuncType()
     {
-        if (Vector3.Distance(playerTR.position, transform.position) < 7)
+        if (Vector3.Distance(playerTR.position, transform.position) < 15)
         {
             if (UIManager.Instance().nowAcceptedMainQuest.questName == "튜토리얼4: 수색")
             {

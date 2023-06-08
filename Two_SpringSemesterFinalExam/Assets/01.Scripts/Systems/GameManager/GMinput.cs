@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GMinput : MonoBehaviour
 {
     public GameObject menuBar;
-    public void OnESCKey(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    public GameObject questUI;
+    public GameObject charactorUI;
+    public GameObject inventoryUI;
+    public void OnESCKey(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
@@ -36,6 +40,43 @@ public class GMinput : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+    public void OnQKey(InputAction.CallbackContext ctx)
+    {
+        if (questUI.activeSelf)
+        {
+            questUI.SetActive(false);
+        }
+        else
+        {
+            questUI.SetActive(true);
+            UIManager.Instance().UIStatck.Push(questUI);
+        }
+
+    }
+    public void OnIKey(InputAction.CallbackContext ctx)
+    {
+        if (inventoryUI.activeSelf)
+        {
+            inventoryUI.SetActive(false);
+        }
+        else
+        {
+            inventoryUI.SetActive(true);
+            UIManager.Instance().UIStatck.Push(inventoryUI);
+        }
+    }
+    public void OnCKey(InputAction.CallbackContext ctx)
+    {
+        if (charactorUI.activeSelf)
+        {
+            charactorUI.SetActive(false);
+        }
+        else
+        {
+            charactorUI.SetActive(true);
+            UIManager.Instance().UIStatck.Push(charactorUI);
         }
     }
 }

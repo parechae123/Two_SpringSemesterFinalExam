@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
     #region æ¿¿¸»Ø
     public void ChangeScene(string StageName, bool isNextSceneMenu, Vector3 newPos)
     {
+        InvenManager.InventoryInstance().InvenSave();
         StartCoroutine(ChangeSceneDelay(StageName, isNextSceneMenu, newPos));
     }
     IEnumerator ChangeSceneDelay(string StageName, bool isNextSceneMenu, Vector3 newPos)
