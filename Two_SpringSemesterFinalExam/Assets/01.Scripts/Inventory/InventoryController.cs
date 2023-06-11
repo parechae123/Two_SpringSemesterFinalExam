@@ -1,32 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
     public List<InventorySlot> slots = new List<InventorySlot>();
     private void Start()
     {
-        for (int i = 0; i < 20; i++)
-        {
-            slots.Add(transform.GetChild(i).gameObject.GetComponent<InventorySlot>());
-            slots[i].itemInfo = new NullSlot();
-            slots[i].itemInfo.SetItemValues();
-            Debug.Log(slots[i].itemInfo.ItemIndex);
-        }
-        InvenManager.InventoryInstance().invenSet = this;
-        if (InvenManager.InventoryInstance().invenSetSave.Count > 0)
-        {
-            Debug.Log("인벤 저장 안비어있음");
-            InvenManager.InventoryInstance().InvenLoad();
-        }
-        else if (InvenManager.InventoryInstance().invenSetSave.Count <= 0)
-        {
-            Debug.Log("인벤 저장 비어있음");
-            InvenManager.InventoryInstance().InvenSave();
-        }
-
         gameObject.SetActive(false);
+        InvenManager.InventoryInstance().SceneInvenSetting(this);
     }
     public void GetItem(items whatItem, int whatItemAmount)
     {

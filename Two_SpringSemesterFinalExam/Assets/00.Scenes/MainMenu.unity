@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5816706225382176940, guid: 0024e75319023fc4797b578450bf5439, type: 3}
+      propertyPath: invenSetSave.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5816706225382176941, guid: 0024e75319023fc4797b578450bf5439, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1651,6 +1655,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4964974601406092386, guid: dcc4bf25e006d3b438fb06f262a1d422, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964974601406092387, guid: dcc4bf25e006d3b438fb06f262a1d422, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4964974601406092389, guid: dcc4bf25e006d3b438fb06f262a1d422, type: 3}
       propertyPath: m_RootOrder
       value: 5

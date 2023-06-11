@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
+using UnityEngine.UI;
 
 public class InvenManager : MonoBehaviour
 {
-    public InventoryController invenSet;
-    public List<InventorySlot> invenSetSave = new List<InventorySlot>();
+    public InventoryController invenControl;
+    public List<InventorySlot> slots = new List<InventorySlot>();
     private static InvenManager inventoryInstance;
-    
     public static InvenManager InventoryInstance()
     {
         return inventoryInstance;
@@ -30,36 +31,55 @@ public class InvenManager : MonoBehaviour
         }
 
     }
-    public void InvenLoad()
+    public void SceneInvenSetting(InventoryController controllerGet)
     {
-        if (invenSet !=null)
+        
+        for (int i = 0; i < 20; i++)
         {
-            invenSet.slots = invenSetSave;
-            foreach (var item in invenSet.slots)
+            slots.Add(new InventorySlot());
+            slots[i].amountText = invenControl.transform.GetChild(i).Find("AmountText").GetComponent<TextMeshProUGUI>();
+            slots[i].flavorText = invenControl.transform.GetChild(i).Find("FlavorText").GetComponent<TextMeshProUGUI>();
+            slots[i].itemIcon = invenControl.transform.GetChild(i).Find("Slot").GetComponent<Image>();
+            slots[i].itemInfo = new NullSlot();
+            slots[i].itemInfo.SetItemValues();
+            Debug.Log(slots[i].itemInfo.ItemIndex);
+        }
+
+        gameObject.SetActive(false);
+    }
+    public void GetItem(items whatItem, int whatItemAmount)
+    {
+        whatItem.SetItemValues();
+        foreach (var item in slots)
+        {
+            if (item.itemInfo.ItemIndex == whatItem.ItemIndex && item.itemAmount + whatItemAmount < 255)
             {
+                Debug.Log("아이템 이름 같음");
+                item.itemAmount += whatItemAmount;
                 item.itemInfoUpdate();
+                break;
+            }
+            else if (item.itemInfo.ItemIndex == 0)//인벤칸의 아이템 정보가 없을시 매개변수로 받은 정보를 넣어주고 이미지와 수량을 넣어준다
+            {
+                item.itemInfo = whatItem;
+                item.itemAmount += whatItemAmount;
+                item.itemInfoUpdate();
+                break;
             }
         }
     }
-    public void InvenSave()
+    public void UseItem(items whatItem, int whatItemAmount)
     {
-        /*int index = 0;*/
-        if(invenSet != null)
+        foreach (var item in slots)
         {
-            invenSetSave = invenSet.slots;
-        }
-/*        if(invenSet != null)
-        {
-            
-            foreach (var item in invenSet.slots)
+            if (item.itemInfo.ItemIndex == whatItem.ItemIndex && item.itemAmount - whatItemAmount >= 0)
             {
-                invenSetSave[index] = new InventorySlot();
-                
+                Debug.Log("아이템 이름 같음");
+                item.itemAmount -= whatItemAmount;
+                item.itemInfoUpdate();
+                break;
             }
-            index++;
-            invenSetSave = invenSet.slots;
-            Debug.Log("인벤저장");
-        }*/
+        }
     }
 
 }

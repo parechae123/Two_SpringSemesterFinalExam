@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+[System.Serializable]
 public class InventorySlot : MonoBehaviour
 {
     public items itemInfo;
@@ -17,6 +18,7 @@ public class InventorySlot : MonoBehaviour
         itemIcon.sprite = Resources.Load<Sprite>(itemInfo.iconPath);
         if(itemAmount <= 0)
         {
+            itemInfo = new NullSlot();
             amountText.text = "";
             itemIcon.sprite = Resources.Load<Sprite>(itemInfo.iconPath);
         }
