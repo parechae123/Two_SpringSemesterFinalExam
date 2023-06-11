@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 [System.Serializable]
-public class InventorySlot : MonoBehaviour
+public class InventorySlot
 {
     public items itemInfo;
     public int itemAmount = 0;

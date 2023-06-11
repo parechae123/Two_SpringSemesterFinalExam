@@ -33,19 +33,25 @@ public class InvenManager : MonoBehaviour
     }
     public void SceneInvenSetting(InventoryController controllerGet)
     {
-        
+        invenControl = controllerGet;
+        controllerGet.gameObject.SetActive(false);
         for (int i = 0; i < 20; i++)
         {
-            slots.Add(new InventorySlot());
+            if (slots.Count <= i)
+            {
+                slots.Add(new InventorySlot());
+                slots[i].itemInfo = new NullSlot(); 
+            }
+            Debug.Log(slots[i].itemInfo); 
             slots[i].amountText = invenControl.transform.GetChild(i).Find("AmountText").GetComponent<TextMeshProUGUI>();
             slots[i].flavorText = invenControl.transform.GetChild(i).Find("FlavorText").GetComponent<TextMeshProUGUI>();
             slots[i].itemIcon = invenControl.transform.GetChild(i).Find("Slot").GetComponent<Image>();
+            invenControl.IconPositions.Add(slots[i].itemIcon);
             slots[i].itemInfo = new NullSlot();
             slots[i].itemInfo.SetItemValues();
+            slots[i].itemInfoUpdate();
             Debug.Log(slots[i].itemInfo.ItemIndex);
         }
-
-        gameObject.SetActive(false);
     }
     public void GetItem(items whatItem, int whatItemAmount)
     {
@@ -70,6 +76,7 @@ public class InvenManager : MonoBehaviour
     }
     public void UseItem(items whatItem, int whatItemAmount)
     {
+        Debug.Log("아이템 사용");
         foreach (var item in slots)
         {
             if (item.itemInfo.ItemIndex == whatItem.ItemIndex && item.itemAmount - whatItemAmount >= 0)

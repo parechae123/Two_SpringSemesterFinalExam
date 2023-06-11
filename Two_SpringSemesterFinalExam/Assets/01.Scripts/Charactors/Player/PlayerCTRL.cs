@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerCTRL : PlayerAnimations
 {
@@ -152,6 +154,12 @@ public class PlayerCTRL : PlayerAnimations
         if(Camera.main != null)
         {
             mousePos = Camera.main.ScreenToWorldPoint(ctx.ReadValue<Vector2>());
+/*            Debug.DrawRay(ctx.ReadValue<Vector2>(), Vector3.back * 100000, Color.red);
+            RaycastHit2D IconInfo = Physics2D.Raycast(ctx.ReadValue<Vector2>(), Vector3.back, 1000, LayerMask.NameToLayer("ItemSlot"));
+            if (IconInfo)
+            {
+                Debug.Log(IconInfo.collider.name);
+            }*/
         }
     }
     public void OnAnchorFire(InputAction.CallbackContext ctx)

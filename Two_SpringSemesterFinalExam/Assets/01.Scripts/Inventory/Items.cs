@@ -8,7 +8,6 @@ public abstract class items
     public int ItemIndex;
     public abstract void SetItemValues();
     public abstract void ItemEffect();
-
 }
 public class HPpotion : items
 {
@@ -31,7 +30,7 @@ public class HeadArmor : items
         Debug.Log("«Ô∏‰");
         flavorText = "«Ô∏‰¿Ã¥Á~";
         iconPath = "ItemIcon/helmets";
-        ItemIndex = 11;
+        ItemIndex = 100;
     }
     public override void ItemEffect()
     {
@@ -50,5 +49,18 @@ public class NullSlot : items
     public override void ItemEffect()
     {
 
+    }
+}
+public class SlimeLiquid : items
+{
+    public override void SetItemValues()
+    {
+        flavorText = "≤ˆ¿˚≤ˆ¿˚«— ΩΩ∂Û¿” ∫º¿Ã¥Á";
+        iconPath = "ItemIcon/mp";
+        ItemIndex = 200;
+    }
+    public override void ItemEffect()
+    {
+        
     }
 }
