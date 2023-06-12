@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
                 case "moveSpeed":
                     playerStatSave.moveSpeed += 1;
                     break;
-                case "hp":
+                case "maxHp":
                     playerStatSave.maxHp += 1;
                     break;
                 case "atk":

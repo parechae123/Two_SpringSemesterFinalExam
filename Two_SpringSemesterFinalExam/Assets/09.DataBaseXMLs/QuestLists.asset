@@ -23,7 +23,7 @@ MonoBehaviour:
         \uC774\uB3D9\uD569\uB2C8\uB2E4."
       questGoalTotal: 1
       questGoalCount: 0
-      isQuestDone: 1
+      isQuestDone: 0
       rewardItemIndex: 0
       rewardItemAcount: 0
       isRewardExist: 0

@@ -42,7 +42,8 @@ public class InvenManager : MonoBehaviour
                 slots.Add(new InventorySlot());
                 slots[i].itemInfo = new NullSlot(); 
             }
-            Debug.Log(slots[i].itemInfo); 
+            Debug.Log(slots[i].itemInfo);
+            invenControl.transform.GetChild(i).GetComponent<InvenSlotInteraction>().slotIndex = i;
             slots[i].amountText = invenControl.transform.GetChild(i).Find("AmountText").GetComponent<TextMeshProUGUI>();
             slots[i].flavorText = invenControl.transform.GetChild(i).Find("FlavorText").GetComponent<TextMeshProUGUI>();
             slots[i].itemIcon = invenControl.transform.GetChild(i).Find("Slot").GetComponent<Image>();
@@ -76,13 +77,14 @@ public class InvenManager : MonoBehaviour
     }
     public void UseItem(items whatItem, int whatItemAmount)
     {
-        Debug.Log("아이템 사용");
+        Debug.Log(whatItem);
         foreach (var item in slots)
         {
             if (item.itemInfo.ItemIndex == whatItem.ItemIndex && item.itemAmount - whatItemAmount >= 0)
             {
                 Debug.Log("아이템 이름 같음");
                 item.itemAmount -= whatItemAmount;
+                item.itemInfo.ItemEffect();
                 item.itemInfoUpdate();
                 break;
             }

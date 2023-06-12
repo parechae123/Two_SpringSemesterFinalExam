@@ -19,7 +19,10 @@ public class HPpotion : items
     }
     public override void ItemEffect()
     {
-
+        Debug.Log("포션사용");
+        GameManager.GMinstance().playerStatSave.hp += 10;
+        //플레이어 스텟을 싹다 GM으로 옮겨줘야할듯
+        UIManager.Instance().HPValueChanged();
     }
 }
 public class HeadArmor : items
@@ -34,7 +37,7 @@ public class HeadArmor : items
     }
     public override void ItemEffect()
     {
-
+        
     }
 }
 public class NullSlot : items
@@ -55,7 +58,7 @@ public class SlimeLiquid : items
 {
     public override void SetItemValues()
     {
-        flavorText = "끈적끈적한 슬라임 볼이당";
+        flavorText = "끈적끈적";
         iconPath = "ItemIcon/mp";
         ItemIndex = 200;
     }
