@@ -38,6 +38,7 @@ public class PlayerCTRL : PlayerAnimations
         UIManager.Instance().HPValueChanged();
         stat.jumpCount = 0;
         StateUpdates(States.Idle);
+        GameManager.GMinstance().plrStat = this;
     }
     #endregion
     #region 업데이트

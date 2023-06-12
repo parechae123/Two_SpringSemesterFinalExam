@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     static GameManager GM;
     [SerializeField] public SavedStats playerStatSave;
     public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
+    public StatSystem plrStat;
     #endregion
     #region ¿˙¿Â
     [System.Serializable]
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         public byte jumpCount;
         public byte StatPoint;
     }
-
+    
 
     #endregion
     #region ΩÃ±€≈Ê ºº∆√

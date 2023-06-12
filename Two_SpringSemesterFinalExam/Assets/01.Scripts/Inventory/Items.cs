@@ -21,6 +21,7 @@ public class HPpotion : items
     {
         Debug.Log("포션사용");
         GameManager.GMinstance().playerStatSave.hp += 10;
+        GameManager.GMinstance().plrStat.stat.hp += 10;
         //플레이어 스텟을 싹다 GM으로 옮겨줘야할듯
         UIManager.Instance().HPValueChanged();
     }
@@ -37,7 +38,10 @@ public class HeadArmor : items
     }
     public override void ItemEffect()
     {
-        
+        GameManager.GMinstance().playerStatSave.maxHp += 10;
+        GameManager.GMinstance().plrStat.stat.maxHp += 10;
+        UIManager.Instance().StatusTextUpdate("hp");
+        UIManager.Instance().HPValueChanged();
     }
 }
 public class NullSlot : items
@@ -65,5 +69,22 @@ public class SlimeLiquid : items
     public override void ItemEffect()
     {
         
+    }
+}
+public class Bow : items
+{
+    public override void SetItemValues()
+    {
+        flavorText = "땡땡";
+        iconPath = "ItemIcon/bow";
+        ItemIndex = 101;
+    }
+    public override void ItemEffect()
+    {
+
+        GameManager.GMinstance().playerStatSave.atk += 10;
+        GameManager.GMinstance().plrStat.stat.atk += 10;
+        UIManager.Instance().StatusTextUpdate("atk");
+        //플레이어 스텟을 싹다 GM으로 옮겨줘야할듯
     }
 }
