@@ -20,10 +20,11 @@ public class PlayerCTRL : PlayerAnimations
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
+        GameManager.GMinstance().plrStat = this;
     }
     private void Start()
     {
-        if(anchor == null)
+        if (anchor == null)
         {
             anchor = Instantiate(Resources.Load<GameObject>("Prefabs/Anchor"));
         }
@@ -38,7 +39,6 @@ public class PlayerCTRL : PlayerAnimations
         UIManager.Instance().HPValueChanged();
         stat.jumpCount = 0;
         StateUpdates(States.Idle);
-        GameManager.GMinstance().plrStat = this;
     }
     #endregion
     #region 업데이트

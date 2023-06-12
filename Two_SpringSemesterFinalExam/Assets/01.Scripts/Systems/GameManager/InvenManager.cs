@@ -37,7 +37,7 @@ public class InvenManager : MonoBehaviour
         controllerGet.gameObject.SetActive(false);
         for (int i = 0; i < 20; i++)
         {
-            if (slots.Count <= i)
+            if (slots.Count < 20)
             {
                 slots.Add(new InventorySlot());
                 slots[i].itemInfo = new NullSlot(); 
@@ -48,7 +48,6 @@ public class InvenManager : MonoBehaviour
             slots[i].flavorText = invenControl.transform.GetChild(i).Find("FlavorText").GetComponent<TextMeshProUGUI>();
             slots[i].itemIcon = invenControl.transform.GetChild(i).Find("Slot").GetComponent<Image>();
             invenControl.IconPositions.Add(slots[i].itemIcon);
-            slots[i].itemInfo = new NullSlot();
             slots[i].itemInfo.SetItemValues();
             slots[i].itemInfoUpdate();
             Debug.Log(slots[i].itemInfo.ItemIndex);
