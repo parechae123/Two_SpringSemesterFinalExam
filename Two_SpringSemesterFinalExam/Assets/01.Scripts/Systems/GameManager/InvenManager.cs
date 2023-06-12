@@ -47,7 +47,6 @@ public class InvenManager : MonoBehaviour
             slots[i].amountText = invenControl.transform.GetChild(i).Find("AmountText").GetComponent<TextMeshProUGUI>();
             slots[i].flavorText = invenControl.transform.GetChild(i).Find("FlavorText").GetComponent<TextMeshProUGUI>();
             slots[i].itemIcon = invenControl.transform.GetChild(i).Find("Slot").GetComponent<Image>();
-            invenControl.IconPositions.Add(slots[i].itemIcon);
             slots[i].itemInfo.SetItemValues();
             slots[i].itemInfoUpdate();
             Debug.Log(slots[i].itemInfo.ItemIndex);

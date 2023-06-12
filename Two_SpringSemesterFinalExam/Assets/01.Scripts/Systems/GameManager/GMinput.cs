@@ -20,9 +20,9 @@ public class GMinput : MonoBehaviour
             }
             else
             {
-                Time.timeScale = 0;
                 if (menuBar == null)
                 {
+                    Time.timeScale = 0;
                     menuBar = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Menu"),GameObject.Find("Canvas").transform);
                     menuBar.SetActive(true);
                 }
@@ -44,39 +44,51 @@ public class GMinput : MonoBehaviour
     }
     public void OnQKey(InputAction.CallbackContext ctx)
     {
-        if (questUI.activeSelf)
+        if (ctx.started)
         {
-            questUI.SetActive(false);
-        }
-        else
-        {
-            questUI.SetActive(true);
-            UIManager.Instance().UIStatck.Push(questUI);
+            if (questUI.activeSelf)
+            {
+                questUI.SetActive(false);
+                UIManager.Instance().UIStatck.Pop();
+            }
+            else
+            {
+                questUI.SetActive(true);
+                UIManager.Instance().UIStatck.Push(questUI);
+            }
         }
 
     }
     public void OnIKey(InputAction.CallbackContext ctx)
     {
-        if (inventoryUI.activeSelf)
+        if (ctx.started)
         {
-            inventoryUI.SetActive(false);
-        }
-        else
-        {
-            inventoryUI.SetActive(true);
-            UIManager.Instance().UIStatck.Push(inventoryUI);
+            if (inventoryUI.activeSelf)
+            {
+                inventoryUI.SetActive(false);
+                UIManager.Instance().UIStatck.Pop();
+            }
+            else
+            {
+                inventoryUI.SetActive(true);
+                UIManager.Instance().UIStatck.Push(inventoryUI);
+            }
         }
     }
     public void OnCKey(InputAction.CallbackContext ctx)
     {
-        if (charactorUI.activeSelf)
+        if (ctx.started)
         {
-            charactorUI.SetActive(false);
-        }
-        else
-        {
-            charactorUI.SetActive(true);
-            UIManager.Instance().UIStatck.Push(charactorUI);
+            if (charactorUI.activeSelf)
+            {
+                charactorUI.SetActive(false);
+                UIManager.Instance().UIStatck.Pop();
+            }
+            else
+            {
+                charactorUI.SetActive(true);
+                UIManager.Instance().UIStatck.Push(charactorUI);
+            }
         }
     }
 }
