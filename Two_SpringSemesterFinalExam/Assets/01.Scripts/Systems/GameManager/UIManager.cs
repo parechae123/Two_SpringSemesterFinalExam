@@ -123,12 +123,14 @@ public class UIManager : MonoBehaviour
                         ExpBar.value = EXP.nowExp - PrevEXP;
                     }
                     GameManager.GMinstance().playerStatSave.StatPoint += 5;
-                    break;
+                    if (EXP.nowExp<LV.EXP)
+                    {
+                        break;
+                    }
                 }
                 PrevEXP = LV.EXP;
             }
         }
-        //레벨테이블 구현필요
     }
     public struct EXPComps
     {

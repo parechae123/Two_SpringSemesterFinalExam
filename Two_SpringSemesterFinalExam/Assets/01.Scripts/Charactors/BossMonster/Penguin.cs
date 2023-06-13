@@ -4,15 +4,46 @@ using UnityEngine;
 
 public class Penguin : BossBase
 {
+    public float degreesToPlr;
+    private SpriteRenderer sr;
     // Start is called before the first frame update
     void Start()
     {
         base.StartSetting();
+        sr =GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        degreesToPlr = (Mathf.Atan2(transform.position.x - plrTR.position.x, transform.position.y - plrTR.position.y)) * Mathf.Rad2Deg;
+        if (plrTR.gameObject.activeSelf && atkDelay > 2)
+        {
+            if (plrTR.transform.position.y - transform.position.y >= 1f)
+            {
+                Debug.Log("if문1단");
+                transform.position = Vector3.MoveTowards(transform.position, plrTR.position, (stat.moveSpeed * Time.deltaTime) * 8f);
+                transform.rotation = Quaternion.AngleAxis(-degreesToPlr + 180, Vector3.forward);
+            }
+            else if (Physics2D.OverlapCircle(transform.TransformDirection(Vector3.down), 0.4f, 8))
+            {
+                if (Vector3.Distance(transform.position, plrTR.transform.position) < 15 && plrTR.transform.position.y - transform.position.y < 1f)
+                {
+                    Debug.Log("if문2단");
+                    transform.position = Vector3.MoveTowards(transform.position, plrTR.position, (stat.moveSpeed * Time.deltaTime) * 7f);
+                    transform.rotation = Quaternion.identity;
+                }
+            }
+        }
+
+        if (plrTR.position.x- transform.position.x > 0)
+        {
+            sr.flipX = false;
+        }
+        else if (plrTR.position.x - transform.position.x < 0)
+        {
+            sr.flipX = true;
+        }
         base.UpdateFunc();
     }
 }
