@@ -8,7 +8,7 @@ public class WindowExit : MonoBehaviour
     public void OnClickWindowExit()
     {
         Target.SetActive(false);
-        if (UIManager.Instance().UIStatck.Pop() == Target)
+        if (UIManager.Instance().UIStatck.Peek() == Target)
         {
             UIManager.Instance().UIStatck.Pop();
         }

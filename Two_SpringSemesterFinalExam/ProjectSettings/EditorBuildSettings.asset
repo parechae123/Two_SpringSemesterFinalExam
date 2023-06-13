@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/LoadingScene.unity
     guid: 29d1297b7d2c7454b8836f0aaa3d351e
+  - enabled: 1
+    path: Assets/00.Scenes/NorthFronterra.unity
+    guid: 5f28f06fe95280c4f88e13dbe86e63b0
   m_configObjects: {}
