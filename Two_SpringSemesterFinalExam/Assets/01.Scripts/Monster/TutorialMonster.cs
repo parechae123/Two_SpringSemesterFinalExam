@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.SearchService;
 using UnityEngine;
 
-public class TutorialMonster : Slime
+public class TutorialMonster : CommonMonsterMoves
 {
     public Transform playerTR;
     private void Awake()
@@ -13,8 +13,10 @@ public class TutorialMonster : Slime
         base.rb = GetComponent<Rigidbody2D>();
         monsterCol = GetComponent<BoxCollider2D>();
         base.sr = GetComponent<SpriteRenderer>();
-        StateSetter();
-        base.MoveSetting();
+        MonsterDropItem = new SlimeLiquid();
+        MonsterDropItem.SetItemValues();
+        MoveSetting();
+
     }
     private void Start()
     {

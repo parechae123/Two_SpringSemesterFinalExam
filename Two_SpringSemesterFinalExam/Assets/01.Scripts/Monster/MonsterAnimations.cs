@@ -7,6 +7,7 @@ public class MonsterAnimations : StatSystem
 {
     Vector3 knockBackValue;
     int damagedValue;
+    protected items MonsterDropItem;
     public StateMachine stateMachine;
     public Dictionary<string, MonsterStates> stateLists = new Dictionary<string, MonsterStates>();
     public Collider2D monsterCol;
@@ -16,6 +17,7 @@ public class MonsterAnimations : StatSystem
         stateMachine = new StateMachine();
         stateLists.Add("Die", new MonsterDie());
         stateLists["Die"].anim = GetComponent<Animator>();
+        stateLists["Die"].monsterOwnItem = MonsterDropItem;
         stateLists.Add("Damaged", new MonsterDamaged());
         stateLists["Damaged"].anim = GetComponent<Animator>();
         stateLists.Add("Run", new MonsterRun());

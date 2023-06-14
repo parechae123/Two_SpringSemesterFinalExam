@@ -8,6 +8,7 @@ public abstract class MonsterStates
 {
     public Animator anim;
     public string monsterType;
+    public items monsterOwnItem;
     public bool animTimer()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
@@ -77,6 +78,9 @@ public class MonsterDie : MonsterStates
 {
     public override void Enter()
     {
+        GameObject drobItem = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemBox"), anim.transform.position, Quaternion.identity);
+        ItemDropBox monsteritem = drobItem.GetComponent<ItemDropBox>();
+        monsteritem.DropItemSetting(monsterOwnItem);
         anim.Play("Die");
         SoundManager.Instance().SFXInput("Die"+"_"+monsterType);
     }

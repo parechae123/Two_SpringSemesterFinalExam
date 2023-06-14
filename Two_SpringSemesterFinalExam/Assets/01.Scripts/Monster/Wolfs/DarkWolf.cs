@@ -12,8 +12,7 @@ public class DarkWolf : CommonMonsterMoves
         base.rb = GetComponent<Rigidbody2D>();
         monsterCol = GetComponent<BoxCollider2D>();
         base.sr = GetComponent<SpriteRenderer>();
-        StateSetter();
-        base.MoveSetting();
+        MoveSetting();
         stateLists.Add("FindPlayer", new MobFindPlayer());
         stateLists["FindPlayer"].anim = GetComponent<Animator>();
 
