@@ -16,7 +16,7 @@ public class InventorySlot
         amountText.text = itemAmount.ToString();
         flavorText.text = itemInfo.flavorText;
         itemIcon.sprite = Resources.Load<Sprite>(itemInfo.iconPath);
-        if(itemAmount <= 0)
+        if (itemAmount <= 0)
         {
             itemInfo = new NullSlot();
             amountText.text = "";

@@ -55,7 +55,10 @@ public class NullSlot : items
     }
     public override void ItemEffect()
     {
-
+        GameManager.GMinstance().playerStatSave.maxHp += 10;
+        GameManager.GMinstance().plrStat.stat.maxHp += 10;
+        UIManager.Instance().StatusTextUpdate("hp");
+        UIManager.Instance().HPValueChanged();
     }
 }
 public class SlimeLiquid : items
@@ -68,7 +71,9 @@ public class SlimeLiquid : items
     }
     public override void ItemEffect()
     {
-        
+        GameManager.GMinstance().playerStatSave.moveSpeed += 1;
+        GameManager.GMinstance().plrStat.stat.moveSpeed += 1;
+        UIManager.Instance().StatusTextUpdate("moveSpeed");
     }
 }
 public class Bow : items
@@ -81,7 +86,6 @@ public class Bow : items
     }
     public override void ItemEffect()
     {
-
         GameManager.GMinstance().playerStatSave.atk += 10;
         GameManager.GMinstance().plrStat.stat.atk += 10;
         UIManager.Instance().StatusTextUpdate("atk");

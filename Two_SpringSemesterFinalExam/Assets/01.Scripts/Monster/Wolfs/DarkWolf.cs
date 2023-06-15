@@ -12,14 +12,16 @@ public class DarkWolf : CommonMonsterMoves
         base.rb = GetComponent<Rigidbody2D>();
         monsterCol = GetComponent<BoxCollider2D>();
         base.sr = GetComponent<SpriteRenderer>();
-        MoveSetting();
         stateLists.Add("FindPlayer", new MobFindPlayer());
         stateLists["FindPlayer"].anim = GetComponent<Animator>();
-
+        stateLists["FindPlayer"].monsterType = this.GetType().ToString();
+        MonsterDropItem = new Bow();
+        MonsterDropItem.SetItemValues();
+        MoveSetting();
     }
     protected override void MobFuncType()
     {
-        if (!isWolfPlayerFind)
+        if (!isWolfPlayerFind&&stateMachine.CharactorNowState != stateLists["Die"])
         {
             if (Physics2D.OverlapCircle(transform.position, 5, 128))
             {

@@ -103,12 +103,23 @@ public class PlayerCTRL : PlayerAnimations
             UIManager.Instance().isQuestDone(true);
         }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1, 256);
-        if (hit)
+        RaycastHit2D ItemHit = Physics2D.CircleCast(transform.position,cc.bounds.extents.x,Vector2.zero,0,1024);
+        if(ctx.started&&anchorLenght < 0)
         {
-            Debug.Log("Æ÷Å»°¨Áö");
-            if (hit.collider.gameObject.TryGetComponent<Portal>(out Portal TargetPortal))
+            if (hit)
             {
-                TargetPortal.PortalActivate();
+                Debug.Log("Æ÷Å»°¨Áö");
+                if (hit.collider.gameObject.TryGetComponent<Portal>(out Portal TargetPortal))
+                {
+                    TargetPortal.PortalActivate();
+                }
+            }
+            if (ItemHit)
+            {
+                if (ItemHit.collider.gameObject.TryGetComponent<ItemDropBox>(out ItemDropBox Box))
+                {
+                    Box.ItemInteraction();
+                }
             }
         }
     }

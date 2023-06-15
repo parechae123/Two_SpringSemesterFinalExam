@@ -132,6 +132,10 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    public void GameOverCall()
+    {
+         GameObject OverBTN= Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/GameOver"),ExpBar.transform.parent );
+    }
     public struct EXPComps
     {
         public int nowLevel;

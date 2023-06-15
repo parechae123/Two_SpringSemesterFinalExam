@@ -33,12 +33,12 @@ public class LoadSceneSetting : MonoBehaviour
             LoadingBar.value = isNextSceneReady.progress;
             yield return null;
         }
+        SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
         while (LoadingBar.value < 1)
         {
             LoadingBar.value += 0.01f; 
             yield return null;
         }
-        SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
         isNextSceneReady.allowSceneActivation = true;
         yield return null;
         GameObject.Find("Player").transform.position = newPos;
@@ -49,6 +49,5 @@ public class LoadSceneSetting : MonoBehaviour
         Destroy(Camera.main.gameObject);
         Camera.main.gameObject.GetComponent<CameraControll>().ChangeBGsprite(StageName);
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("LoadingScene"));
-
     }
 }

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public SavedStats playerStatSave;
     public Queue<GameObject> nonActivateArrows = new Queue<GameObject>();
     public StatSystem plrStat;
+    public Queue<GameObject> respawnQueue = new Queue<GameObject>(); 
     #endregion
     #region 저장
     [System.Serializable]
@@ -114,6 +115,23 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(StageName);
         }
+
+    }
+    public void respawnQ(GameObject deadMonster)
+    {
+        deadMonster.gameObject.SetActive(false);
+        respawnQueue.Enqueue(deadMonster);
+        Debug.Log("리스폰큐");
+        StartCoroutine(RespawnCo());
+    }
+    IEnumerator RespawnCo()
+    {
+        yield return new WaitForSeconds(5);
+        GameObject respawnedMonster = respawnQueue.Dequeue();
+        CommonMonsterMoves CMM = respawnedMonster.GetComponent<CommonMonsterMoves>();
+        CMM.stateMachine.ChangeState(CMM.stateLists["Run"]);
+        CMM.stat.hp = CMM.stat.maxHp;
+        respawnedMonster.SetActive(true);
 
     }
     #endregion

@@ -8,6 +8,7 @@ public class StatSystem : MonoBehaviour
 {
     public Rigidbody2D rb;
     [SerializeField] public BaseStats stat;
+    public float dizzyGage;
     [System.Serializable]
     public struct BaseStats
     {

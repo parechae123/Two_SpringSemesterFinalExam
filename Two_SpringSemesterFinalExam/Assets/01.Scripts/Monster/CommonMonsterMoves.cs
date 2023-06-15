@@ -14,9 +14,10 @@ public class CommonMonsterMoves : MonsterAnimations
     protected void MoveSetting()
     {
         StateSetter();
-        whatIsGround =  LayerMask.GetMask("Ground");
+        whatIsGround = LayerMask.GetMask("Ground");
         stateMachine.ChangeState(stateLists["Run"]);
         stateLists["Die"].monsterType = this.GetType().ToString();
+        stateLists["Damaged"].monsterType = this.GetType().ToString();
     }
     public void Update()
     {
@@ -34,10 +35,7 @@ public class CommonMonsterMoves : MonsterAnimations
             rb.velocity = Vector2.zero;
             monsterDir = monsterDir * -1;
         }
-        if (stateMachine.CharactorNowState != stateLists["Die"])
-        {
-            stateMachine.StateUpdate(this);
-        }
+        stateMachine.StateUpdate(this);
         if (stateMachine.CharactorNowState.animTimer())
         {
             rb.velocity = new Vector2(monsterDir * stat.moveSpeed, rb.velocity.y);

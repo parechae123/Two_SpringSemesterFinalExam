@@ -65,8 +65,11 @@ public class MonsterDamaged : MonsterStates
     {
         if (animTimer())
         {
-            Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Run"]);
+            if (this.GetType().ToString() == "DragonMan")
+            {
+                MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Idle"]);
+            }
         }
     }
     public override void Exit()
@@ -88,8 +91,9 @@ public class MonsterDie : MonsterStates
     {
         if (animTimer())
         {
-            Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-            MonsterAnimation.gameObject.SetActive(false);
+            GameManager.GMinstance().respawnQ(MonsterAnimation.gameObject);
+            MonsterAnimation.monsterCol.enabled = true;
+            MonsterAnimation.rb.bodyType = RigidbodyType2D.Dynamic;
         }
         else
         {
@@ -116,6 +120,58 @@ public class MobFindPlayer : MonsterStates
         {
             Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime+"몬스터 마주함");
             MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Run"]);
+        }
+    }
+    public override void Exit()
+    {
+
+    }
+}
+public class Fly : MonsterStates
+{
+    public override void Enter()
+    {
+        anim.Play("Fly");
+    }
+    public override void StateLive(MonsterAnimations MonsterAnimation)
+    {
+
+    }
+    public override void Exit()
+    {
+
+    }
+}
+public class MonsterDizzy : MonsterStates
+{
+    public override void Enter()
+    {
+        anim.Play("Dizzy");
+    }
+    public override void StateLive(MonsterAnimations MonsterAnimation)
+    {
+        if (animTimer())
+        {
+            Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime + "몬스터 마주함");
+            MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Idle"]);
+        }
+    }
+    public override void Exit()
+    {
+
+    }
+}
+public class MonsterAttack : MonsterStates
+{
+    public override void Enter()
+    {
+        anim.Play("Attack");
+    }
+    public override void StateLive(MonsterAnimations MonsterAnimation)
+    {
+        if (animTimer())
+        {
+            MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Idle"]);
         }
     }
     public override void Exit()

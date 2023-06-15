@@ -9,8 +9,10 @@ public class Penguin : BossBase
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        MonsterDropItem = new HeadArmor();
+        MonsterDropItem.SetItemValues();
         base.StartSetting();
-        sr =GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -19,23 +21,30 @@ public class Penguin : BossBase
         degreesToPlr = (Mathf.Atan2(transform.position.x - plrTR.position.x, transform.position.y - plrTR.position.y)) * Mathf.Rad2Deg;
         if (plrTR.gameObject.activeSelf && atkDelay > 2)
         {
-            if (plrTR.transform.position.y - transform.position.y >= 1f)
+            if (Physics2D.OverlapCircle(transform.position - Vector3.down, 0.01f, 8))
             {
-                Debug.Log("if문1단");
-                transform.position = Vector3.MoveTowards(transform.position, plrTR.position, (stat.moveSpeed * Time.deltaTime) * 8f);
-                transform.rotation = Quaternion.AngleAxis(-degreesToPlr + 180, Vector3.forward);
-            }
-            else if (Physics2D.OverlapCircle(transform.TransformDirection(Vector3.down), 0.4f, 8))
-            {
-                if (Vector3.Distance(transform.position, plrTR.transform.position) < 15 && plrTR.transform.position.y - transform.position.y < 1f)
+                Debug.Log("오버랩사이클 통과");
+                if (Vector3.Distance(transform.position, plrTR.transform.position) < 15)
                 {
                     Debug.Log("if문2단");
                     transform.position = Vector3.MoveTowards(transform.position, plrTR.position, (stat.moveSpeed * Time.deltaTime) * 7f);
                     transform.rotation = Quaternion.identity;
                 }
             }
-        }
+            else if (plrTR.position.y - transform.position.y >= 0.4f)
+            {
+                Debug.Log("if문1단");
 
+                transform.position = Vector3.MoveTowards(transform.position, plrTR.position, (stat.moveSpeed * Time.deltaTime) * 8f);
+                transform.rotation = Quaternion.AngleAxis(-degreesToPlr + 180, Vector3.forward);
+                if (atkDelay > 5)
+                {
+                    atkDelay = 0;
+                }
+            }
+
+
+        }
         if (plrTR.position.x- transform.position.x > 0)
         {
             sr.flipX = false;

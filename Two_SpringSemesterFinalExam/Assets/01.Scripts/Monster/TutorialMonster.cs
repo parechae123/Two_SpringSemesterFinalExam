@@ -20,7 +20,7 @@ public class TutorialMonster : CommonMonsterMoves
     }
     private void Start()
     {
-        playerTR = GameObject.Find("Player").transform;
+        playerTR = GameManager.GMinstance().plrStat.gameObject.transform;
     }
     protected override void MobFuncType()
     {

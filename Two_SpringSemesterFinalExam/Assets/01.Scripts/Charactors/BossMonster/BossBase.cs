@@ -14,8 +14,15 @@ public class BossBase : MonsterAnimations
         rb = GetComponent<Rigidbody2D>();
         monsterCol = GetComponent<Collider2D>();
         MonsterSettingStats(190,15,3,190,5,60);
+        dizzyGage = 30;
         plrTR = GameManager.GMinstance().plrStat.gameObject.transform;
         plrAnim = GameManager.GMinstance().plrStat.gameObject.GetComponent<PlayerAnimations>();
+        stateMachine.ChangeState(stateLists["Run"]);
+        stateLists["Die"].monsterType = this.GetType().ToString();
+        stateLists["Damaged"].monsterType = this.GetType().ToString();
+        stateLists.Add("Fly", new Fly());
+        stateLists["Fly"].anim = GetComponent<Animator>();
+        stateLists["Fly"].monsterType = this.GetType().ToString();
     }
     protected void UpdateFunc()
     {

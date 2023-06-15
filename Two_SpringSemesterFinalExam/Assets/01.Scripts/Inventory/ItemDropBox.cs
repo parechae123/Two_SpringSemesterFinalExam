@@ -10,7 +10,6 @@ public class ItemDropBox : MonoBehaviour
     public void Awake()
     {
         amounts = Random.Range(1, 4);
-        ItemIMG = GetComponent<SpriteRenderer>();
     }
     public void DropItemSetting(items monsterDrobsThis)
     {
@@ -21,5 +20,6 @@ public class ItemDropBox : MonoBehaviour
     public void ItemInteraction()
     {
         InvenManager.InventoryInstance().GetItem(DropItemInfo, amounts);
+        Destroy(this.gameObject);
     }
 }

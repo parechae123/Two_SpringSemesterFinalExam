@@ -628,7 +628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23912379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.5, y: 20.36, z: 0}
+  m_LocalPosition: {x: 15.5, y: 22.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -761,7 +761,7 @@ Animator:
   m_GameObject: {fileID: 23912379}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b5b01426e20ee84197526db300bd97f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2733,6 +2733,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &437748553
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6847316718315375498, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: StageName
+      value: BossRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375498, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: nextStagePosition.x
+      value: -26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375498, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: nextStagePosition.y
+      value: 18.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_RootOrder
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 120.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 67.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375499, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847316718315375542, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
+      propertyPath: m_Name
+      value: Portal (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
 --- !u!1 &530790339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +4705,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 38
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &973668408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 973668410}
+  - component: {fileID: 973668409}
+  m_Layer: 0
+  m_Name: StartBGMInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &973668409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973668408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012d7ecdcdec88a48bccbe47fd1d934a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMname: NorthFronterra
+--- !u!4 &973668410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973668408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0271072, y: 1.9486587, z: -0.03608622}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046805539
 GameObject:

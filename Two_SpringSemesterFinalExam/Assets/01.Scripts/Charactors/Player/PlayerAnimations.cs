@@ -88,16 +88,17 @@ public class PlayerAnimations : StatSystem
             while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.8f)
             {
                 yield return null;
-                Debug.Log("animationtime before 099");
                 rb.velocity = Vector2.zero;
             }
             gameObject.SetActive(false);
+            base.SettingStats(100, 20, 6, 100, 5);
+            base.SavePlrStats();
+            UIManager.Instance().GameOverCall();
         }
         SoundManager.Instance().SFXInput("PlayerDamaged");
         anim.Play(CharactorState.ToString(), 0);
         Debug.Log(damagedValue + "만큼 감소");
         Vector3 DamageDirection = transform.position - knockBackValue;
-        Debug.Log(DamageDirection);
         rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(DamageDirection.x * 6, Mathf.Abs(DamageDirection.y * 3));
         yield return new WaitForSeconds(0.2f);

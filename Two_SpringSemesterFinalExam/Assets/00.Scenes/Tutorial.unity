@@ -2372,7 +2372,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 8110b250c410ade45b898fef906697ef, type: 2}
     - target: {fileID: 6847316718315375498, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
       propertyPath: StageName
-      value: NorthFronterra
+      value: BossRoom
       objectReference: {fileID: 0}
     - target: {fileID: 6847316718315375498, guid: 3f3d88a2ae89d3e429e6c0b86ff7eebf, type: 3}
       propertyPath: nextStagePosition.y
@@ -3629,6 +3629,7 @@ MonoBehaviour:
   monsterCol: {fileID: 0}
   plrTR: {fileID: 0}
   plrAnim: {fileID: 0}
+  atkDelay: 0
   degreesToPlr: 0
 --- !u!95 &1507148336
 Animator:
@@ -9917,6 +9918,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6319457589998852428, guid: d0393c0e51a10b1419f461036fca648f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ee99b6b7b2fb0a54592fcab7d4f4917c, type: 3}
     - target: {fileID: 6319457589998852428, guid: d0393c0e51a10b1419f461036fca648f, type: 3}
       propertyPath: m_SortingOrder
       value: 4
