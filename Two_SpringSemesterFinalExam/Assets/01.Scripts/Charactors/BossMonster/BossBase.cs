@@ -17,7 +17,10 @@ public class BossBase : MonsterAnimations
         dizzyGage = 30;
         plrTR = GameManager.GMinstance().plrStat.gameObject.transform;
         plrAnim = GameManager.GMinstance().plrStat.gameObject.GetComponent<PlayerAnimations>();
-        stateMachine.ChangeState(stateLists["Run"]);
+        if (this.GetType().ToString() != "DragonMan")
+        {
+            stateMachine.ChangeState(stateLists["Run"]);
+        }
         stateLists["Die"].monsterType = this.GetType().ToString();
         stateLists["Damaged"].monsterType = this.GetType().ToString();
         stateLists.Add("Fly", new Fly());

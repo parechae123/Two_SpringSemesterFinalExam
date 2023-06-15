@@ -15,7 +15,7 @@ public class MonsterAnimations : StatSystem
     public void StateSetter()
     {
         stateMachine = new StateMachine();
-        stateLists.Add("Idle", new MonsterDie());
+        stateLists.Add("Idle", new MonsterIdle());
         stateLists["Idle"].anim = GetComponent<Animator>();
         stateLists["Idle"].monsterOwnItem = MonsterDropItem;
         stateLists.Add("Die", new MonsterDie());
@@ -25,7 +25,10 @@ public class MonsterAnimations : StatSystem
         stateLists["Damaged"].anim = GetComponent<Animator>();
         stateLists.Add("Run", new MonsterRun());
         stateLists["Run"].anim = GetComponent<Animator>();
-        stateMachine.ChangeState(stateLists["Run"]);
+        if (this.GetType().ToString() != "DragonMan")
+        {
+            stateMachine.ChangeState(stateLists["Run"]);
+        }
     }
     public bool isDamagedMonster()
     {

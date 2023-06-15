@@ -65,10 +65,13 @@ public class MonsterDamaged : MonsterStates
     {
         if (animTimer())
         {
-            MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Run"]);
             if (this.GetType().ToString() == "DragonMan")
             {
                 MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Idle"]);
+            }
+            else
+            {
+                MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Run"]);
             }
         }
     }
@@ -166,6 +169,25 @@ public class MonsterAttack : MonsterStates
     public override void Enter()
     {
         anim.Play("Attack");
+    }
+    public override void StateLive(MonsterAnimations MonsterAnimation)
+    {
+        if (animTimer())
+        {
+            MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Idle"]);
+            Debug.Log("");
+        }
+    }
+    public override void Exit()
+    {
+
+    }
+}
+public class MonsterBreath : MonsterStates
+{
+    public override void Enter()
+    {
+        anim.Play("Breath");
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {
