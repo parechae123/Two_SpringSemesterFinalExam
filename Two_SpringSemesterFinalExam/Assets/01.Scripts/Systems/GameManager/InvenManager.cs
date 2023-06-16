@@ -10,6 +10,8 @@ public class InvenManager : MonoBehaviour
     public InventoryController invenControl;
     public List<InventorySlot> slots = new List<InventorySlot>();
     private static InvenManager inventoryInstance;
+    public int playerGold;
+    public TextMeshProUGUI goldText;
     public static InvenManager InventoryInstance()
     {
         return inventoryInstance;
@@ -87,6 +89,39 @@ public class InvenManager : MonoBehaviour
                 break;
             }
         }
+    }
+    public void PlayerBuyItem(int sellAmount, items targetItem)
+    {
+        playerGold -= sellAmount;
+        GoldChanged();
+
+    }
+    public void PlayerSellItem(int sellAmount,items targetItem)
+    {
+        playerGold += sellAmount;
+        GoldChanged();
+        targetItem.SetItemValues();
+        foreach (var item in slots)
+        {
+            if (item.itemInfo.ItemIndex == targetItem.ItemIndex && item.itemAmount + 1 < 255)
+            {
+                Debug.Log("아이템 이름 같음");
+                item.itemAmount += 1;
+                item.itemInfoUpdate();
+                break;
+            }
+            else if (item.itemInfo.ItemIndex == 0)//인벤칸의 아이템 정보가 없을시 매개변수로 받은 정보를 넣어주고 이미지와 수량을 넣어준다
+            {
+                item.itemInfo = targetItem;
+                item.itemAmount += 1;
+                item.itemInfoUpdate();
+                break;
+            }
+        }
+    }
+    public void GoldChanged()
+    {
+        goldText.text = playerGold.ToString();
     }
 
 }
