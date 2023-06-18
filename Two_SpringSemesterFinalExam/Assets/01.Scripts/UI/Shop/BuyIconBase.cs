@@ -19,6 +19,9 @@ public class BuyIconBase : MonoBehaviour
                 merchantIcons.Add(BTN);
                 //이름을 클래스로 받아오는걸 한번 찾아봐야될듯
             }
+            iconByItem.Add(new Bow());
+            iconByItem.Add(new HPpotion());
+            iconByItem.Add(new SlimeLiquid());
         }
     }
 }
