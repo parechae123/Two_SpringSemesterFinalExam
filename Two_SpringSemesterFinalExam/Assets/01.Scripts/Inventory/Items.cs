@@ -5,6 +5,7 @@ public abstract class items
 {
     public string flavorText;
     public string iconPath;
+    public int ItemValue;
     public int ItemIndex;
     public abstract void SetItemValues();
     public abstract void ItemEffect();
@@ -15,6 +16,7 @@ public class HPpotion : items
     {
         flavorText = "Æ÷¼ÇÀÌ´ç~";
         iconPath = "ItemIcon/Potion";
+        ItemValue = 10;
         ItemIndex = 1;
     }
     public override void ItemEffect()
@@ -34,6 +36,7 @@ public class HeadArmor : items
         Debug.Log("Çï¸ä");
         flavorText = "Çï¸äÀÌ´ç~";
         iconPath = "ItemIcon/helmets";
+        ItemValue = 10;
         ItemIndex = 100;
     }
     public override void ItemEffect()
@@ -67,6 +70,7 @@ public class SlimeLiquid : items
     {
         flavorText = "²öÀû²öÀû";
         iconPath = "ItemIcon/mp";
+        ItemValue = 10;
         ItemIndex = 200;
     }
     public override void ItemEffect()
@@ -82,6 +86,7 @@ public class Bow : items
     {
         flavorText = "¶¯¶¯";
         iconPath = "ItemIcon/bow";
+        ItemValue = 10;
         ItemIndex = 101;
     }
     public override void ItemEffect()

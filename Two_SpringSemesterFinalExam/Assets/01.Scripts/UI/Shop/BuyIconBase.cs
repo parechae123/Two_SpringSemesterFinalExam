@@ -8,20 +8,27 @@ using UnityEngine.UI;
 
 public class BuyIconBase : MonoBehaviour
 {
-    public List<Button> merchantIcons = new List<Button>();
-    public List<items> iconByItem = new List<items>();
+    public List<ShopSlot> merchantIcons = new List<ShopSlot>();
+    private GameObject storeUI;
     private void Start()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if(transform.GetChild(i).TryGetComponent<Button>(out Button BTN))
+            if(transform.GetChild(i).gameObject.TryGetComponent<ShopSlot>(out ShopSlot output))
             {
-                merchantIcons.Add(BTN);
-                //이름을 클래스로 받아오는걸 한번 찾아봐야될듯
+                merchantIcons.Add(output);
             }
-            iconByItem.Add(new Bow());
-            iconByItem.Add(new HPpotion());
-            iconByItem.Add(new SlimeLiquid());
         }
+        merchantIcons[0].itemInfo = new Bow();
+        merchantIcons[1].itemInfo = new HPpotion();
+        merchantIcons[2].itemInfo = new SlimeLiquid();
+        merchantIcons[3].itemInfo = new HeadArmor();
+        for (int i = 0; i < merchantIcons.Count; i++)
+        {
+            merchantIcons[i].itemInfo.SetItemValues();
+            merchantIcons[i].transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(merchantIcons[i].itemInfo.iconPath);
+        }
+        storeUI = this.gameObject;
+        storeUI.SetActive(false);
     }
 }
