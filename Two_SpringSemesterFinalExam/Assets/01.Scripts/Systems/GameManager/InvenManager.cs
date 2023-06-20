@@ -90,10 +90,15 @@ public class InvenManager : MonoBehaviour
             }
         }
     }
-    public void PlayerBuyItem(int sellAmount, items targetItem)
+    public void PlayerBuyItem(items targetItem)
     {
-        playerGold -= sellAmount;
-        GoldChanged();
+        if (InvenManager.InventoryInstance().playerGold - targetItem.ItemValue >= 0)
+        {
+            playerGold -= targetItem.ItemValue;
+            GetItem(targetItem,1);
+            GoldChanged();
+        }
+
 
     }
     public void PlayerSellItem(int sellAmount,items targetItem)

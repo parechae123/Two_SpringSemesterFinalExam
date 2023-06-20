@@ -89,6 +89,8 @@ public class MonsterDie : MonsterStates
         monsteritem.DropItemSetting(monsterOwnItem);
         anim.Play("Die");
         SoundManager.Instance().SFXInput("Die"+"_"+monsterType);
+        InvenManager.InventoryInstance().playerGold += Random.Range(0,50);
+        InvenManager.InventoryInstance().GoldChanged();
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {

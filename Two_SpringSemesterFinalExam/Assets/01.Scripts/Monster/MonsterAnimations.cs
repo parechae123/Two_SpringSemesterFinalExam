@@ -73,7 +73,6 @@ public class MonsterAnimations : StatSystem
         {
             stateMachine.ChangeState(stateLists["Die"]);
             UIManager.Instance().GetEXP(stat.exp);
-            InvenManager.InventoryInstance().playerGold += 100;
         }
     }
 }

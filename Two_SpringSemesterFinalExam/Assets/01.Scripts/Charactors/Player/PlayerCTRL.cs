@@ -103,7 +103,7 @@ public class PlayerCTRL : PlayerAnimations
             UIManager.Instance().isQuestDone(true);
         }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1, 256);
-        RaycastHit2D ItemHit = Physics2D.CircleCast(transform.position,cc.bounds.extents.x,Vector2.zero,0,1024);
+        RaycastHit2D ItemHit = Physics2D.CircleCast(transform.position,cc.bounds.extents.x,Vector2.zero,1,1024);
         if(ctx.started&&anchorLenght < 0)
         {
             if (hit)

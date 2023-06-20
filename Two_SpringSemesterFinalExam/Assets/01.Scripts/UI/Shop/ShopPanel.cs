@@ -1,20 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyIconBase : MonoBehaviour
+public class ShopPanel : MonoBehaviour
 {
     public List<ShopSlot> merchantIcons = new List<ShopSlot>();
     private GameObject storeUI;
     private void Start()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
-            if(transform.GetChild(i).gameObject.TryGetComponent<ShopSlot>(out ShopSlot output))
+            if(transform.GetChild(0).GetChild(i).gameObject.TryGetComponent<ShopSlot>(out ShopSlot output))
             {
                 merchantIcons.Add(output);
             }
@@ -30,5 +28,9 @@ public class BuyIconBase : MonoBehaviour
         }
         storeUI = this.gameObject;
         storeUI.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        UIManager.Instance().UIStatck.Push(this.gameObject);
     }
 }
