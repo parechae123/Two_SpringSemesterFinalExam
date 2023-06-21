@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     public LevelTable LT;
     private static UIManager instance;
     public StatusWindow SW;
-
+    public DiaLogSystem DiaSystem;
     public static UIManager Instance()
     {
         return instance;

@@ -1,0 +1,370 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a49da1d737d0c439577c118175d6e4, type: 3}
+  m_Name: DialogDatas
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: DialogOne
+    list:
+    - index: -100
+      speakerUIindex: 0
+      name: ' '
+      dialogue: "\uB300\uD654 \uB05D"
+      characterPath: N
+      tweenType: -100
+      nextindex: -100
+      SoundPath: N
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 0
+      speakerUIindex: 0
+      name: "\uB178\uC778"
+      dialogue: "\uC7A0\uC2DC \uB0B4 \uB9D0\uC880 \uB4E4\uC5B4\uBCF4\uAC8C\uB098.."
+      characterPath: Kane_Unknown
+      tweenType: 1
+      nextindex: 0
+      SoundPath: 0_1
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 1
+      speakerUIindex: 0
+      name: "\uD50C\uB808\uC774\uC5B4"
+      dialogue: "\uB124?"
+      characterPath: Player_Normal
+      tweenType: 2
+      nextindex: 0
+      SoundPath: 0_2
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 2
+      speakerUIindex: 0
+      name: "\uB178\uC778"
+      dialogue: "\uB9C8\uC744 \uC8FC\uBCC0\uC758 \uBAAC\uC2A4\uD130\uB97C \uC880
+        \uCC98\uCE58\uD574\uC8FC\uAC8C"
+      characterPath: Kane_Normal
+      tweenType: 3
+      nextindex: 1
+      SoundPath: 0_3
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 3
+      speakerUIindex: 0
+      name: "\uD50C\uB808\uC774\uC5B4"
+      dialogue: "\uC81C\uAC00\uC694?"
+      characterPath: Player_Normal
+      tweenType: 4
+      nextindex: 2
+      SoundPath: 0_4
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 4
+      speakerUIindex: 0
+      name: "\uB178\uC778"
+      dialogue: "\u3147\u3147"
+      characterPath: Kane_Angry
+      tweenType: 5
+      nextindex: 3
+      SoundPath: 0_5
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 5
+      speakerUIindex: 0
+      name: "\uD50C\uB808\uC774\uC5B4"
+      dialogue: "\uC774\uAC78\uC694? \uC65C\uC694?"
+      characterPath: Player_Normal
+      tweenType: 6
+      nextindex: 4
+      SoundPath: 0_6
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 6
+      speakerUIindex: 0
+      name: "\uB178\uC778"
+      dialogue: "\uC794\uB9D0\uB9D0\uACE0"
+      characterPath: Kane_Normal
+      tweenType: 7
+      nextindex: 5
+      SoundPath: 0_7
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 7
+      speakerUIindex: 0
+      name: "\uC2DC\uC2A4\uD15C"
+      dialogue: "\uC5B4\uB5A4 \uBAAC\uC2A4\uD130\uB97C \uCC98\uCE58\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
+      characterPath: System
+      tweenType: 8
+      nextindex: 6
+      SoundPath: 0_8
+      isOnOption: 1
+      selection1: "\uC2AC\uB77C\uC784"
+      selection2: "\uB291\uB300"
+    - index: 8
+      speakerUIindex: 0
+      name: "\uB178\uC778"
+      dialogue: "\uC794\uB9D0\uB9D0\uACE0"
+      characterPath: Kane_Normal
+      tweenType: 9
+      nextindex: 5
+      SoundPath: 0_9
+      isOnOption: 0
+      selection1: N
+      selection2: N
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 
+    - index: 0
+      speakerUIindex: 0
+      name: 
+      dialogue: 
+      characterPath: 
+      tweenType: 0
+      nextindex: 0
+      SoundPath: 
+      isOnOption: 0
+      selection1: 
+      selection2: 

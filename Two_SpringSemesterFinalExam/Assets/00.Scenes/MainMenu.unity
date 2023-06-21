@@ -1251,6 +1251,37 @@ MonoBehaviour:
   SceneName: SaveMenu
   isNextStageisInGame: 0
   NextSceneStartPoint: {x: 0, y: 0, z: 0}
+--- !u!1 &1864498155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1351313882406579668, guid: 91791d7f059b0454ca7e47fa9c3beefa, type: 3}
+  m_PrefabInstance: {fileID: 1351313882387001755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1864498158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864498155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a55a68280b95bdc4d8764530995178fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetText: {fileID: 0}
+  allData: {fileID: 11400000, guid: feec5aee5bd57724f8ea9ce4825ca241, type: 2}
+  nowData:
+    index: 0
+    speaker: 
+    speakerSpriteResource: 
+    soundResource: 
+    dialog: 
+    nextIndex: 0
+    prevIndex: 0
+    isOnOption: 0
+    selection1: 
+    selection2: 
+  dialogText: {fileID: 0}
 --- !u!1 &1981464217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,6 +1673,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1351313882406579659, guid: 91791d7f059b0454ca7e47fa9c3beefa, type: 3}
+      propertyPath: DiaSystem
+      value: 
+      objectReference: {fileID: 1864498158}
     - target: {fileID: 1351313882406579668, guid: 91791d7f059b0454ca7e47fa9c3beefa, type: 3}
       propertyPath: m_Name
       value: UIManager
