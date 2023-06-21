@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 
-public class DiaLogSystem : DiaLogSystemParent
+public class DiaLogSystem : MonoBehaviour
 {
     [SerializeField]
     private SpeakerUI[] speakers;                       //대화에 참여하는 캐릭터들의 UI 배열
