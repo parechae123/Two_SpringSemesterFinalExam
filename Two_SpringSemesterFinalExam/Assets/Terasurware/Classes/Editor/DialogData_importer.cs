@@ -7,10 +7,10 @@ using NPOI.HSSF.UserModel;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
 
-public class DialogDatas_importer : AssetPostprocessor {
-	private static readonly string filePath = "Assets/09.DataBaseXMLs/DialogDatas.xls";
-	private static readonly string exportPath = "Assets/09.DataBaseXMLs/DialogDatas.asset";
-	private static readonly string[] sheetNames = { "DialogOne", };
+public class DialogData_importer : AssetPostprocessor {
+	private static readonly string filePath = "Assets/09.DataBaseXMLs/DialogData.xls";
+	private static readonly string exportPath = "Assets/09.DataBaseXMLs/DialogData.asset";
+	private static readonly string[] sheetNames = { "Sheet1", };
 	
 	static void OnPostprocessAllAssets (string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
 	{
