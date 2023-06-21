@@ -69,7 +69,7 @@ public class MonsterDamaged : MonsterStates
             {
                 MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Idle"]);
             }
-            else
+            else if (this.GetType().ToString() != "DragonMan")
             {
                 MonsterAnimation.stateMachine.ChangeState(MonsterAnimation.stateLists["Run"]);
             }
