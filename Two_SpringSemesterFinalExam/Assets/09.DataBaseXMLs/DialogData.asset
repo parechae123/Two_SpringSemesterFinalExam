@@ -107,15 +107,15 @@ MonoBehaviour:
     - index: 8
       speakerUIindex: 0
       name: "\uB178\uC778"
-      dialogue: "\uC794\uB9D0\uB9D0\uACE0"
+      dialogue: "\uD788\uD788"
       characterPath: Kane_Normal
       tweenType: 0
-      nextindex: 9
+      nextindex: -100
       SoundPath: 0_9
       isOnOption: 0
       selection1: None
       selection2: None
-    - index: 9
+    - index: -100
       speakerUIindex: 2
       name: None
       dialogue: "\uB300\uD654 \uB05D"

@@ -11,6 +11,8 @@ public class DiaLogSystem : MonoBehaviour
     private SpeakerUI[] speakers;                       //대화에 참여하는 캐릭터들의 UI 배열
     [SerializeField]
     private DialogData[] dialogs;                       //현재 분기의 대사 목록 배열
+    public Button[] selections;
+    public TextMeshProUGUI[] selectionText;
     [SerializeField]
     private bool DialogInit = true;                     //자동 시작 여부
     [SerializeField]
@@ -41,6 +43,10 @@ public class DiaLogSystem : MonoBehaviour
                 dialogs[ArrayCursor].characterPath = param.characterPath;
                 dialogs[ArrayCursor].tweenType = param.tweenType;
                 dialogs[ArrayCursor].nextindex = param.nextindex;
+                dialogs[ArrayCursor].isOnOption = param.isOnOption;
+                dialogs[ArrayCursor].voicePath = param.SoundPath;
+                dialogs[ArrayCursor].selectionText1 = param.selection1;
+                dialogs[ArrayCursor].selectionText2 = param.selection2;
                 ArrayCursor += 1;
             }
         }
@@ -93,7 +99,16 @@ public class DiaLogSystem : MonoBehaviour
         if (dialogs[currentDialogIndex].characterPath != "None") //None이 아닐경우 DB에 넣어놓은 경로의 캐릭터 이미지를 가져온다.
         {
             speakers[currentSpeakerIndex].imgCharacter.sprite =
-                Resources.Load<Sprite>(dialogs[currentDialogIndex].characterPath);
+            Resources.Load<Sprite>(dialogs[currentDialogIndex].characterPath);
+            selections[0].gameObject.SetActive(false);
+            selections[1].gameObject.SetActive(false);
+        }
+        else if (dialogs[currentDialogIndex].isOnOption)
+        {
+            selectionText[0].text = dialogs[currentDialogIndex].selectionText1;
+            selectionText[1].text = dialogs[currentDialogIndex].selectionText2;
+            selections[0].gameObject.SetActive(true);
+            selections[1].gameObject.SetActive(true);
         }
 
         while (index < dialogs[currentDialogIndex].dialogue.Length + 1)
@@ -119,8 +134,10 @@ public class DiaLogSystem : MonoBehaviour
             SetNextDialog(currentIndex);
             DialogInit = false;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&&!dialogs[currentDialogIndex].isOnOption)
         {
+            Debug.Log(currentDialogIndex);
+            Debug.Log(dialogs[currentDialogIndex].isOnOption);
             if (isTypingEffect == true)
             {
                 isTypingEffect = false;
@@ -145,6 +162,10 @@ public class DiaLogSystem : MonoBehaviour
         }
         return false;
     }
+    public void fromSellectionToNextDia()
+    {
+        SetNextDialog(dialogs[currentDialogIndex].nextindex);
+    }
 
     [System.Serializable]
     public struct SpeakerUI
@@ -166,6 +187,10 @@ public class DiaLogSystem : MonoBehaviour
         public string characterPath;        //캐릭터 이미지 경로
         public int tweenType;               //트윈 번호
         public int nextindex;               //다음 대사 
+        public string voicePath;
+        public bool isOnOption;
+        public string selectionText1;
+        public string selectionText2;
     }
 
 
