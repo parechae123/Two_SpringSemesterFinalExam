@@ -88,6 +88,10 @@ public class DiaLogSystem : MonoBehaviour
         currentSpeakerIndex = dialogs[currentDialogIndex].speakerUIindex;       //현재 화자 순번 설정
         SetActiveObjects(speakers[currentSpeakerIndex], true);                  //현재 화자의 대화 관련 오브젝트 활성화
         speakers[currentSpeakerIndex].textName.text = dialogs[currentDialogIndex].name; //현재 화자의 이름 텍스트 설정
+        if(dialogs[currentDialogIndex].name == "None")
+        {
+            speakers[currentSpeakerIndex].textName.text = "";
+        }
         StartCoroutine("OnTypingText");
     }
 
@@ -99,7 +103,8 @@ public class DiaLogSystem : MonoBehaviour
         if (dialogs[currentDialogIndex].characterPath != "None") //None이 아닐경우 DB에 넣어놓은 경로의 캐릭터 이미지를 가져온다.
         {
             speakers[currentSpeakerIndex].imgCharacter.sprite =
-            Resources.Load<Sprite>(dialogs[currentDialogIndex].characterPath);
+            Resources.Load<Sprite>("CharacterIlust/"+dialogs[currentDialogIndex].characterPath);
+            SoundManager.Instance().SFXInput("NPCVoice/"+dialogs[currentDialogIndex].voicePath);
             selections[0].gameObject.SetActive(false);
             selections[1].gameObject.SetActive(false);
         }

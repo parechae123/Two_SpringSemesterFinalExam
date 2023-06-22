@@ -91,6 +91,22 @@ public class MonsterDie : MonsterStates
         SoundManager.Instance().SFXInput("Die"+"_"+monsterType);
         InvenManager.InventoryInstance().playerGold += Random.Range(0,50);
         InvenManager.InventoryInstance().GoldChanged();
+        if (anim.gameObject.name.Contains("Slime"))
+        {
+            if (UIManager.Instance().nowAcceptedMainQuest.questName == "ÀÇ·Ú : ºÓÀº½½¶óÀÓ Ã³Ä¡")
+            {
+                UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
+                UIManager.Instance().isQuestDone(true);
+            }
+        }
+        else if (anim.gameObject.name.Contains("Wolf"))
+        {
+            if (UIManager.Instance().nowAcceptedMainQuest.questName == "ÀÇ·Ú : ´Á´ë Ã³Ä¡")
+            {
+                UIManager.Instance().nowAcceptedMainQuest.isQuestDone = true;
+                UIManager.Instance().isQuestDone(true);
+            }
+        }
     }
     public override void StateLive(MonsterAnimations MonsterAnimation)
     {

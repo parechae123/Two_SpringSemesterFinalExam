@@ -111,6 +111,7 @@ public class UIManager : MonoBehaviour
         if (ExpBar.value >= ExpBar.maxValue)
         {
             int PrevEXP = 0;
+            int PrevLV = EXP.nowLevel;
             foreach (var LV in LT.sheets[0].list)
             {
                 if (LV.EXP > EXP.nowExp)
@@ -122,7 +123,9 @@ public class UIManager : MonoBehaviour
                         ExpBar.maxValue = LV.EXP - PrevEXP;
                         ExpBar.value = EXP.nowExp - PrevEXP;
                     }
-                    GameManager.GMinstance().playerStatSave.StatPoint += 5;
+                    int LVGap = (LV.Level-PrevLV)*5;
+                    GameManager.GMinstance().playerStatSave.StatPoint += LVGap;
+                    
                     if (EXP.nowExp<LV.EXP)
                     {
                         break;

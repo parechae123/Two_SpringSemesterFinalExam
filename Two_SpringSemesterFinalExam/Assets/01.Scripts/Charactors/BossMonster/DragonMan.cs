@@ -22,7 +22,7 @@ public class DragonMan : BossBase
     void Start()
     {
         StartSetting();
-        MonsterDropItem = new Bow();
+        MonsterDropItem = new HeadArmor();
         sr = GetComponent<SpriteRenderer>();
         stateLists.Add("Dizzy", new MonsterDizzy());
         stateLists["Dizzy"].anim = GetComponent<Animator>();

@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         public int maxHp;
         public int atk;
         public byte jumpCount;
-        public byte StatPoint;
+        public int StatPoint;
     }
     
 

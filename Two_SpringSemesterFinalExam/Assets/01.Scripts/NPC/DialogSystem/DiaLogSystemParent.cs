@@ -10,17 +10,24 @@ public class DiaLogSystemParent : MonoBehaviour
     protected IEnumerator TextTypingAct(int TextL, string Name, string Dialog)
     {
         targetText.text = "";
-        if (TextL == 0)
+        if (Name != "None")
         {
-            StopCoroutine(TextTypingAct(0, Name, Dialog));
+            if (TextL == 0)
+            {
+                StopCoroutine(TextTypingAct(0, Name, Dialog));
+            }
+            else
+            {
+                for (int i = 0; i <= TextL; i++)
+                {
+                    yield return new WaitForSecondsRealtime(Random.Range(0.03f, 0.07f));
+                    targetText.text = Name + "\n" + Dialog.Substring(0, i);
+                }
+            } 
         }
         else
         {
-            for (int i = 0; i <= TextL; i++)
-            {
-                yield return new WaitForSecondsRealtime(Random.Range(0.03f,0.07f));
-                targetText.text = Name + "\n" + Dialog.Substring(0, i);
-            }
+            targetText.text = "";
         }
     }
 }

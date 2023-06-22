@@ -17,7 +17,7 @@ public class QuestTrigger : MonoBehaviour
                     UIManager.Instance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
                     gameObject.SetActive(false);
                 }
-                else if (UIManager.Instance().nowAcceptedMainQuest.questName == "" && UIManager.Instance().QuestInfo.sheets[0].list[Mathf.Clamp(questIndex - 1,0,100)].isQuestDone)
+                else if (UIManager.Instance().nowAcceptedMainQuest.questName == "None" && UIManager.Instance().QuestInfo.sheets[0].list[Mathf.Clamp(questIndex - 1,0,100)].isQuestDone)
                 {
                     UIManager.Instance().GetQuestInfo(questIndex, isThisMainQuestTrigger);
                     gameObject.SetActive(false);
